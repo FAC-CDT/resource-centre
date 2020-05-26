@@ -1,4 +1,6 @@
-This project is part of the Collaborative Digital Training programme.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/145c0dec-734b-4854-8431-123e5452576b/deploy-status)](https://app.netlify.com/sites/cdt-resource-centre/deploys)
+
+This project is part of the Collaborative Digital Training programme.<br>
 A collaboration between Founders & Coders, CAST, Social Action for Health and Pursuing Independent Pathways.
 
 ---
