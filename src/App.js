@@ -1,19 +1,16 @@
 import React from 'react';
-import logo from './FAClogo.png';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import './App.css';
-
+import Landing from './Landing.js';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          The template for our Collaborative Digital Training app.
-        </p>
-
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Switch>
+				<Route path="/" exact render={() => <Landing />} />
+				<Route component={Error} />
+			</Switch>
+		</BrowserRouter>
+	);
 }
 
 export default App;
