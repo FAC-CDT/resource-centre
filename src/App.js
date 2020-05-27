@@ -1,19 +1,22 @@
 import React from 'react';
-import logo from './FAClogo.png';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import './App.css';
+import Landing from './Landing.js';
+import Error from './Error.js';
+import Menu from './Menu.js';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          The template for our Collaborative Digital Training app.
-        </p>
+	const [user, setUser] = React.useState(null);
 
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Switch>
+				<Route path='/' exact render={() => <Landing setUser={setUser} />} />
+				<Route path='/menu' exact render={() => <Menu user={user} setUser={setUser} />} />
+				<Route component={Error} />
+			</Switch>
+		</BrowserRouter>
+	);
 }
 
 export default App;
