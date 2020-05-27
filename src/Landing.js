@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
 	return (
 		<nav>
-			<Link to='/session' alt="Join the current session"><button>Join session</button></Link>
-			<Link to='/resources' alt="View all resources"><button>View Resources</button></Link>
-			<Link to='/help' alt="How to use this app"><button>Tutorial</button></Link>
+			<Link to='/menu' alt="Log in as participant"><button>Log in as Participant</button></Link>
+			<Link to='/menu' alt="Log in as organisation"><button>Log in as Staff</button></Link>
 		</nav>
 	)
 }
