@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ParticipantMenu from './Participant-menu.js';
-import StaffMenu from './Staff-menu.js';
+import ParticipantMenu from './menus/Participant-menu.js';
+import StaffMenu from './menus/Staff-menu.js';
 
 const Menu = ({ location }) => {
 	const userType = location.search.split('=')[1];
