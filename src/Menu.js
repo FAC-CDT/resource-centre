@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Menu = ({ user, setUser }) => {
-	console.log(user);
-	if (user === "staff") {
+const Menu = ({ user, setUser, location }) => {
+	const userType = location.search.split('=')[1];
+	if (userType === 'staff') {
 		return (
 			<section>
 				<h1>Hello Staff</h1>
-				<Link to='/'><button onClick={() => setUser(null)}>Log out</button></Link>
+				<Link to='/'><button>Log out</button></Link>
 			</section>
 		)
-	} else if (user === "student"){
+	} else if (userType === 'participant'){
 		return (
 			<section>
 				<h1>Hello Participant</h1>
-				<Link to='/'><button onClick={() => setUser(null)}>Log out</button></Link>
+				<Link to='/'><button>Log out</button></Link>
 			</section>
 		)
 	} else return (
