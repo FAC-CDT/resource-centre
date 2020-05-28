@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+  margin: auto;
+  font-size: 40px;
+}
+
+.user-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
