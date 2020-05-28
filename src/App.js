@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import './App.css';
-import Login from './components/Login.js';
+import Login from './components/login/Login.js';
 import Error from './components/Error.js';
 import Landing from './components/Landing.js';
 import Session from './components/Session.js';
