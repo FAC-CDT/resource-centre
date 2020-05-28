@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Menu = ({ user, setUser, location }) => {
+const Menu = ({ location }) => {
 	const userType = location.search.split('=')[1];
 	if (userType === 'staff') {
 		return (
