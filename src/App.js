@@ -7,11 +7,12 @@ import Landing from './components/Landing.js';
 import Session from './components/Session.js';
 import Resources from './components/Resources.js';
 import Help from './components/Help.js';
-import AddSession from './components/Add-session.js';
-import SessionsList from './components/SessionsList.js';
-import AddResource from './components/Add-resource.js';
-import EditResource from './components/Edit-resource.js';
-import Profile from './components/Profile.js';
+
+import AddSession from './components/staff-options/AddSession.js';
+import SessionsList from './components/staff-options/SessionsList.js';
+import AddResource from './components/staff-options/AddResource.js';
+import EditResource from './components/staff-options/EditResource.js';
+import Profile from './components/staff-options/Profile.js';
 
 function App() {
 
