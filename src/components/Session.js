@@ -1,6 +1,8 @@
 import React from 'react';
 import PartNavbar from './navbar/PartNavbar.js';
 
+
+
 const Session = () => {
 	const [session, setSession] = React.useState(null);
 
@@ -16,21 +18,22 @@ const Session = () => {
 	React.useEffect(() => {
 		getSession();
 	}, []);
-	
+
 	console.log(session);
 	if (!session) {
 		return (<h1>Loading...</h1>)
 	}
 	return (
-		
+// REFACTOR
 		<>
 		<PartNavbar />
 		<h1>{session.records[0].fields.title}</h1>
 		<p>Session host: {session.records[0].fields.host}</p>
 		<img alt="session host" src={session.records[0].fields.host_image[0].url} />
-		<h2>Description</h2>
-		<p>{session.records[0].fields.description}</p>
-
+		{session.records[0].fields.resource1
+        ? <a target="_blank" rel="noopener noreferrer" href={session.records[0].fields.resource1}>{session.records[0].fields.resource1}</a>
+        : null
+      }
 		</>
 	)
 }
