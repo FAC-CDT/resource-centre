@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {ReactComponent as Participant } from './participant-login.svg'
-import {ReactComponent as Staff } from './staff-login.svg'
+import {ReactComponent as Participant } from './buttons/participant-login.svg'
+import {ReactComponent as Staff } from './buttons/staff-login.svg'
 import './Login.css'
 
 

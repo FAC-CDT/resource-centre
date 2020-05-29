@@ -1,13 +1,13 @@
 import React from 'react';
 import StaffNavbar from '../navbar/StaffNavbar.js';
 
-const AddSession = () => {
+const EditSessions = () => {
 	return (
 		<>
 		<StaffNavbar />
-		<h1> This is the add session page </h1>
+		<h1> This is the sessions list page </h1>
 		</>
 	)
 }
 
-export default AddSession;
+export default EditSessions;
