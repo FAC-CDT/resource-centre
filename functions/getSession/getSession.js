@@ -1,7 +1,7 @@
 const Airtable = require('airtable');
 
 exports.handler = (event, context, callback) => {
-  const { API_URL, API_CLIENT_ID, AIRTABLE_API_KEY } = process.env;
+  const { API_URL, AIRTABLE_API_KEY } = process.env;
 
   Airtable.configure({
     endpointUrl: API_URL,
