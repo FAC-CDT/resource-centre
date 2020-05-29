@@ -1,0 +1,5 @@
+.resource-container {
+  display: grid;
+  grid-template-columns: repeat(2, 12rem [col-start]);
+  justify-content: center;
+}
