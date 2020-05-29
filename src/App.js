@@ -9,7 +9,7 @@ import Resources from './components/resources/Resources.js';
 import Help from './components/Help.js';
 
 import AddSession from './components/staff-options/AddSession.js';
-import SessionsList from './components/staff-options/SessionsList.js';
+import EditSessions from './components/staff-options/EditSessions.js';
 import AddResource from './components/staff-options/AddResource.js';
 import EditResource from './components/staff-options/EditResource.js';
 import Profile from './components/staff-options/Profile.js';
@@ -24,7 +24,7 @@ function App() {
 				<Route path='/session' render={() => <Session />} />
 				<Route path='/resources' render={() => <Resources />} />
 				<Route path='/add-session' render={() => <AddSession />} />
-				<Route path='/edit-session' render={() => <SessionsList />} />
+				<Route path='/edit-session' render={() => <EditSessions />} />
 				<Route path='/add-resource' render={() => <AddResource />} />
 				<Route path='/edit-resource' render={() => <EditResource />} />
 				<Route path='/profile' render={() => <Profile />} />

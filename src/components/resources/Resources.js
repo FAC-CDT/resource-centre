@@ -5,13 +5,13 @@ import {ReactComponent as Pdf } from './icons/pdf-link.svg';
 import {ReactComponent as Website } from './icons/website-link.svg';
 import {ReactComponent as Yt } from './icons/yt-link.svg';
 import {ReactComponent as Google} from './icons/google-link.svg'
-import Navbar from '../navbar/Navbar.js';
+import PartNavbar from '../navbar/PartNavbar.js';
 import './Resources.css';
 
 const Resources = () => {
 	return (
 		<>
-		<Navbar />
+		<PartNavbar />
 		<h1> List of Resources </h1>
 		<section className="resource-container">
 		<Whatsapp />
