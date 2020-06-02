@@ -7,7 +7,7 @@
 
 .resource-title {
   text-align: center;
-  font-size: 1rem;
+  font-size: var(--content);
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
 }
@@ -17,13 +17,12 @@
       display: grid;
       align-items: center;
       grid-template-columns: repeat(auto-fill, 15rem);
-    
   }
 
   .resource-title {
     text-align: center;
     text-transform: uppercase;
-    font-size: 1rem;
+  font-size: var(--mcontent);
     font-family: 'Montserrat', sans-serif;
   }
 }

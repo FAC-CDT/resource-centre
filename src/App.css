@@ -1,9 +1,25 @@
+:root {
+  --subcontent: 1rem;
+  --content: 1.333rem;
+  --subheading: 1.777rem;
+  --heading: 2.369rem;
+}
+
 h1 {
   padding: 1rem;
+  font-size: var(--heading);
 }
 
 @media screen and (max-width: 800px) {
+  :root {
+      --msubcontent: 1rem;
+      --mcontent: 1.618rem;
+      --msubheading: 2.618rem;
+      --mheading: 4.236rem;
+    }
   h1 {
     padding: 0.5rem;
+    font-size: var(--mheading);
   }
+
 }
