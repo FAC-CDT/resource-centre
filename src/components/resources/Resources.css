@@ -1,13 +1,29 @@
 .resource-container {
   display: grid;
-  grid-template-columns: repeat(2, 12rem [col-start]);
+  align-items: center;
+  grid-template-columns: repeat(2, 15rem [col-start]);
   justify-content: center;
+}
+
+.resource-title {
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media screen and (max-width: 800px) {
   .resource-container {
-    display: grid;
-    grid-template-columns: repeat(2, 10rem [col-start]);
-    justify-content: center;
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(auto-fill, 15rem);
+    
+  }
+
+  .resource-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
   }
 }
