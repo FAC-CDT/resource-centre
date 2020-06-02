@@ -1,22 +1,29 @@
 import React from "react";
 import PartNavbar from "./navbar/PartNavbar.js";
 import { Link } from "react-router-dom";
-// import {ReactComponent as Whatsapp } from './resources/icons/whatsapp-link.svg';
-// import {ReactComponent as Zoom } from './resources/icons/zoom-link.svg';
-// import {ReactComponent as Pdf } from './resources/icons/pdf-link.svg';
-// import {ReactComponent as Website } from './resources/icons/website-link.svg';
-// import {ReactComponent as Yt } from './resources/icons/yt-link.svg';
-// import {ReactComponent as Google} from './resources/icons/google-link.svg'
-import Youtube from "./resources/icons/yt-link.svg";
+import whatsapp from "./resources/icons/whatsapp-link.svg";
+import zoom from "./resources/icons/zoom-link.svg";
+import pdf from "./resources/icons/pdf-link.svg";
+import website from "./resources/icons/website-link.svg";
+import google from "./resources/icons/google-link.svg";
+import youtube from "./resources/icons/yt-link.svg";
 
 const Session = () => {
   const [session, setSession] = React.useState(null);
+
+  let icons = {
+    youtube: youtube,
+    whatsapp: whatsapp,
+    zoom: zoom,
+    pdf: pdf,
+    website: website,
+    google: google,
+  };
 
   const getSession = async () => {
     await (await fetch(`/.netlify/functions/getSession/getSession.js`))
       .json()
       .then((data) => setSession(data))
-
       .catch(console.error);
   };
 
@@ -29,58 +36,67 @@ const Session = () => {
     return <h1>Loading...</h1>;
   }
 
-  console.log(session.records[0].fields.resource1_type);
-
+  const sessionPath = session.records[0].fields;
   return (
-    // REFACTOR
-
-    <>
+    <article>
       <PartNavbar />
-      <h1>{session.records[0].fields.title}</h1>
-      <p>Session host: {session.records[0].fields.host}</p>
-      <img
-        alt="session host"
-        src={session.records[0].fields.host_image[0].url}
-      />
+      <h1>{sessionPath.title}</h1>
+      <p>Session host: {sessionPath.host}</p>
+      <img alt="session host" src={sessionPath.host_image[0].url} />
 
-      {session.records[0].fields.resource1 ? (
+      {sessionPath.resource1 ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={session.records[0].fields.resource1}
+          href={sessionPath.resource1}
         >
-          {session.records[0].fields.resource1_type}
+          <img
+            alt={sessionPath.resource1_type}
+            src={icons[sessionPath.resource1_type]}
+          />
         </a>
       ) : null}
-      {session.records[0].fields.resource2 ? (
+
+      {sessionPath.resource2 ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={session.records[0].fields.resource2}
+          href={sessionPath.resource2}
         >
-          {session.records[0].fields.resource2_type}
+          <img
+            alt={sessionPath.resource2_type}
+            src={icons[sessionPath.resource2_type]}
+          />
         </a>
       ) : null}
-      {session.records[0].fields.resource3 ? (
+
+      {sessionPath.resource3 ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={session.records[0].fields.resource3}
+          href={sessionPath.resource3}
         >
-          {session.records[0].fields.resource3_type}
+          <img
+            alt={sessionPath.resource3_type}
+            src={icons[sessionPath.resource3_type]}
+          />
         </a>
       ) : null}
-      {session.records[0].fields.resource4 ? (
+
+      {sessionPath.resource4 ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={session.records[0].fields.resource4}
+          href={sessionPath.resource4}
         >
-          {session.records[0].fields.resource4_type}
+          <img
+            alt={sessionPath.resource4_type}
+            src={icons[sessionPath.resource4_type]}
+          />
         </a>
       ) : null}
-	  <Link to="/help">Help</Link>
-    </>
+      <Link to="/help">Help</Link>
+    </article>
   );
 };
 
