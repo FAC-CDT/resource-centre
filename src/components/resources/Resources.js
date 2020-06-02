@@ -39,18 +39,17 @@ if (!resources) {
 		<>
 		<PartNavbar />
 			<h1>Resources</h1>
+			<section className='resource-container'>
 	{resources.records.map(resource => (
-
-<section key={resource.id}>
-	<a
+<a
+className='resource-icon'
+	key={resource.id}
 		href={resource.fields.resource_url}
 		target='_blank'
 		rel='noopener noreferrer'
-
 >
  <figure>
 	 <img
-	 	className='resource-image'
 		src={icons[resource.fields.type]}
 		alt={icons[resource.fields.type]}
 	/>
@@ -61,9 +60,9 @@ if (!resources) {
 		</figcaption>
  </figure>
 </a>
-</section>
-))}
 
+))}
+</section>
 </>
 )}
 
