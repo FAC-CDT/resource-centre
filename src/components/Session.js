@@ -37,6 +37,9 @@ const Session = () => {
   }
 
   const sessionPath = session.records[0].fields;
+  // const title = session.records[0].fields.
+
+
   return (
     <article>
       <PartNavbar />
