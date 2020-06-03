@@ -7,6 +7,7 @@ import pdf from "./resources/icons/pdf-link.svg";
 import website from "./resources/icons/website-link.svg";
 import google from "./resources/icons/google-link.svg";
 import youtube from "./resources/icons/yt-link.svg";
+import {SessionQuestions} from '../utils/Questions.js';
 
 const Session = () => {
   const [session, setSession] = React.useState(null);
@@ -31,70 +32,71 @@ const Session = () => {
     getSession();
   }, []);
 
-  console.log(session);
+  // console.log(session);
   if (!session) {
     return <h1>Loading...</h1>;
   }
 
-  const sessionPath = session.records[0].fields;
-  // const title = session.records[0].fields.
+const sessionPath = session.records[0].fields;
+const image = sessionPath.Profile_pic[0].url;
+console.log(image);
 
 
   return (
     <article>
       <PartNavbar />
-      <h1>{sessionPath.title}</h1>
-      <p>Session host: {sessionPath.host}</p>
-      <img alt="session host" src={sessionPath.host_image[0].url} />
+      <h1>{sessionPath[SessionQuestions.title]}</h1>
+      <p>Session host: {sessionPath[SessionQuestions.host]}</p>
+      <img alt="session host" src={image} />
 
-      {sessionPath.resource1 ? (
+      {sessionPath[SessionQuestions.resource1] ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={sessionPath.resource1}
+          href={sessionPath[SessionQuestions.resource1]}
         >
           <img
-            alt={sessionPath.resource1_type}
-            src={icons[sessionPath.resource1_type]}
+            alt={sessionPath[SessionQuestions.resource1_type]}
+            src={icons[sessionPath[SessionQuestions.resource1_type]]}
           />
         </a>
       ) : null}
 
-      {sessionPath.resource2 ? (
+      {sessionPath[SessionQuestions.resource2] ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={sessionPath.resource2}
+          href={sessionPath[SessionQuestions.resource2]}
         >
           <img
-            alt={sessionPath.resource2_type}
-            src={icons[sessionPath.resource2_type]}
+            alt={sessionPath[SessionQuestions.resource2_type]}
+            src={icons[sessionPath[SessionQuestions.resource2_type]]}
           />
         </a>
       ) : null}
 
-      {sessionPath.resource3 ? (
+      {sessionPath[SessionQuestions.resource3] ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={sessionPath.resource3}
+          href={sessionPath[SessionQuestions.resource3]}
         >
           <img
-            alt={sessionPath.resource3_type}
-            src={icons[sessionPath.resource3_type]}
+            alt={sessionPath[SessionQuestions.resource3_type]}
+            src={icons[sessionPath[SessionQuestions.resource3_type]]}
           />
         </a>
       ) : null}
 
-      {sessionPath.resource4 ? (
+      {sessionPath[SessionQuestions.resource4] ? (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={sessionPath.resource4}
+          href={sessionPath[SessionQuestions.resource4]}
         >
           <img
-            alt={sessionPath.resource4_type}
-            src={icons[sessionPath.resource4_type]}
+            alt={sessionPath[SessionQuestions.resource4_type]}
+            src={icons[sessionPath[SessionQuestions.resource4_type]]}
           />
         </a>
       ) : null}
