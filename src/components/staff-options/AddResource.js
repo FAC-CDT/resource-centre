@@ -1,13 +1,22 @@
-import React from 'react';
-import StaffNavbar from '../navbar/StaffNavbar.js';
+import React from "react";
+import Navbar from "../navbar/StaffNavbar.js";
 
 const AddResource = () => {
-	return (
-		<>
-		<StaffNavbar />
-		<h1> This is the add resource page </h1>
-		</>
-	)
-}
+  return (
+    <>
+      <Navbar />
+      <iframe
+	  title="Add resource form"
+        class="airtable-embed"
+        src="https://airtable.com/embed/shrHMAeoZxLhFovmG?backgroundColor=red"
+        frameborder="0"
+        onmousewheel=""
+        width="100%"
+        height="533"
+        style={{background: 'transparent', border: '1px solid #ccc'}}
+      ></iframe>
+    </>
+  );
+};
 
 export default AddResource;
