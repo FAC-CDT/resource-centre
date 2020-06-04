@@ -20,6 +20,7 @@ const [resources, setResources] = React.useState(null);
     website: website,
     google: google,
   };
+  
 const getResources = async () => {
 	await (await fetch(`/.netlify/functions/getResources/getResources.js`))
 		.json()
