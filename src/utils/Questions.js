@@ -12,7 +12,6 @@ const SessionQuestions =
   title: 'What is the title of the session?',
   organisation: 'Which organisation are you from?',
   host: 'Who is the host of this session?',
-
   start_date: 'What is the start date and time?',
   end_date: 'What is the end date and time?',
   resource1: 'What is the web address for your first resource?',

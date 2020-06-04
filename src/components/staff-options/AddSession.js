@@ -6,10 +6,11 @@ const AddSession = () => {
     <>
       <Navbar />
       <iframe
-	  title="Add session form"
-        className="airtable-embed"
+	     title="Add session form"
+        class="airtable-embed"
         src="https://airtable.com/embed/shrHYoQOPzZW2ZDFQ?backgroundColor=red"
-        frameBorder="0"
+        frameborder="0"
+        onmousewheel=""
         width="100%"
         height="533"
         style={{background: 'transparent', border: '1px solid #ccc'}}
