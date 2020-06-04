@@ -21,7 +21,8 @@ const StaffMenu = () => {
 			<Link to='/session'><CurrentSession /></Link>
 			<Link to='/profile'><Profile /></Link>
 			</section>
-			<Link to='/'>Log out</Link>
+			<Link to='/' className="logout">Log out</Link>
+
 		</section>
 	)
 }

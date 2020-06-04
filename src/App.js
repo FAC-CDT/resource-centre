@@ -4,7 +4,7 @@ import './App.css';
 import Login from './components/login/Login.js';
 import Error from './components/Error.js';
 import Landing from './components/Landing.js';
-import Session from './components/Session.js';
+import Session from './components/session/Session.js';
 import Resources from './components/resources/Resources.js';
 import Help from './components/Help.js';
 

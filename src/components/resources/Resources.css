@@ -1,5 +1,5 @@
 a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:visited {
   color: black;
@@ -14,23 +14,21 @@ a:visited {
 
 .resource-title {
   text-align: center;
-  font-size: var(--content);
+  font-size: var(--subtitle);
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-
+  font-family: "Montserrat", sans-serif;
 }
 
 @media screen and (max-width: 800px) {
   .resource-container {
-display: flex;
-flex-direction: column;
-
+    display: flex;
+    flex-direction: column;
   }
 
   .resource-title {
     text-align: center;
     text-transform: uppercase;
-   font-size: var(--msubcontent);
-    font-family: 'Montserrat', sans-serif;
+    font-size: var(--content);
+    font-family: "Montserrat", sans-serif;
   }
 }
