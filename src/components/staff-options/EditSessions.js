@@ -53,7 +53,7 @@ const EditSessions = () => {
       <Navbar />
       <h1>Your Sessions</h1>
       {sessionsToDelete.records.length === 0 ? (
-        <h2>There are currently no sessions registered</h2>
+        <h2>There are currently no sessions scheduled</h2>
       ) : (
         sessionsToDelete.records.map((session) => (
           <section className="editbar" key={session.id}>
