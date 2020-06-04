@@ -13,7 +13,7 @@ import EditSessions from "./components/staff-options/EditSessions.js";
 import AddResource from "./components/staff-options/AddResource.js";
 import EditResource from "./components/staff-options/EditResource.js";
 import Profile from "./components/staff-options/Profile.js";
-import OrganisationLogin from "./components/OrganisationLogin";
+import OrganisationLogin from "./components/login/OrganisationLogin";
 
 function App() {
   const [userRole, setUserRole] = React.useState("No role");
