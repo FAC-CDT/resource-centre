@@ -13,6 +13,7 @@ import EditSessions from "./components/staff-options/EditSessions.js";
 import AddResource from "./components/staff-options/AddResource.js";
 import EditResource from "./components/staff-options/EditResource.js";
 import Profile from "./components/staff-options/Profile.js";
+import OrganisationLogin from "./components/OrganisationLogin";
 
 function App() {
   const [userRole, setUserRole] = React.useState("No role");
@@ -24,15 +25,14 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route
-          exact
-          path="/"
+          exact path="/"
           render={() => <Login userRole={userRole} setUserRole={setUserRole} />}
         />
         <Route
-          path="/landing"
-          exact
-          render={() => <Landing userRole={userRole} />}
+          exact path="/landing"
+          render={() => <Landing userRole={userRole} userOrganisation={userOrganisation} />}
         />
+        <Route exact path="/organisationlogin" render={() => <OrganisationLogin userOrganisation={userOrganisation} setUserOrganisation={setUserOrganisation} />} />
         <Route path="/session" render={() => <Session />} />
         <Route path="/resources" render={() => <Resources />} />
         <Route path="/add-session" render={() => <AddSession />} />

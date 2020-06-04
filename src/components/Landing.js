@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import ParticipantMenu from "./menus/Participant-menu.js";
 import StaffMenu from "./menus/Staff-menu.js";
 
-const Menu = ({ userRole }) => {
+const Menu = ({ userRole, userOrganisation }) => {
   if (userRole === "staff") {
-    return <StaffMenu userRole={userRole} />;
+    return <StaffMenu userRole={userRole} userOrganisation={userOrganisation} />;
   } else if (userRole === "participant") {
-    return <ParticipantMenu userRole={userRole} />;
+    return <ParticipantMenu userRole={userRole} userOrganisation={userOrganisation} />;
   } else
     return (
       <section>

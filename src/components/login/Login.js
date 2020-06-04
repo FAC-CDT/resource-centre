@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Participant } from "./buttons/participant-login.svg";
 import { ReactComponent as Staff } from "./buttons/staff-login.svg";
-import { ReactComponent as PipLogo } from "./buttons/pip_logo.svg";
-import { ReactComponent as SafhLogo } from "./buttons/safh_logo.svg";
 import "./Login.css";
 
 const Landing = ({ userRole, setUserRole }) => {
@@ -11,7 +9,7 @@ const Landing = ({ userRole, setUserRole }) => {
     <>
       <h1> Welcome! </h1>
       <nav>
-        <Link to="/landing?menu=participant" alt="Log in as a participant">
+        <Link to="/organisationlogin" alt="Log in as a participant">
           <Participant
             onClick={() => {
               setUserRole("participant");
@@ -19,7 +17,7 @@ const Landing = ({ userRole, setUserRole }) => {
           />
         </Link>
         <Link
-          to="/landing?menu=staff"
+          to="/organisationlogin"
           alt="Log in as a member of an organisation"
         >
           <Staff
@@ -28,8 +26,6 @@ const Landing = ({ userRole, setUserRole }) => {
             }}
           />
         </Link>
-        <PipLogo />
-        <SafhLogo />
       </nav>
     </>
   );

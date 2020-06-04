@@ -9,17 +9,17 @@ import { ReactComponent as Profile } from './icons/profile.svg'
 
 import './Staff-menu.css';
 
-const StaffMenu = () => {
+const StaffMenu = ({ userRole, userOrganisation }) => {
 	return (
 		<section>
-			<h1>Welcome Staff Member!</h1>
+			<h1>Welcome {userRole} to the {userOrganisation} dashboard</h1>
 			<section className='staff-options'>
-			<Link to='/add-session'><AddSession /></Link>
-			<Link to='/edit-session'><SessionsList /></Link>
-			<Link to='/add-resource'><AddResource /></Link>
-			<Link to='/edit-resource'><EditResource /></Link>
-			<Link to='/session'><CurrentSession /></Link>
-			<Link to='/profile'><Profile /></Link>
+				<Link to='/add-session'><AddSession /></Link>
+				<Link to='/edit-session'><SessionsList /></Link>
+				<Link to='/add-resource'><AddResource /></Link>
+				<Link to='/edit-resource'><EditResource /></Link>
+				<Link to='/session'><CurrentSession /></Link>
+				<Link to='/profile'><Profile /></Link>
 			</section>
 			<Link to='/'>Log out</Link>
 		</section>

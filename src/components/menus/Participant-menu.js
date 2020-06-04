@@ -5,10 +5,10 @@ import { ReactComponent as Resources } from "./icons/resources.svg";
 import { ReactComponent as Help } from "./icons/help.svg";
 import "./Participant-menu.css";
 
-const ParticipantMenu = ({ selectedOption, setSelectedOption, userRole }) => {
+const ParticipantMenu = ({ selectedOption, setSelectedOption, userRole, userOrganisation }) => {
   return (
     <section>
-      <h1>Welcome Participant</h1>
+      <h1>Welcome {userRole} to the {userOrganisation} dashboard</h1>
       <section className="user-options">
         <Link to="/session">
           <Session />
