@@ -1,0 +1,49 @@
+.editbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.delete-button {
+  background-color: #f45d58;
+  /* width: 6rem; */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: var(--subcontent);
+  margin-left: 1rem;
+}
+
+.view-button {
+  background-color: #55bb99;
+  /* width: 6rem; */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: var(--subcontent);
+}
+
+.editbar h2 {
+  font-size: var(--subcontent);
+  margin-left: 0;
+}
+
+.button-box {
+  display: flex;
+  flex-direction: row;
+  max-width: 44vw;
+}
+
+.resource-heading {
+  max-width: 66vw;
+}

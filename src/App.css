@@ -20,6 +20,12 @@ p {
   font-size: var(--subtitle);
 }
 
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  padding: 1rem;
+  font-size: var(--subheading);
+}
+
 @media screen and (max-width: 800px) {
   :root {
     --large: 4.236rem;
