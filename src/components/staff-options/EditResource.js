@@ -1,6 +1,7 @@
 import React from "react";
-import StaffNavbar from "../navbar/StaffNavbar.js";
+import Navbar from "../navbar/StaffNavbar.js";
 import { ResourceQuestions } from "../../utils/Questions";
+import "./EditBar.css";
 
 const EditResource = () => {
   const [resourcesToDelete, setResourcesToDelete] = React.useState(null);
@@ -14,7 +15,7 @@ const EditResource = () => {
   };
 
   const deleteResource = async (id) => {
-    if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure you want to delete this resource?")) {
       await fetch(`/.netlify/functions/deleteResource/deleteResource.js`, {
         method: "DELETE",
         body: JSON.stringify(id),
@@ -25,30 +26,53 @@ const EditResource = () => {
       return;
     }
   };
+
   React.useEffect(() => {
     getResourcesToDelete();
   }, [refresh]);
 
   if (!resourcesToDelete) {
-    return <h1>Loading...</h1>;
+    return (
+      <section>
+        <Navbar />
+        <h1>Loading...</h1>
+      </section>
+    );
   }
 
   return (
-    <>
-      <StaffNavbar />
-      {resourcesToDelete.records.map((resource) => (
-        <section key={resource.id}>
-          <h2>{resource.fields[ResourceQuestions.title]}</h2>
-          <button
-            onClick={() => {
-              deleteResource({ id: resource.id });
-            }}
-          >
-            Delete
-          </button>
-        </section>
-      ))}
-    </>
+    <article>
+      <Navbar />
+      <h1>Your Resources</h1>
+      {resourcesToDelete.records.length === 0 ? (
+        <h2>There are currently no resources registered</h2>
+      ) : (
+        resourcesToDelete.records.map((resource) => (
+          <section key={resource.id} className="editbar">
+            <div className="resource-heading">
+              <h2>{resource.fields[ResourceQuestions.title]}</h2>
+            </div>
+            <div className="button-box">
+              <a
+                href={resource.fields[ResourceQuestions.resource_url]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="view-button">Visit</button>
+              </a>
+              <button
+                className="delete-button"
+                onClick={() => {
+                  deleteResource({ id: resource.id });
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </section>
+        ))
+      )}
+    </article>
   );
 };
 
