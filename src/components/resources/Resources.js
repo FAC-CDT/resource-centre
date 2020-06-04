@@ -1,13 +1,15 @@
-import React from "react";
-import whatsapp from "./icons/whatsapp-link.svg";
-import zoom from "./icons/zoom-link.svg";
-import pdf from "./icons/pdf-link.svg";
-import website from "./icons/website-link.svg";
-import google from "./icons/google-link.svg";
-import youtube from "./icons/yt-link.svg";
-import { ResourceQuestions } from "../../utils/Questions.js";
-import Navbar from "../navbar/PartNavbar.js";
-import "./Resources.css";
+import React from 'react';
+import whatsapp from './icons/whatsapp-link.svg';
+import zoom from './icons/zoom-link.svg';
+import pdf from './icons/pdf-link.svg';
+import website from './icons/website-link.svg';
+import google from './icons/google-link.svg';
+import youtube from './icons/yt-link.svg';
+import covid from './icons/covid-link.svg';
+import other from './icons/other-link.svg';
+import {ResourceQuestions} from '../../utils/Questions.js';
+import Navbar from '../navbar/PartNavbar.js';
+import './Resources.css';
 
 const Resources = () => {
   const [resources, setResources] = React.useState(null);
@@ -19,14 +21,16 @@ const Resources = () => {
     pdf: pdf,
     website: website,
     google: google,
+    coronavirus: covid,
+    other: other
   };
 
-  const getResources = async () => {
-    await (await fetch(`/.netlify/functions/getResources/getResources.js`))
-      .json()
-      .then((data) => setResources(data))
-      .catch(console.error);
-  };
+const getResources = async () => {
+	await (await fetch(`/.netlify/functions/getResources/getResources.js`))
+		.json()
+		.then((data) => setResources(data))
+		.catch(console.error);
+};
 
   React.useEffect(() => {
     getResources();

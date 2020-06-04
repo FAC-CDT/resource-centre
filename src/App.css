@@ -1,14 +1,23 @@
 :root {
-  --subcontent: 1rem;
-  --content: 1.333rem;
-  --subheading: 1.777rem;
-  --heading: 2.369rem;
+  --large: 2.369rem;
+  --heading: 1.777rem;
+  --subtitle: 1.333rem;
+  --body: 1rem;
+  --small: 0.75rem;
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding: 1rem;
   font-size: var(--heading);
+  text-align: center;
+  margin: auto;
+  text-decoration: underline;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--subtitle);
 }
 
 h2 {
@@ -19,14 +28,17 @@ h2 {
 
 @media screen and (max-width: 800px) {
   :root {
-      --msubcontent: 1rem;
-      --mcontent: 1.618rem;
-      --msubheading: 2.618rem;
-      --mheading: 4.236rem;
-    }
-  h1 {
-    padding: 0.5rem;
-    font-size: var(--mheading);
+    --large: 4.236rem;
+    --heading: 2.618rem;
+    --subtitle: 1.618rem;
+    --body: 1rem;
+    --small: 0.618rem;
   }
+  h2 {
 
+    font-size: var(--heading);
+  }
+  p {
+    font-size: var(--subtitle);
+  }
 }

@@ -1,13 +1,15 @@
 import React from "react";
-import Navbar from "./navbar/PartNavbar.js";
+import PartNavbar from "../navbar/PartNavbar.js";
 import { Link } from "react-router-dom";
-import whatsapp from "./resources/icons/whatsapp-link.svg";
-import zoom from "./resources/icons/zoom-link.svg";
-import pdf from "./resources/icons/pdf-link.svg";
-import website from "./resources/icons/website-link.svg";
-import google from "./resources/icons/google-link.svg";
-import youtube from "./resources/icons/yt-link.svg";
-import { SessionQuestions } from "../utils/Questions.js";
+import whatsapp from "../resources/icons/whatsapp-link.svg";
+import zoom from "../resources/icons/zoom-link.svg";
+import pdf from "../resources/icons/pdf-link.svg";
+import website from "../resources/icons/website-link.svg";
+import google from "../resources/icons/google-link.svg";
+import youtube from "../resources/icons/yt-link.svg";
+import { SessionQuestions } from "../../utils/Questions.js";
+
+import "./Sessions.css";
 
 const Session = () => {
   const [session, setSession] = React.useState(null);
@@ -18,13 +20,13 @@ const Session = () => {
     zoom: zoom,
     pdf: pdf,
     website: website,
-    google: google,
+    google: google
   };
 
   const getSession = async () => {
     await (await fetch(`/.netlify/functions/getSession/getSession.js`))
       .json()
-      .then((data) => setSession(data))
+      .then(data => setSession(data))
       .catch(console.error);
   };
 
@@ -34,12 +36,7 @@ const Session = () => {
 
   // console.log(session);
   if (!session) {
-    return (
-      <section>
-        <Navbar />
-        <h1>Loading...</h1>
-      </section>
-    );
+    return <h1>Loading...</h1>;
   }
 
   const sessionPath = session.records[0].fields;
@@ -47,17 +44,13 @@ const Session = () => {
   console.log(image);
 
   return (
-    <article>
-      <Navbar />
-
-      {session.records.length === 0 ? (
-        <h2>There are currently no sessions scheduled</h2>
-      ) : (
-        <>
-          <h1>{sessionPath[SessionQuestions.title]}</h1>
-          <p>Session host: {sessionPath[SessionQuestions.host]}</p>
-          <img alt="session host" src={image} />
-
+    <section>
+      <PartNavbar />
+      <section className="session-container">
+        <h1>{sessionPath[SessionQuestions.title]}</h1>
+        <p>Session host: {sessionPath[SessionQuestions.host]}</p>
+        <img alt="session host" src={image} className="host-image" />
+        <article className="sess-resource-container">
           {sessionPath[SessionQuestions.resource1] ? (
             <a
               target="_blank"
@@ -109,10 +102,12 @@ const Session = () => {
               />
             </a>
           ) : null}
-          <Link to="/help">Help</Link>
-        </>
-      )}
-    </article>
+        </article>
+      </section>
+      <Link to="/help" className="help">
+        Help
+      </Link>
+    </section>
   );
 };
 
