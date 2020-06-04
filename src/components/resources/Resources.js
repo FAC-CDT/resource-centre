@@ -5,6 +5,8 @@ import pdf from './icons/pdf-link.svg';
 import website from './icons/website-link.svg';
 import google from './icons/google-link.svg';
 import youtube from './icons/yt-link.svg';
+import covid from './icons/covid-link.svg';
+import other from './icons/other-link.svg';
 import {ResourceQuestions} from '../../utils/Questions.js';
 import PartNavbar from '../navbar/PartNavbar.js';
 import './Resources.css';
@@ -19,8 +21,10 @@ const [resources, setResources] = React.useState(null);
     pdf: pdf,
     website: website,
     google: google,
+    coronavirus: covid,
+    other: other
   };
-  
+
 const getResources = async () => {
 	await (await fetch(`/.netlify/functions/getResources/getResources.js`))
 		.json()

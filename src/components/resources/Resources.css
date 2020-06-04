@@ -22,15 +22,15 @@ a:visited {
 
 @media screen and (max-width: 800px) {
   .resource-container {
-      display: grid;
-      align-items: center;
-      grid-template-columns: repeat(auto-fill, 15rem);
+display: flex;
+flex-direction: column;
+
   }
 
   .resource-title {
     text-align: center;
     text-transform: uppercase;
-  font-size: var(--mcontent);
+   font-size: var(--msubcontent);
     font-family: 'Montserrat', sans-serif;
   }
 }
