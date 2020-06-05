@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {ReactComponent as HomeSvg} from './icons/home.svg';
+import {ReactComponent as Back} from './icons/back.svg';
 import './Navbar.css';
 
 const Navbar = ({ location }) => {
 	const userType = location.search.split('=')[1];
 		if (userType === 'staff') {
 			return (
-<Link to='/landing?menu=staff'><HomeSvg className="home"/></Link>
+<Link to='/landing?menu=staff'><Back className="home"/></Link>
 			)
 		} else if (userType === 'participant'){
 			return (
-				<Link to='/landing?menu=participant'><HomeSvg className="home"/></Link>
+				<Link to='/landing?menu=participant'><Back className="home"/></Link>
 
 			)
 		} else return (
