@@ -20,7 +20,7 @@ p {
   font-size: var(--subtitle);
 }
 
-h1 {
+h2 {
   font-family: 'Montserrat', sans-serif;
   padding: 1rem;
   font-size: var(--subheading);
