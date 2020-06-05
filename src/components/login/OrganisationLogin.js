@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as PipLogo } from "./buttons/pip_logo.svg";
-import { ReactComponent as SafhLogo } from "./buttons/safh_logo.svg";
-import "./Login.css";
+import PipLogo from "./buttons/pip_logo.svg";
+import SafhLogo from "./buttons/safh_logo.svg";
+import "./OrgLogin.css";
 
 const OrganisationLogin = ({ userRole, setUserOrganisation }) => {
     return (
@@ -10,7 +10,7 @@ const OrganisationLogin = ({ userRole, setUserOrganisation }) => {
             <h1> Welcome! </h1>
             <nav>
                 <Link to="/landing" alt="Log in as a participant">
-                    <PipLogo
+                    <img src={PipLogo} alt='PIP logo'
                         onClick={() => {
                             setUserOrganisation("pip");
                         }}
@@ -20,7 +20,7 @@ const OrganisationLogin = ({ userRole, setUserOrganisation }) => {
                     to="/landing"
                     alt="Log in as a member of an organisation"
                 >
-                    <SafhLogo
+                    <img src={SafhLogo} alt='safh logo'
                         onClick={() => {
                             setUserOrganisation("safh");
                         }}
