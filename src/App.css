@@ -17,12 +17,11 @@ h1 {
 
 p {
   font-family: "Montserrat", sans-serif;
-  font-size: var(--subtitle);
+  font-size: var(--body);
 }
 
 h2 {
   font-family: 'Montserrat', sans-serif;
-  padding: 1rem;
   font-size: var(--subheading);
 }
 
@@ -31,13 +30,15 @@ h2 {
     --large: 4.236rem;
     --heading: 2rem;
     --subtitle: 1.618rem;
-    --body: 1rem;
+    --body: 1.3rem;
     --small: 0.618rem;
   }
   h1 {
     font-size: var(--heading);
+      padding: 0.4rem;
   }
   p {
-    font-size: var(--subtitle);
+    font-size: var(--body);
+  padding: 0.1rem;
   }
 }
