@@ -7,6 +7,7 @@ import pdf from "../resources/icons/pdf-link.svg";
 import website from "../resources/icons/website-link.svg";
 import google from "../resources/icons/google-link.svg";
 import youtube from "../resources/icons/yt-link.svg";
+import {ReactComponent as Help} from "./icons/help-btn.svg"
 import { SessionQuestions } from "../../utils/Questions.js";
 
 import "./Sessions.css";
@@ -105,8 +106,9 @@ const Session = () => {
         </article>
       </section>
       <Link to="/help" className="help">
-        Help
+        <Help />
       </Link>
+
     </section>
   );
 };
