@@ -16,7 +16,6 @@ exports.handler = (event, context, callback) => {
   var organisation = userInformation.organisation;
   var password = userInformation.password;
 
-  console.log("got this far", event.body);
   base("credentials")
     .select({
       filterByFormula: `({organisation}='${organisation}')`,

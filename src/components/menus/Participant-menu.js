@@ -14,7 +14,6 @@ const ParticipantMenu = ({ userInfo, setUserInfo }) => {
     organisation: "",
     userType: "participant"
     })
-    console.log(userInfo)
   }
 
   return (
