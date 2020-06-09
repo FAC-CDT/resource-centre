@@ -5,10 +5,20 @@ import { ReactComponent as Resources } from "./icons/resources.svg";
 import { ReactComponent as Help } from "./icons/help.svg";
 import "./Participant-menu.css";
 
-const ParticipantMenu = ({ selectedOption, setSelectedOption, userRole, userOrganisation }) => {
+const ParticipantMenu = ({ userInfo, setUserInfo }) => {
+
+  const handleLogout = () => {
+    setUserInfo ({
+    username: "",
+    password: "",
+    organisation: "",
+    userType: "participant"
+    })
+  }
+
   return (
     <section>
-      <h1>Welcome {userRole} to the {userOrganisation} dashboard</h1>
+      <h1>Welcome {userInfo.username}</h1>
       <section className="user-options">
         <Link to="/session">
           <Session />
@@ -19,7 +29,7 @@ const ParticipantMenu = ({ selectedOption, setSelectedOption, userRole, userOrga
         <Link to="/help">
           <Help />
         </Link>
-        <Link to="/">Log out</Link>
+        <Link to="/" onClick={handleLogout}>Log out</Link>
       </section>
     </section>
   );

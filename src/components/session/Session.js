@@ -12,7 +12,7 @@ import { SessionQuestions } from "../../utils/Questions.js";
 
 import "./Sessions.css";
 
-const Session = ({ userRole }) => {
+const Session = ({ userInfo }) => {
   const [session, setSession] = React.useState(null);
 
   let icons = {
@@ -37,9 +37,22 @@ const Session = ({ userRole }) => {
 
   // console.log(session);
   if (!session) {
-    return <h1>Loading...</h1>;
+    return (
+      <article>
+        <PartNavbar />
+        <h1>Loading...</h1>;
+      </article>
+    );
   }
 
+  if (!userInfo.organisation) {
+    return (
+      <article>
+        <PartNavbar />
+        <h1>We don't have your organisation, please log out and try again</h1>
+      </article>
+    )
+  }
   const sessionPath = session.records[0].fields;
   const image = sessionPath.Profile_pic[0].url;
   console.log(image);
@@ -105,7 +118,7 @@ const Session = ({ userRole }) => {
           ) : null}
 
           {sessionPath[SessionQuestions.staff_resource1] &&
-          userRole === "staff" ? (
+          userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -119,7 +132,7 @@ const Session = ({ userRole }) => {
           ) : null}
 
           {sessionPath[SessionQuestions.staff_resource2] &&
-          userRole === "staff" ? (
+          userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"

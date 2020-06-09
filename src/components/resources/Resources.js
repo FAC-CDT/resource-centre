@@ -8,10 +8,10 @@ import youtube from './icons/yt-link.svg';
 import covid from './icons/covid-link.svg';
 import other from './icons/other-link.svg';
 import {ResourceQuestions} from '../../utils/Questions.js';
-import Navbar from '../navbar/PartNavbar.js';
+import PartNavbar from '../navbar/PartNavbar.js';
 import './Resources.css';
 
-const Resources = () => {
+const Resources = ({userInfo}) => {
   const [resources, setResources] = React.useState(null);
 
   let icons = {
@@ -39,16 +39,23 @@ const getResources = async () => {
   if (!resources) {
     return (
       <section>
-        <Navbar />
+        <PartNavbar />
         <h1>Loading...</h1>
       </section>
     );
   }
 
-  console.log(resources);
+  if (!userInfo.organisation) {
+    return (
+      <article>
+        <PartNavbar />
+        <h1>We don't have your organisation, please log out and try again</h1>
+      </article>
+    )
+  }
   return (
     <article>
-      <Navbar />
+      <PartNavbar />
       <h1>Resources</h1>
       <section className="resource-container">
         {resources.records.length === 0 ? (
