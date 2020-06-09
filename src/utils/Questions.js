@@ -21,7 +21,11 @@ const SessionQuestions =
   resource3: 'What is the web address for your third resource?',
   resource3_type: 'What category is your third resource?',
   resource4: 'What is the web address for your fourth resource?',
-  resource4_type: 'What category is your fourth resource?'
+  resource4_type: 'What category is your fourth resource?',
+  staff_resource1: 'Do you have a Staff only resource? If so what is its web address?',
+  staff_resource1_type: 'What category is your first staff only resource?',
+  staff_resource2: 'Do you have a second Staff only resource? If so what is its web address?',
+  staff_resource2_type: 'What category is your second staff only resource?'
 }
 
 export {ResourceQuestions, SessionQuestions};

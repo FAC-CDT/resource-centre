@@ -11,7 +11,7 @@ import { SessionQuestions } from "../../utils/Questions.js";
 
 import "./Sessions.css";
 
-const Session = () => {
+const Session = ({ userRole }) => {
   const [session, setSession] = React.useState(null);
 
   let icons = {
@@ -20,13 +20,13 @@ const Session = () => {
     zoom: zoom,
     pdf: pdf,
     website: website,
-    google: google
+    google: google,
   };
 
   const getSession = async () => {
     await (await fetch(`/.netlify/functions/getSession/getSession.js`))
       .json()
-      .then(data => setSession(data))
+      .then((data) => setSession(data))
       .catch(console.error);
   };
 
@@ -99,6 +99,34 @@ const Session = () => {
               <img
                 alt={sessionPath[SessionQuestions.resource4_type]}
                 src={icons[sessionPath[SessionQuestions.resource4_type]]}
+              />
+            </a>
+          ) : null}
+
+          {sessionPath[SessionQuestions.staff_resource1] &&
+          userRole === "staff" ? (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={sessionPath[SessionQuestions.staff_resource1]}
+            >
+              <img
+                alt={sessionPath[SessionQuestions.staff_resource1_type]}
+                src={icons[sessionPath[SessionQuestions.staff_resource1_type]]}
+              />
+            </a>
+          ) : null}
+
+          {sessionPath[SessionQuestions.staff_resource2] &&
+          userRole === "staff" ? (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={sessionPath[SessionQuestions.staff_resource2]}
+            >
+              <img
+                alt={sessionPath[SessionQuestions.staff_resource2_type]}
+                src={icons[sessionPath[SessionQuestions.staff_resource2_type]]}
               />
             </a>
           ) : null}
