@@ -9,10 +9,10 @@ import { ReactComponent as Profile } from './icons/profile.svg'
 
 import './Staff-menu.css';
 
-const StaffMenu = ({ userRole, userOrganisation }) => {
+const StaffMenu = ({ userInfo }) => {
 	return (
 		<section>
-			<h1>Welcome {userRole} to the {userOrganisation} dashboard</h1>
+			<h1>Welcome {userInfo.username} to the {userInfo.organisation} dashboard</h1>
 			<section className='staff-options'>
 				<Link to='/add-session'><AddSession /></Link>
 				<Link to='/edit-session'><SessionsList /></Link>

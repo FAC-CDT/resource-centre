@@ -14,6 +14,7 @@ import AddResource from "./components/staff-options/AddResource.js";
 import EditResource from "./components/staff-options/EditResource.js";
 import Profile from "./components/staff-options/Profile.js";
 import OrganisationLogin from "./components/login/OrganisationLogin";
+import StaffLogin from "./components/login/StaffLogin";
 
 function App() {
   const [userRole, setUserRole] = React.useState("No role");
@@ -21,19 +22,26 @@ function App() {
     "No organisation"
   );
 
+  const [userInfo, setUserInfo] = React.useState({
+    username: "",
+    password: "",
+    organisation: null,
+    userType: "participant"
+  });
+
   return (
     <BrowserRouter>
       <Switch>
         <Route
           exact
           path="/"
-          render={() => <Login userRole={userRole} setUserRole={setUserRole} />}
+          render={() => <Login userRole={userRole} setUserRole={setUserRole} userInfo={userInfo} setUserInfo={setUserInfo} />}
         />
         <Route
           exact
           path="/landing"
           render={() => (
-            <Landing userRole={userRole} userOrganisation={userOrganisation} />
+            <Landing userRole={userRole} userOrganisation={userOrganisation} userInfo={userInfo} setUserInfo={setUserInfo} />
           )}
         />
         <Route
@@ -46,14 +54,15 @@ function App() {
             />
           )}
         />
-        <Route path="/session" render={() => <Session userRole={userRole} />} />
-        <Route path="/resources" render={() => <Resources />} />
-        <Route path="/add-session" render={() => <AddSession />} />
-        <Route path="/edit-session" render={() => <EditSessions />} />
-        <Route path="/add-resource" render={() => <AddResource />} />
-        <Route path="/edit-resource" render={() => <EditResource />} />
+        <Route path="/session" render={() => <Session userRole={userRole} userInfo={userInfo} setUserInfo={setUserInfo} />} />
+        <Route path="/resources" render={() => <Resources userInfo={userInfo} setUserInfo={setUserInfo} />} />
+        <Route path="/add-session" render={() => <AddSession userInfo={userInfo} setUserInfo={setUserInfo} />} />
+        <Route path="/edit-session" render={() => <EditSessions userInfo={userInfo} setUserInfo={setUserInfo} />} />
+        <Route path="/add-resource" render={() => <AddResource userInfo={userInfo} setUserInfo={setUserInfo} />} />
+        <Route path="/edit-resource" render={() => <EditResource userInfo={userInfo} setUserInfo={setUserInfo} />} />
         <Route path="/profile" render={() => <Profile />} />
         <Route path="/help" render={() => <Help />} />
+        <Route path="/stafflogin" render={() => <StaffLogin userInfo={userInfo} setUserInfo={setUserInfo} />} />
         <Route component={Error} />
       </Switch>
     </BrowserRouter>
