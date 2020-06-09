@@ -1,11 +1,13 @@
 import React from 'react';
-import PartNavbar from './navbar/PartNavbar.js';
+import Navbar from './navbar/PartNavbar.js';
+
 
 const Help = () => {
 	return (
 		<>
-		<PartNavbar />
+		<Navbar />
 		<h1> This is the help page </h1>
+
 		</>
 	)
 }
