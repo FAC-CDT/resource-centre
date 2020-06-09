@@ -13,11 +13,10 @@ exports.handler = (event, context, callback) => {
 
   const userInformation = JSON.parse(event.body);
 
-
-  var organisation = userInformation.username;
+  var organisation = userInformation.organisation;
   var password = userInformation.password;
 
-  console.log('got this far', event.body)
+  console.log("got this far", event.body);
   base("credentials")
     .select({
       filterByFormula: `({organisation}='${organisation}')`,
@@ -27,11 +26,9 @@ exports.handler = (event, context, callback) => {
     .eachPage(
       function page(records, fetchNextPage) {
         records.forEach(function (record) {
-          console.log("Retrieved", record.get("org_id"));
+          // console.log("Retrieved", record.get("org_id"));
           data.push(record);
-          console.log(data);
         });
-
         fetchNextPage();
       },
       async function done(err) {

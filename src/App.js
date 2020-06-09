@@ -13,7 +13,6 @@ import EditSessions from "./components/staff-options/EditSessions.js";
 import AddResource from "./components/staff-options/AddResource.js";
 import EditResource from "./components/staff-options/EditResource.js";
 import Profile from "./components/staff-options/Profile.js";
-import OrganisationLogin from "./components/login/OrganisationLogin";
 import StaffLogin from "./components/login/StaffLogin";
 import ParticipantLogin from "./components/login/ParticipantLogin.js";
 
@@ -40,14 +39,6 @@ function App() {
           path="/landing"
           render={() => (
             <Landing userInfo={userInfo} setUserInfo={setUserInfo} />
-          )}
-        />
-        <Route
-          exact
-          path="/organisationlogin"
-          render={() => (
-            <OrganisationLogin
-            />
           )}
         />
         <Route path="/session" render={() => <Session userInfo={userInfo} setUserInfo={setUserInfo} />} />

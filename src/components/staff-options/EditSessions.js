@@ -47,7 +47,6 @@ const EditSessions = () => {
     );
   }
 
-  console.log(sessionsToDelete);
   return (
     <article>
       <Navbar />

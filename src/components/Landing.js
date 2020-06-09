@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import ParticipantMenu from "./menus/Participant-menu.js";
 import StaffMenu from "./menus/Staff-menu.js";
 
-const Menu = ({ userInfo }) => {
+const Menu = ({ userInfo, setUserInfo }) => {
   if (userInfo.userType === "staff") {
-    return <StaffMenu userInfo={userInfo} />;
+    return <StaffMenu userInfo={userInfo} setUserInfo={setUserInfo} />;
   } else if (userInfo.userType === "participant") {
-    return <ParticipantMenu userInfo={userInfo} />;
+    return <ParticipantMenu userInfo={userInfo} setUserInfo={setUserInfo} />;
   } else
     return (
       <section>

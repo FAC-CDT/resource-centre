@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "./StaffLogin.css";
 
 const StaffLogin = (props) => {
@@ -21,18 +21,14 @@ const StaffLogin = (props) => {
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => {
-      //console.log({response})
-      //  response.json().then((data) => {
-            console.log('got data back:', res)
-          if (res.status === 200) {
-            props.history.push('/landing');
-          } else if (res.status === 204) {
-            alert("Username and password do not match");
-          } else {
-            alert("Username does not exist");
-          }
-        })
-     // )
+        if (res.status === 200) {
+          props.history.push("/landing");
+        } else if (res.status === 204) {
+          alert("Username and password do not match");
+        } else {
+          alert("Username does not exist");
+        }
+      })
       .catch(function (error) {
         console.error(error);
       });
@@ -43,44 +39,28 @@ const StaffLogin = (props) => {
       <h1>Staff Login</h1>
       <form>
         <div className="">
-          <label htmlFor="username">Please enter your username:</label>
+          <label htmlFor="organisation">Please enter your Organisation:</label>
           <input
-            required
+            required="required"
             type="text"
             className=""
-            id="username"
+            id="organisation"
             aria-describedby="emailHelp"
-            placeholder="Username"
-            value={props.userInfo.username}
+            placeholder="Organisation"
+            value={props.userInfo.organisation}
             onChange={handleChange}
           />
         </div>
         <div className="">
           <label htmlFor="password">Enter password:</label>
           <input
-            required
+            required="required"
             type="password"
             className=""
             id="password"
             placeholder="Password"
             value={props.userInfo.password}
             onChange={handleChange}
-          />
-
-          <input
-            className="hidden-input"
-            type="text"
-            id="organisation"
-            value={props.userInfo.username}
-            onChange={handleChange}
-          />
-
-          <input
-            disabled
-            className="hidden-input"
-            type="text"
-            id="userType"
-            value="staff"
           />
         </div>
 
@@ -89,9 +69,10 @@ const StaffLogin = (props) => {
           className="btn btn-primary"
           onClick={handleSubmit}
         >
-          Submit
+          Log in
         </button>
       </form>
+      <Link to="/">Participant Login</Link>
     </div>
   );
 };

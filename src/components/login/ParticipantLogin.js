@@ -1,8 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import { ReactComponent as Participant } from "./buttons/participant-login.svg";
-import { ReactComponent as Staff } from "./buttons/staff-login.svg";
-import "./Login.css";
+import "./ParticipantLogin.css";
 
 const Landing = (props) => {
   const handleChange = (e) => {
@@ -22,28 +20,11 @@ const Landing = (props) => {
     <>
       <h1> Welcome! </h1>
       <nav>
-        <Link to="/organisationlogin" alt="Log in as a participant">
-          <Participant
-            onClick={() => {
-              props.setUserRole("participant");
-            }}
-          />
-        </Link>
-        <Link
-          to="/organisationlogin"
-          alt="Log in as a member of an organisation"
-        >
-          <Staff
-            onClick={() => {
-              props.setUserRole("staff");
-            }}
-          />
-        </Link>
-      
       <form>
         <div className="">
           <label htmlFor="username">Please enter your name:</label>
           <input
+            required="required"
             type="text"
             className=""
             id="username"
