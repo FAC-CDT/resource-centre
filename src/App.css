@@ -1,6 +1,6 @@
 :root {
   --large: 2.369rem;
-  --heading: 1.777rem;
+  --heading: 1.5rem;
   --subtitle: 1.333rem;
   --body: 1rem;
   --small: 0.75rem;
@@ -29,13 +29,12 @@ h2 {
 @media screen and (max-width: 800px) {
   :root {
     --large: 4.236rem;
-    --heading: 2.618rem;
+    --heading: 2rem;
     --subtitle: 1.618rem;
     --body: 1rem;
     --small: 0.618rem;
   }
-  h2 {
-
+  h1 {
     font-size: var(--heading);
   }
   p {
