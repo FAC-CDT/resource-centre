@@ -42,7 +42,7 @@ const Landing = (props) => {
       
       <form>
         <div className="">
-          <label htmlFor="username">Please enter your name</label>
+          <label htmlFor="username">Please enter your name:</label>
           <input
             type="text"
             className=""
@@ -54,7 +54,7 @@ const Landing = (props) => {
           />
         </div>
         <div className="form-group text-left">
-          <label htmlFor="organisation">Select your organisation</label>
+          <label htmlFor="organisation">Select your organisation:</label>
           <select required name="organisation" id="organisation" onChange={handleChange}>
             <option >Select an option</option>
             <option value="pip">PIP</option>
