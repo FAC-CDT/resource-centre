@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {ReactComponent as HomeSvg} from './icons/home.svg';
+import {ReactComponent as Back} from './icons/back.svg';
 import './Navbar.css';
 
 const StaffNavbar = () => {
 	return (
 		<>
 		<section className="navbar">
-		<Link to='/landing?menu=staff'><HomeSvg className="home"/></Link>
+		<Link to='/landing?menu=staff'><Back className="home"/></Link>
 		</section>
 		</>
 	)
