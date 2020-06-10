@@ -14,24 +14,27 @@ const StaffLogin = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await fetch(`/.netlify/functions/checkCredentials/checkCredentials.js`, {
-      method: "POST",
-      body: JSON.stringify(props.userInfo),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          props.history.push("/landing");
-        } else if (res.status === 204) {
-          alert("Username and password do not match");
-        } else {
-          alert("Username does not exist");
-        }
+    if (props.userInfo.organisation && props.userInfo.password) {
+      await fetch(`/.netlify/functions/checkCredentials/checkCredentials.js`, {
+        method: "POST",
+        body: JSON.stringify(props.userInfo),
+        headers: { "Content-Type": "application/json" },
       })
-      .catch(function (error) {
-        console.error(error);
-      });
+        .then((res) => {
+          if (res.status === 200) {
+            props.history.push("/landing");
+          } else if (res.status === 204) {
+            alert("Username and password do not match");
+          } else {
+            alert("Username does not exist");
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      alert("Please fill in all the login fields");
+    }
   };
 
   return (
@@ -41,7 +44,7 @@ const StaffLogin = (props) => {
         <div className="">
           <label htmlFor="organisation">Please enter your Organisation:</label>
           <input
-            required="required"
+            required
             type="text"
             className=""
             id="organisation"
@@ -49,12 +52,13 @@ const StaffLogin = (props) => {
             placeholder="Organisation"
             value={props.userInfo.organisation}
             onChange={handleChange}
+            autoFocus
           />
         </div>
         <div className="">
           <label htmlFor="password">Enter password:</label>
           <input
-            required="required"
+            required
             type="password"
             className=""
             id="password"
@@ -66,7 +70,7 @@ const StaffLogin = (props) => {
 
         <button
           type="submit"
-          className="btn btn-primary"
+          className=""
           onClick={handleSubmit}
         >
           Log in
