@@ -1,9 +1,40 @@
-.staff-login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.hidden-input {
+  display: none;
 }
 
-.hidden-input {
-    display: none;
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--body);
+}
+
+form {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.organisation-input {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--body);
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.password {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--body);
+  padding: 0.4rem;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--body);
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+.part-login {
+  margin-top: 8rem;
 }

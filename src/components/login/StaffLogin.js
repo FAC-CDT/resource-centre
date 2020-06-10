@@ -38,15 +38,16 @@ const StaffLogin = (props) => {
   };
 
   return (
-    <div className="staff-login-form">
+<>
       <h1>Staff Login</h1>
+    <nav>
       <form>
         <div className="">
-          <label htmlFor="organisation">Please enter your Organisation:</label>
+          <label htmlFor="organisation" className="organistion">Please enter your Organisation:</label>
           <input
             required
             type="text"
-            className=""
+            className="organisation-input"
             id="organisation"
             aria-describedby="emailHelp"
             placeholder="Organisation"
@@ -60,7 +61,7 @@ const StaffLogin = (props) => {
           <input
             required
             type="password"
-            className=""
+            className="password"
             id="password"
             placeholder="Password"
             value={props.userInfo.password}
@@ -76,8 +77,9 @@ const StaffLogin = (props) => {
           Log in
         </button>
       </form>
-      <Link to="/">Participant Login</Link>
-    </div>
+      <Link to="/" className="part-login">Participant Login</Link>
+    </nav>
+    </>
   );
 };
 
