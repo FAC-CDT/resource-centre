@@ -12,8 +12,12 @@ const Landing = (props) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
+    if(props.userInfo.organisation && props.userInfo.username) {
     props.history.push("/landing");
+    } else {
+      alert('Please fill in all the login fields')
+    }
   };
 
   return (
@@ -24,7 +28,7 @@ const Landing = (props) => {
           <div className="">
             <label htmlFor="username">Please enter your name:</label>
             <input
-              required="required"
+              required
               type="text"
               className=""
               id="username"
@@ -32,9 +36,10 @@ const Landing = (props) => {
               placeholder="Type here"
               value={props.userInfo.username}
               onChange={handleChange}
+              autoFocus
             />
           </div>
-          <div className="form-group text-left">
+          <div className="">
             <label htmlFor="organisation">Select your organisation:</label>
             <select
               required
@@ -42,7 +47,7 @@ const Landing = (props) => {
               id="organisation"
               onChange={handleChange}
             >
-              <option>Select an option</option>
+              <option value="">Select an option</option>
               <option value="pip">PIP</option>
               <option value="safh">SAFH</option>
             </select>
