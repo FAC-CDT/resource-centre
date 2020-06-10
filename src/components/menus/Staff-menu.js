@@ -22,7 +22,7 @@ const StaffMenu = ({ userInfo, setUserInfo }) => {
 
   return (
     <section>
-      <h1>Welcome {userInfo.username || userInfo.organisation}</h1>
+      <h1>Welcome {userInfo.organisation.toUpperCase()}</h1>
       <section className="staff-options">
         <Link to="/add-session">
           <AddSession />

@@ -3,12 +3,15 @@ import Navbar from "../navbar/StaffNavbar.js";
 import { ResourceQuestions } from "../../utils/Questions";
 import "./EditBar.css";
 
-const EditResource = () => {
+const EditResource = ({ userInfo }) => {
   const [resourcesToDelete, setResourcesToDelete] = React.useState(null);
   const [refresh, setRefresh] = React.useState(false);
 
   const getResourcesToDelete = async () => {
-    await (await fetch(`/.netlify/functions/getResources/getResources.js`))
+    await (await fetch(`/.netlify/functions/getResources/getResources.js`, {
+      method: "POST",
+      body: JSON.stringify(userInfo.organisation),
+    }))
       .json()
       .then((data) => setResourcesToDelete(data))
       .catch(console.error);
@@ -29,6 +32,7 @@ const EditResource = () => {
 
   React.useEffect(() => {
     getResourcesToDelete();
+    // eslint-disable-next-line
   }, [refresh]);
 
   if (!resourcesToDelete) {

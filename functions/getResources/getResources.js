@@ -10,10 +10,12 @@ Airtable.configure({
 });
 
 const base = Airtable.base('appnkfsVctBYM5kva');
+const currentOrg = JSON.parse(event.body);
 const data = [];
 
 base('resources')
   .select({
+    filterByFormula: `({Which organisation are you from?}='${currentOrg}')`,
     maxRecords: 100,
     view: "Grid view"
   })
