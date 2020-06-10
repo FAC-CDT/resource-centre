@@ -25,12 +25,12 @@ const Landing = (props) => {
       <h1> Welcome! </h1>
       <nav>
         <form>
-          <div className="">
-            <label htmlFor="username">Please enter your name:</label>
+          <div>
+            <label htmlFor="username" className="username">Please enter your name:</label>
             <input
               required
               type="text"
-              className=""
+              className="username-input"
               id="username"
               aria-describedby="emailHelp"
               placeholder="Type here"
@@ -40,24 +40,24 @@ const Landing = (props) => {
             />
           </div>
           <div className="">
-            <label htmlFor="organisation">Select your organisation:</label>
+            <label htmlFor="organisation" className="org-select">Select your organisation:</label>
             <select
+              className="select-opt"
               required
               name="organisation"
               id="organisation"
               onChange={handleChange}
             >
-              <option value="">Select an option</option>
+              <option value="" >Select an option</option>
               <option value="pip">PIP</option>
               <option value="safh">SAFH</option>
             </select>
           </div>
-          <div className=""></div>
-          <button type="submit" className="" onClick={handleSubmit}>
+          <button type="submit" className="enter-btn" onClick={handleSubmit}>
             Enter
           </button>
         </form>
-        <Link to="/stafflogin">Staff Login</Link>
+        <Link to="/stafflogin" className="staff-login">Staff Login</Link>
       </nav>
     </>
   );
