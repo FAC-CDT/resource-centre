@@ -26,7 +26,7 @@ const Landing = (props) => {
       <nav>
         <form>
           <div>
-            <label htmlFor="username" className="title">Please enter your name:</label>
+            <label htmlFor="username">Enter your name:</label>
             <input
               required
               type="text"
@@ -40,7 +40,7 @@ const Landing = (props) => {
             />
           </div>
           <div className="">
-            <label htmlFor="organisation" className="title">Select your organisation:</label>
+            <label htmlFor="organisation">Select your organisation:</label>
             <select
               className="input"
               required
@@ -48,7 +48,7 @@ const Landing = (props) => {
               id="organisation"
               onChange={handleChange}
             >
-              <option value="" >Select an option</option>
+              <option value="">Select an option</option>
               <option value="pip">PIP</option>
               <option value="safh">SAFH</option>
             </select>
