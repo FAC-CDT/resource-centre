@@ -42,12 +42,12 @@ const StaffLogin = (props) => {
       <h1>Staff Login</h1>
     <nav>
       <form>
-        <div className="">
-          <label htmlFor="organisation" className="organistion">Please enter your Organisation:</label>
+        <div>
+          <label htmlFor="organisation">Enter your Organisation:</label>
           <input
             required
             type="text"
-            className="organisation-input"
+            className="input"
             id="organisation"
             aria-describedby="emailHelp"
             placeholder="Organisation"
@@ -56,12 +56,12 @@ const StaffLogin = (props) => {
             autoFocus
           />
         </div>
-        <div className="">
+        <div>
           <label htmlFor="password">Enter password:</label>
           <input
             required
             type="password"
-            className="password"
+            className="input"
             id="password"
             placeholder="Password"
             value={props.userInfo.password}
