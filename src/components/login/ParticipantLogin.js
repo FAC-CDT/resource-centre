@@ -26,11 +26,11 @@ const Landing = (props) => {
       <nav>
         <form>
           <div>
-            <label htmlFor="username" className="username">Please enter your name:</label>
+            <label htmlFor="username" className="title">Please enter your name:</label>
             <input
               required
               type="text"
-              className="username-input"
+              className="input"
               id="username"
               aria-describedby="emailHelp"
               placeholder="Type here"
@@ -40,9 +40,9 @@ const Landing = (props) => {
             />
           </div>
           <div className="">
-            <label htmlFor="organisation" className="org-select">Select your organisation:</label>
+            <label htmlFor="organisation" className="title">Select your organisation:</label>
             <select
-              className="select-opt"
+              className="input"
               required
               name="organisation"
               id="organisation"
@@ -53,7 +53,7 @@ const Landing = (props) => {
               <option value="safh">SAFH</option>
             </select>
           </div>
-          <button type="submit" className="enter-btn" onClick={handleSubmit}>
+          <button type="submit" onClick={handleSubmit}>
             Enter
           </button>
         </form>
