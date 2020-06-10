@@ -50,7 +50,7 @@ const StaffLogin = (props) => {
           <input
             required
             type="text"
-            className="username-input"
+            className="input"
             id="username"
             placeholder="Username"
             value={props.credentials.username}
@@ -58,12 +58,12 @@ const StaffLogin = (props) => {
             autoFocus
           />
         </div>
-        <div className="">
+        <div>
           <label htmlFor="password">Enter password:</label>
           <input
             required
             type="password"
-            className="password"
+            className="input"
             id="password"
             placeholder="Password"
             value={props.credentials.password}
