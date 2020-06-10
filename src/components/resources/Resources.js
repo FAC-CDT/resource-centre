@@ -26,7 +26,10 @@ const Resources = ({userInfo}) => {
   };
 
 const getResources = async () => {
-	await (await fetch(`/.netlify/functions/getResources/getResources.js`))
+	await (await fetch(`/.netlify/functions/getResources/getResources.js`, {
+    method: "POST",
+    body: JSON.stringify(userInfo.organisation),
+  }))
 		.json()
 		.then((data) => setResources(data))
 		.catch(console.error);
@@ -34,6 +37,7 @@ const getResources = async () => {
 
   React.useEffect(() => {
     getResources();
+    // eslint-disable-next-line
   }, []);
 
   if (!resources) {
