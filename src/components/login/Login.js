@@ -1,23 +1,26 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
-import "./StaffLogin.css";
+import { withRouter } from "react-router-dom";
+import "./Login.css";
 
 const StaffLogin = (props) => {
   const handleChange = (e) => {
     const { id, value } = e.target;
-    props.setUserInfo((prevState) => ({
+    props.setCredentials((prevState) => ({
       ...prevState,
       [id]: value,
-      userType: "staff",
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (props.userInfo.organisation && props.userInfo.password) {
+    if (props.credentials.username && props.credentials.password) {
+      props.setUserInfo({
+        organisation: props.credentials.username.split('.')[0],
+        userType: props.credentials.username.split('.')[1]
+      })
       await fetch(`/.netlify/functions/checkCredentials/checkCredentials.js`, {
         method: "POST",
-        body: JSON.stringify(props.userInfo),
+        body: JSON.stringify(props.credentials),
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => {
@@ -39,19 +42,18 @@ const StaffLogin = (props) => {
 
   return (
 <>
-      <h1>Staff Login</h1>
+      <h1>Login</h1>
     <nav>
       <form>
         <div className="">
-          <label htmlFor="organisation" className="organistion">Please enter your Organisation:</label>
+          <label htmlFor="username" className="username">Please enter your Username:</label>
           <input
             required
             type="text"
-            className="organisation-input"
-            id="organisation"
-            aria-describedby="emailHelp"
-            placeholder="Organisation"
-            value={props.userInfo.organisation}
+            className="username-input"
+            id="username"
+            placeholder="Username"
+            value={props.credentials.username}
             onChange={handleChange}
             autoFocus
           />
@@ -64,7 +66,7 @@ const StaffLogin = (props) => {
             className="password"
             id="password"
             placeholder="Password"
-            value={props.userInfo.password}
+            value={props.credentials.password}
             onChange={handleChange}
           />
         </div>
@@ -77,7 +79,7 @@ const StaffLogin = (props) => {
           Log in
         </button>
       </form>
-      <Link to="/" className="part-login">Participant Login</Link>
+      {/* <Link to="/" className="part-login">Participant Login</Link> */}
     </nav>
     </>
   );
