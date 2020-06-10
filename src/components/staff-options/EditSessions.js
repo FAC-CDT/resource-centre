@@ -2,12 +2,15 @@ import React from "react";
 import Navbar from "../navbar/StaffNavbar.js";
 import { SessionQuestions } from "../../utils/Questions.js";
 
-const EditSessions = () => {
+const EditSessions = ({ userInfo }) => {
   const [sessionsToDelete, setSessionsToDelete] = React.useState(null);
   const [refresh, setRefresh] = React.useState(false);
 
   const getSessionsToDelete = async () => {
-    await (await fetch(`/.netlify/functions/getSession/getSession.js`))
+    await (await fetch(`/.netlify/functions/getSession/getSession.js`, {
+      method: "POST",
+      body: JSON.stringify(userInfo.organisation),
+    }))
       .json()
       .then((data) => setSessionsToDelete(data))
       .catch(console.error);
@@ -27,6 +30,7 @@ const EditSessions = () => {
   };
   React.useEffect(() => {
     getSessionsToDelete();
+    // eslint-disable-next-line
   }, [refresh]);
 
   // const reconfigureTime = (startAirDate, endAirDate) => {

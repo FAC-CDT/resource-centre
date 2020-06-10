@@ -25,7 +25,10 @@ const Session = ({ userInfo }) => {
   };
 
   const getSession = async () => {
-    await (await fetch(`/.netlify/functions/getSession/getSession.js`))
+    await (await fetch(`/.netlify/functions/getSession/getSession.js`, {
+      method: "POST",
+      body: JSON.stringify(userInfo.organisation),
+    }))
       .json()
       .then((data) => setSession(data))
       .catch(console.error);
@@ -33,6 +36,7 @@ const Session = ({ userInfo }) => {
 
   React.useEffect(() => {
     getSession();
+    // eslint-disable-next-line
   }, []);
 
   // console.log(session);
