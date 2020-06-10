@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../navbar/StaffNavbar.js";
+import Navbar from "../navbar/Navbar.js";
 import { ResourceQuestions } from "../../utils/Questions";
 import "./EditBar.css";
 

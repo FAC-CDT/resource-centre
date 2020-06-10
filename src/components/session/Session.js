@@ -1,5 +1,5 @@
 import React from "react";
-import PartNavbar from "../navbar/PartNavbar.js";
+import Navbar from "../navbar/Navbar.js";
 import { Link } from "react-router-dom";
 import whatsapp from "../resources/icons/whatsapp-link.svg";
 import zoom from "../resources/icons/zoom-link.svg";
@@ -43,7 +43,7 @@ const Session = ({ userInfo }) => {
   if (!session) {
     return (
       <article>
-        <PartNavbar />
+        <Navbar />
         <h1>Loading...</h1>;
       </article>
     );
@@ -52,7 +52,7 @@ const Session = ({ userInfo }) => {
   if (!userInfo.organisation) {
     return (
       <article>
-        <PartNavbar />
+        <Navbar />
         <h1>We don't have your organisation, please log out and try again</h1>
       </article>
     )
@@ -63,7 +63,7 @@ const Session = ({ userInfo }) => {
 
   return (
     <section>
-      <PartNavbar />
+      <Navbar />
       <section className="session-container">
         <h1>{sessionPath[SessionQuestions.title]}</h1>
         <p>Session host: {sessionPath[SessionQuestions.host]}</p>

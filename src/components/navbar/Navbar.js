@@ -3,23 +3,14 @@ import { Link } from 'react-router-dom';
 import {ReactComponent as Back} from './icons/back.svg';
 import './Navbar.css';
 
-const Navbar = ({ location }) => {
-	const userType = location.search.split('=')[1];
-		if (userType === 'staff') {
-			return (
-<Link to='/landing?menu=staff'><Back className="home"/></Link>
-			)
-		} else if (userType === 'participant'){
-			return (
-				<Link to='/landing?menu=participant'><Back className="home"/></Link>
-
-			)
-		} else return (
-			<section>
-				<h1>401 error: Unauthorized</h1>
-				<Link to='/'><button>Back to the homepage</button></Link>
-			</section>
-		)
+const Navbar = () => {
+	return (
+		<>
+		<section className="navbar">
+		<Link to='/landing'><Back className="home"/></Link>
+		</section>
+		</>
+	)
 }
 
 export default Navbar;

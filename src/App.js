@@ -16,10 +16,17 @@ import Profile from "./components/staff-options/Profile.js";
 import Login from "./components/login/Login";
 
 function App() {
-  const [userInfo, setUserInfo] = React.useState({
-    organisation: "",
-    userType: "",
-  });
+
+  const [userInfo, setUserInfo] = React.useState(
+    JSON.parse(sessionStorage.getItem('userInfoInLocalStorage')) || {
+      organisation: "",
+      userType: "",
+    }
+  );
+ 
+  React.useEffect(() => {
+    sessionStorage.setItem('userInfoInLocalStorage', JSON.stringify(userInfo));
+  }, [userInfo]);
 
   const [credentials, setCredentials] = React.useState({
     username: "",

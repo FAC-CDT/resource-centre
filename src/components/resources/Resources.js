@@ -8,7 +8,7 @@ import youtube from './icons/yt-link.svg';
 import covid from './icons/covid-link.svg';
 import other from './icons/other-link.svg';
 import {ResourceQuestions} from '../../utils/Questions.js';
-import PartNavbar from '../navbar/PartNavbar.js';
+import Navbar from '../navbar/Navbar.js';
 import './Resources.css';
 
 const Resources = ({userInfo}) => {
@@ -43,7 +43,7 @@ const getResources = async () => {
   if (!resources) {
     return (
       <section>
-        <PartNavbar />
+        <Navbar />
         <h1>Loading...</h1>
       </section>
     );
@@ -52,14 +52,14 @@ const getResources = async () => {
   if (!userInfo.organisation) {
     return (
       <article>
-        <PartNavbar />
+        <Navbar />
         <h1>We don't have your organisation, please log out and try again</h1>
       </article>
     )
   }
   return (
     <article>
-      <PartNavbar />
+      <Navbar />
       <h1>Resources</h1>
       <section className="resource-container">
         {resources.records.length === 0 ? (
