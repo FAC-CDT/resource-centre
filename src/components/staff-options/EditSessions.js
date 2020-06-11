@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../navbar/StaffNavbar.js";
+import Navbar from "../navbar/Navbar.js";
 import { SessionQuestions } from "../../utils/Questions.js";
 
 const EditSessions = ({ userInfo }) => {

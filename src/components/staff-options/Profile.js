@@ -1,10 +1,10 @@
 import React from 'react';
-import StaffNavbar from '../navbar/StaffNavbar.js';
+import Navbar from '../navbar/Navbar.js';
 
 const Profile = () => {
 	return (
 		<>
-		<StaffNavbar />
+		<Navbar />
 		<h1> This is the profile page </h1>
 		</>
 	)
