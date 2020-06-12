@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./navbar/PartNavbar.js";
+import Navbar from "./navbar/Navbar.js";
 import "./Help.css";
 
 const Help = () => {

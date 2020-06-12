@@ -11,14 +11,14 @@ exports.handler = (event, context, callback) => {
   const base = Airtable.base("appLsGaq0J2MzGoUf");
   const data = [];
 
-  const userInformation = JSON.parse(event.body);
+  const credentials = JSON.parse(event.body);
 
-  var organisation = userInformation.organisation;
-  var password = userInformation.password;
-
+  var username = credentials.username.toLowerCase();
+  var password = credentials.password;
+  
   base("credentials")
     .select({
-      filterByFormula: `({organisation}='${organisation}')`,
+      filterByFormula: `({organisation}='${username}')`,
       maxRecords: 100,
       view: "Grid view",
     })

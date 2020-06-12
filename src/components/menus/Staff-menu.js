@@ -10,15 +10,12 @@ import { ReactComponent as Profile } from "./icons/profile.svg";
 import "./Staff-menu.css";
 
 const StaffMenu = ({ userInfo, setUserInfo }) => {
-
-	const handleLogout = () => {
-		setUserInfo ({
-		username: "",
-		password: "",
-		organisation: "",
-		userType: "participant"
-		})
-	  }
+  const handleLogout = () => {
+    setUserInfo({
+      organisation: "",
+      userType: "",
+    });
+  };
 
   return (
     <section>

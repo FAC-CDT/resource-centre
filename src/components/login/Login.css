@@ -1,5 +1,5 @@
-*:focus {
-    outline: none;
+.hidden-input {
+  display: none;
 }
 
 nav {
@@ -9,14 +9,18 @@ nav {
   justify-content: center;
   font-family: "Montserrat", sans-serif;
   font-size: var(--body);
-  background-color: #FEE9D3;
-  border-radius: 20px;
-  padding: 1rem;
 }
 
 form {
   margin-top: 2rem;
+  margin-left: 1rem;
+}
 
+.username-input {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--body);
+  padding: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .input {
@@ -29,7 +33,10 @@ form {
   border-color: transparent;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   margin: 1rem 0 1rem 0;
-  color: grey;
+}
+
+.part-login {
+  margin-top: 8rem;
 }
 
 button {
@@ -45,8 +52,4 @@ button {
 
 button:active {
 transform: translateY(4px);
-}
-
-.staff-login {
-  margin-top: 8rem;
 }

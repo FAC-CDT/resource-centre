@@ -1,15 +1,15 @@
-import React from "react";
-import whatsapp from "./icons/whatsapp-link.svg";
-import zoom from "./icons/zoom-link.svg";
-import pdf from "./icons/pdf-link.svg";
-import website from "./icons/website-link.svg";
-import google from "./icons/google-link.svg";
-import youtube from "./icons/yt-link.svg";
-import covid from "./icons/covid-link.svg";
-import other from "./icons/other-link.svg";
-import { ResourceQuestions } from "../../utils/Questions.js";
-import PartNavbar from "../navbar/PartNavbar.js";
-import "./Resources.css";
+import React from 'react';
+import whatsapp from './icons/whatsapp-link.svg';
+import zoom from './icons/zoom-link.svg';
+import pdf from './icons/pdf-link.svg';
+import website from './icons/website-link.svg';
+import google from './icons/google-link.svg';
+import youtube from './icons/yt-link.svg';
+import covid from './icons/covid-link.svg';
+import other from './icons/other-link.svg';
+import {ResourceQuestions} from '../../utils/Questions.js';
+import Navbar from '../navbar/Navbar.js';
+import './Resources.css';
 
 const Resources = ({ userInfo }) => {
   const [resources, setResources] = React.useState(null);
@@ -68,7 +68,7 @@ const Resources = ({ userInfo }) => {
   if (!resources) {
     return (
       <section>
-        <PartNavbar />
+        <Navbar />
         <h1>Loading...</h1>
       </section>
     );
@@ -77,14 +77,14 @@ const Resources = ({ userInfo }) => {
   if (!userInfo.organisation) {
     return (
       <article>
-        <PartNavbar />
+        <Navbar />
         <h1>We don't have your organisation, please log out and try again</h1>
       </article>
     );
   }
   return (
     <article>
-      <PartNavbar />
+      <Navbar />
       <h1>Your Resources</h1>
       <input
         value={searchTerm}
