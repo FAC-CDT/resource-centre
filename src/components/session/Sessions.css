@@ -1,25 +1,30 @@
 .session-container {
-display: flex;
-align-items: center;
-flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
+.host-container {
+  display: inherit;
+  flex-direction: row;
+  margin: 1rem;
+}
 .host-image {
-  border-radius: 10%;
-  max-width: 40%;
+  border-radius: 500px;
   margin: auto;
   align-items: center;
+  padding: 0.5rem;
 }
 
-.sess-resource-container{
+.sess-resource-container {
   display: grid;
   grid-template-columns: repeat(2, 10rem [col-start]);
   justify-content: center;
-  padding: 0.5rem;
+
 }
+
 .help {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }

@@ -6,8 +6,11 @@
   --small: 0.8rem;
 }
 
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
 h1 {
-  font-family: "Montserrat", sans-serif;
   padding: 1rem;
   font-size: var(--heading);
   text-align: center;
@@ -15,13 +18,18 @@ h1 {
 }
 
 p {
-  font-family: "Montserrat", sans-serif;
   font-size: var(--body);
 }
 
 h2 {
-  font-family: 'Montserrat', sans-serif;
   font-size: var(--subheading);
+}
+
+figcaption {
+  display: flex;
+  text-align: center;
+  color: black;
+  justify-content: center;
 }
 
 @media screen and (max-width: 800px) {
@@ -39,5 +47,8 @@ h2 {
   p {
     font-size: var(--body);
   padding: 0.1rem;
+  }
+  figcaption {
+    margin: 0.5rem;
   }
 }
