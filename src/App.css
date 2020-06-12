@@ -19,6 +19,8 @@ h1 {
 
 p {
   font-size: var(--body);
+  text-align: center;
+  margin: auto;
 }
 
 h2 {

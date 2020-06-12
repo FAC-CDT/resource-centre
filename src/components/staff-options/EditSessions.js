@@ -55,6 +55,7 @@ const EditSessions = ({ userInfo }) => {
     <article>
       <Navbar />
       <h1>Your Sessions</h1>
+      <p>A list of your organisations sessions</p>
       {sessionsToDelete.records.length === 0 ? (
         <h2>There are currently no sessions scheduled</h2>
       ) : (

@@ -27,7 +27,7 @@ const ParticipantMenu = ({ userInfo, setUserInfo }) => {
         <Link to="/help">
           <Help />
         </Link>
-        <Link to="/" onClick={handleLogout}>Log out</Link>
+        <Link to="/" onClick={handleLogout} className="logout">Log out</Link>
       </section>
     </section>
   );
