@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "./Login.css";
 
 const StaffLogin = (props) => {
@@ -79,7 +79,7 @@ const StaffLogin = (props) => {
           Log in
         </button>
       </form>
-      {/* <Link to="/" className="part-login">Participant Login</Link> */}
+     <Link to="/register" className="part-login">Register</Link>
     </nav>
     </>
   );

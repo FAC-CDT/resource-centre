@@ -14,6 +14,7 @@ import AddResource from "./components/staff-options/AddResource.js";
 import EditResource from "./components/staff-options/EditResource.js";
 import Profile from "./components/staff-options/Profile.js";
 import Login from "./components/login/Login";
+import Register from "./components/login/Register";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
   const [credentials, setCredentials] = React.useState({
     username: "",
     password: "",
+    confirmPassword: ""
   });
 
   return (
@@ -47,6 +49,12 @@ function App() {
               setCredentials={setCredentials}
             />
           )}
+        />
+        <Route
+        path="/register"
+        render={() => (
+          <Register setCredentials={setCredentials} credentials={credentials} />
+        )}
         />
         <Route
           exact
