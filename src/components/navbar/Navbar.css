@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    background-color: #FDFDFD;
+    background-color: var(--navbar);
     z-index: 10;
     -webkit-box-shadow: 0 3px 6px -6px #999;
     -moz-box-shadow: 0 3px 6px -6px #999;
-    box-shadow: 0 5px 6px -6px #999;
+    box-shadow: 0 5px 8px -6px #999;
 }
 
 .home {
