@@ -4,10 +4,16 @@
   --subtitle: 1.333rem;
   --body: 1rem;
   --small: 0.8rem;
+
+  --font: #3E4C47;
+  --background: #D2E8E1;
+  --navbar: #DAE9E4;
 }
 
 body {
     font-family: "Montserrat", sans-serif;
+    color: var(--font);
+    background-color: var(--background);
 }
 
 h1 {
@@ -30,8 +36,9 @@ h2 {
 figcaption {
   display: flex;
   text-align: center;
-  color: black;
+  color: var(--font);
   justify-content: center;
+  font-size: var(--body);
 }
 
 @media screen and (max-width: 800px) {
@@ -48,9 +55,6 @@ figcaption {
   }
   p {
     font-size: var(--body);
-  padding: 0.1rem;
-  }
-  figcaption {
-    margin: 0.5rem;
+    padding: 0.1rem;
   }
 }
