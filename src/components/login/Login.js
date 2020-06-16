@@ -14,10 +14,10 @@ const StaffLogin = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (props.credentials.username && props.credentials.password) {
-      props.setUserInfo({
-        organisation: props.credentials.username.split('.')[0],
-        userType: props.credentials.username.split('.')[1]
-      })
+      // props.setUserInfo({
+      //   organisation: props.credentials.username.split('.')[0],
+      //   userType: props.credentials.username.split('.')[1]
+      // })
       await fetch(`/.netlify/functions/checkCredentials/checkCredentials.js`, {
         method: "POST",
         body: JSON.stringify(props.credentials),

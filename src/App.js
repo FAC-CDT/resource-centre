@@ -52,7 +52,7 @@ function App() {
           exact
           path="/landing"
           render={() => (
-            <Landing userInfo={userInfo} setUserInfo={setUserInfo} />
+            <Landing userInfo={userInfo} setUserInfo={setUserInfo} credentials={credentials} />
           )}
         />
         <Route
