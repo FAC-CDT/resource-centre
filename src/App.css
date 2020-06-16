@@ -36,7 +36,7 @@ h2 {
 figcaption {
   display: flex;
   text-align: center;
-  color: black;
+  color: var(--font);
   justify-content: center;
 }
 

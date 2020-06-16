@@ -20,7 +20,6 @@
   display: grid;
   grid-template-columns: repeat(2, 10rem [col-start]);
   justify-content: center;
-
 }
 
 .help {

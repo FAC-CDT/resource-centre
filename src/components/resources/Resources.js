@@ -58,14 +58,15 @@ const getResources = async () => {
     )
   }
   return (
-    <article>
+    <section>
       <Navbar />
       <h1>Resources</h1>
-      <section className="resource-container">
+
         {resources.records.length === 0 ? (
           <h2>There are currently no resources registered</h2>
         ) : (
           resources.records.map((resource) => (
+            <article className="resource-container">
             <a
               className="resource-icon"
               key={resource.id}
@@ -78,15 +79,16 @@ const getResources = async () => {
                   src={icons[resource.fields[ResourceQuestions.type]]}
                   alt={icons[resource.fields[ResourceQuestions.type]]}
                 />
-                <figcaption className="resource-title">
+                <figcaption>
                   {resource.fields[ResourceQuestions.title]}
                 </figcaption>
               </figure>
             </a>
+            </article>
           ))
         )}
-      </section>
-    </article>
+
+    </section>
   );
 };
 

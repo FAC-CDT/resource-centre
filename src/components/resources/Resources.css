@@ -7,28 +7,12 @@ a:visited {
 
 .resource-container {
   display: grid;
-  align-items: center;
-  grid-template-columns: repeat(2, 15rem [col-start]);
+  grid-template-columns: repeat(1, 10rem [col-start]);
   justify-content: center;
 }
 
-.resource-title {
-  text-align: center;
-  font-size: var(--subtitle);
-  text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
-}
+.resource-icon {
+  display: inherit;
+  justify-content: center;
 
-@media screen and (max-width: 800px) {
-  .resource-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .resource-title {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: var(--content);
-    font-family: "Montserrat", sans-serif;
-  }
 }
