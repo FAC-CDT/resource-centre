@@ -42,11 +42,11 @@ const StaffLogin = (props) => {
 
   return (
 <>
-      <h1>Login</h1>
+      <h1>Hello, welcome!</h1>
     <nav>
       <form>
         <div className="">
-          <label htmlFor="username" className="username">Please enter your Username:</label>
+          <label htmlFor="username" className="username">Enter your username:</label>
           <input
             required
             type="text"

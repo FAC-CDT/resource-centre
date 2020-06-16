@@ -35,10 +35,6 @@ form {
   margin: 1rem 0 1rem 0;
 }
 
-.part-login {
-  margin-top: 8rem;
-}
-
 button {
   font-family: "Montserrat", sans-serif;
   font-size: var(--small);

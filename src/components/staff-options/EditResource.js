@@ -48,6 +48,7 @@ const EditResource = ({ userInfo }) => {
     <article>
       <Navbar />
       <h1>Your Resources</h1>
+      <p>The general resources saved for your organisation </p>
       {resourcesToDelete.records.length === 0 ? (
         <h2>There are currently no resources registered</h2>
       ) : (
