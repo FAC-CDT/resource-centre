@@ -21,16 +21,16 @@ function SignupForm(props) {
         organisation: props.credentials.organisation,
       };
 
-      await fetch(`/.netlify/functions/register/register.js`, {
+      await fetch(`/.netlify/functions/registerUser/registerUser.js`, {
         method: "POST",
         body: JSON.stringify(payload),
-      //  headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
       })
         .then((res) => {
           console.log(res.status);
           if (res.status === 200) {
             props.history.push("/landing");
-          } else if (res.status === 406) {
+          } else if (res.status === 206) {
             alert("We can't find that organisation in the database");
           } else {
             alert("A server error ocurred");

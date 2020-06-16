@@ -27,7 +27,7 @@ const Menu = ({ userInfo, setUserInfo, credentials }) => {
     // eslint-disable-next-line
   }, []);
 
-  if (!userInfo) {
+  if (!userInfo.userType) {
     return (
         <h1>Loading...</h1>
     );
