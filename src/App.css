@@ -38,6 +38,7 @@ figcaption {
   text-align: center;
   color: var(--font);
   justify-content: center;
+  font-size: var(--body);
 }
 
 @media screen and (max-width: 800px) {
@@ -54,9 +55,6 @@ figcaption {
   }
   p {
     font-size: var(--body);
-  padding: 0.1rem;
-  }
-  figcaption {
-    margin: 0.5rem;
+    padding: 0.1rem;
   }
 }
