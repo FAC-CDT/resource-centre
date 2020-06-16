@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
 import { withRouter, Link } from "react-router-dom";
 
 function SignupForm(props) {
-
   const handleChange = (e) => {
     const { id, value } = e.target;
     props.setCredentials((prevState) => ({
@@ -12,21 +11,27 @@ function SignupForm(props) {
   };
 
   const sendDetailsToServer = async () => {
-    if (props.credentials.username.length && props.credentials.password.length) {
+    if (
+      props.credentials.username.length &&
+      props.credentials.password.length
+    ) {
       const payload = {
         username: props.credentials.username,
         password: props.credentials.password,
+        organisation: props.credentials.organisation,
       };
 
       await fetch(`/.netlify/functions/register/register.js`, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) =>
-      {
+        method: "POST",
+        body: JSON.stringify(payload),
+      //  headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => {
+          console.log(res.status);
           if (res.status === 200) {
-            redirectToLanding();
+            props.history.push("/landing");
+          } else if (res.status === 406) {
+            alert("We can't find that organisation in the database");
           } else {
             alert("A server error ocurred");
           }
@@ -37,10 +42,6 @@ function SignupForm(props) {
     } else {
       alert("Please enter valid username and password");
     }
-  };
-
-  const redirectToLanding = () => {
-    props.history.push("/landing");
   };
 
   const handleSubmit = (e) => {
@@ -67,6 +68,19 @@ function SignupForm(props) {
           />
         </div>
         <div className="">
+          <label htmlFor="organisation">
+            Enter the initials of your organisation
+          </label>
+          <input
+            type="text"
+            className=""
+            id="organisation"
+            placeholder="E.g. nasa"
+            value={props.credentials.organisation}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="">
           <label htmlFor="password">Choose a password</label>
           <input
             type="password"
@@ -88,11 +102,7 @@ function SignupForm(props) {
             onChange={handleChange}
           />
         </div>
-        <button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-        >
+        <button type="submit" className="" onClick={handleSubmit}>
           Register
         </button>
       </form>

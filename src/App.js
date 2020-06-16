@@ -32,7 +32,8 @@ function App() {
   const [credentials, setCredentials] = React.useState({
     username: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    organisation: ""
   });
 
   return (
