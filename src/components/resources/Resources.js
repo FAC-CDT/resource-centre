@@ -131,6 +131,7 @@ const Resources = ({ userInfo }) => {
           ))
         ) : (
           resources.records.map((resource) => (
+            <article className="resource-container">
             <a
               className="resource-icon"
               key={resource.id}
@@ -143,11 +144,12 @@ const Resources = ({ userInfo }) => {
                   src={icons[resource.fields[ResourceQuestions.type]]}
                   alt={icons[resource.fields[ResourceQuestions.type]]}
                 />
-                <figcaption className="resource-title">
+                <figcaption>
                   {resource.fields[ResourceQuestions.title]}
                 </figcaption>
               </figure>
             </a>
+            </article>
           ))
         )}
       </section>

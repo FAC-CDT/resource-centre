@@ -69,7 +69,6 @@ const Session = ({ userInfo }) => {
       <article className="host-container">
       <img alt="session host" src={image} className="host-image" />
         <p>Session host: {sessionPath[SessionQuestions.host]}</p>
-
       </article>
         <article className="sess-resource-container">
           {sessionPath[SessionQuestions.resource1] ? (
