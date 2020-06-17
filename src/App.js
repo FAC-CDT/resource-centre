@@ -7,7 +7,7 @@ import Error from "./components/Error.js";
 import Landing from "./components/Landing.js";
 import Session from "./components/session/Session.js";
 import Resources from "./components/resources/Resources.js";
-import Help from "./components/Help.js";
+import Help from "./components/help/Help.js";
 import AddSession from "./components/staff-options/AddSession.js";
 import EditSessions from "./components/staff-options/EditSessions.js";
 import AddResource from "./components/staff-options/AddResource.js";
@@ -24,7 +24,7 @@ function App() {
       userType: "",
     }
   );
- 
+
   React.useEffect(() => {
     sessionStorage.setItem('userInfoInLocalStorage', JSON.stringify(userInfo));
   }, [userInfo]);

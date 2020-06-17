@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./navbar/Navbar.js";
+import Navbar from "../navbar/Navbar.js";
 import "./Help.css";
 
 const Help = () => {
   return (
     <>
       <Navbar />
-      <h1> This is the help page </h1>
+      <h1> Help: Video Tutorials</h1>
       <section className="iframe-container">
         <iframe
           title="help video"
