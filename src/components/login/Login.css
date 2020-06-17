@@ -12,22 +12,25 @@ nav {
 }
 
 form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   margin-top: 2rem;
-  margin-left: 1rem;
+
 }
 
-.username-input {
-  font-family: "Montserrat", sans-serif;
-  font-size: var(--body);
-  padding: 0.4rem;
-  margin-top: 0.5rem;
+.form-inputs {
+  display: inherit;
+  padding-bottom: 1rem;
+  align-items: left;
+    flex-direction: column;
 }
 
 .input {
   font-family: "Montserrat", sans-serif;
   font-size: var(--body);
-  padding: 0.4rem;
-  padding-right: 1rem;
+  padding: 0.5rem;
+  width: 80vw;
   border-radius: 15px;
   background-color: white;
   border-color: transparent;
@@ -37,15 +40,34 @@ form {
 
 button {
   font-family: "Montserrat", sans-serif;
-  font-size: var(--small);
-  padding: 0.5rem;
+  font-size: var(--body);
+  font-weight: bold;
+  padding: 0.8rem;
+  width: 60vw;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: white;
+  color: white;
+  background-color: #55BB99;
   border-color: transparent;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
 }
 
 button:active {
 transform: translateY(4px);
+}
+
+.registration {
+position: fixed;
+bottom: 1rem;
+text-align: center;
+}
+
+.account {
+  margin-bottom: 1rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.link {
+  font-weight: bold;
 }
