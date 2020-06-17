@@ -10,7 +10,7 @@ exports.handler = (event, context, callback) => {
 
   const idToDelete = JSON.parse(event.body);
 
-  const base = Airtable.base("appnkfsVctBYM5kva");
+  const base = Airtable.base("appZmhWkwHSjmKw7g");
 
   base("resources").destroy([idToDelete.id], function (err, deletedRecords) {
     if (err) {

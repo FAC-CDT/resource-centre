@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
-import { ResourceQuestions } from "../../utils/Questions";
 import "./EditBar.css";
 
 const EditResource = ({ userInfo }) => {
@@ -55,11 +54,11 @@ const EditResource = ({ userInfo }) => {
         resourcesToDelete.records.map((resource) => (
           <section key={resource.id} className="editbar">
             <div className="resource-heading">
-              <h2>{resource.fields[ResourceQuestions.title]}</h2>
+              <h2>{resource.fields.resource_title}</h2>
             </div>
             <div className="button-box">
               <a
-                href={resource.fields[ResourceQuestions.resource_url]}
+                href={resource.fields.resource_url}
                 target="_blank"
                 rel="noopener noreferrer"
               >

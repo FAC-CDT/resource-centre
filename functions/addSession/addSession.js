@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     apiKey: AIRTABLE_API_KEY,
   });
 
-  const base = Airtable.base("appnkfsVctBYM5kva");
+  const base = Airtable.base("appZmhWkwHSjmKw7g");
 
   const newSessionData = JSON.parse(event.body);
 
@@ -15,47 +15,31 @@ exports.handler = async (event) => {
     [
       {
         fields: {
-          "What is the title of the session?": newSessionData.title,
-          "Which organisation are you from?": newSessionData.organisation,
-          "Who is the host of this session?": newSessionData.hostName,
+          session_title: newSessionData.title,
+          organisation: newSessionData.organisation,
+          session_host: newSessionData.hostName,
           host_image: newSessionData.hostImage,
           session_date: newSessionData.date,
           start_time: newSessionData.startTime,
           end_time: newSessionData.endTime,
-          "What is the web address for your first resource?":
-            newSessionData.resource1Url,
-          "What is the title of your first resource?":
-            newSessionData.resource1Title,
-          "What category is your first resource?":
-            newSessionData.resource1Category,
-          "What is the web address for your second resource?":
-            newSessionData.resource1Url,
-          "What is the title of your second resource?":
-            newSessionData.resource1Title,
-          "What category is your second resource?":
-            newSessionData.resource1Category,
-          "What is the web address for your third resource?":
-            newSessionData.resource1Url,
-          "What is the title of your third resource?":
-            newSessionData.resource1Title,
-          "What category is your third resource?":
-            newSessionData.resource1Category,
-          "What is the web address for your fourth resource?":
-            newSessionData.resource1Url,
-          "What is the title of your fourth resource?":
-            newSessionData.resource1Title,
-          "What category is your fourth resource?":
-            newSessionData.resource1Category,
-          "Do you have a Staff only resource? If so what is its web address?":
-            newSessionData.staffResource1Url,
-          "What category is your first staff only resource?":
-            newSessionData.staffResource1Category,
+          resource1_url: newSessionData.resource1Url,
+          resource1_title: newSessionData.resource1Title,
+          resource1_category: newSessionData.resource1Category,
+          resource2_url: newSessionData.resource2Url,
+          resource2_title: newSessionData.resource2Title,
+          resource2_category: newSessionData.resource2Category,
+          resource3_url: newSessionData.resource3Url,
+          resource3_title: newSessionData.resource3Title,
+          resource3_category: newSessionData.resource3Category,
+          resource4_url: newSessionData.resource4Url,
+          resource4_title: newSessionData.resource4Title,
+          resource4_category: newSessionData.resource4Category,
+          staff_resource1_url: newSessionData.staffResource1Url,
+          staff_resource1_category: newSessionData.staffResource1Category,
           staff_resource1_title: newSessionData.staffResource1Title,
-          "Do you have a second Staff only resource? If so what is its web address?":
-            newSessionData.staffResource2Url,
+          staff_resource2_url: newSessionData.staffResource2Url,
           staff_resource2_title: newSessionData.staffResource2Title,
-          "What category is your second staff only resource?":
-            newSessionData.staffResource2Category,
+          staff_resource2_category: newSessionData.staffResource2Category,
         },
       },
     ],

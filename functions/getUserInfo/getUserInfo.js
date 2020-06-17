@@ -9,7 +9,7 @@ Airtable.configure({
   apiKey: AIRTABLE_API_KEY
 });
 
-const base = Airtable.base('appnkfsVctBYM5kva');
+const base = Airtable.base('appZmhWkwHSjmKw7g');
 const username = JSON.parse(event.body);
 const data = [];
 

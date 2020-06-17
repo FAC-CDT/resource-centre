@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     apiKey: AIRTABLE_API_KEY,
   });
 
-  const base = Airtable.base("appnkfsVctBYM5kva");
+  const base = Airtable.base("appZmhWkwHSjmKw7g");
 
   const newResourceData = JSON.parse(event.body);
 
@@ -15,10 +15,10 @@ exports.handler = async (event) => {
       [
         {
           fields: {
-            "What is the title of this resource?": newResourceData.title,
-            "Which organisation are you from?": newResourceData.organisation,
-            "What category is this resource?": newResourceData.category,
-            "What is the web address of this resource?": newResourceData.url,
+            resource_title: newResourceData.title,
+            organisation: newResourceData.organisation,
+            resource_category: newResourceData.category,
+            resource_url: newResourceData.url,
           },
         },
       ],

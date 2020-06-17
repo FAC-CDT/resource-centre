@@ -8,7 +8,7 @@ exports.handler = (event, context, callback) => {
     apiKey: AIRTABLE_API_KEY,
   });
 
-  const base = Airtable.base("appnkfsVctBYM5kva");
+  const base = Airtable.base("appZmhWkwHSjmKw7g");
   const data = [];
 
   const credentials = JSON.parse(event.body);

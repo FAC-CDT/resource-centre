@@ -8,7 +8,6 @@ import website from "../resources/icons/website-link.svg";
 import google from "../resources/icons/google-link.svg";
 import youtube from "../resources/icons/yt-link.svg";
 import { ReactComponent as Help } from "./icons/help-btn.svg";
-import { SessionQuestions } from "../../utils/Questions.js";
 
 import "./Sessions.css";
 
@@ -58,113 +57,113 @@ const Session = ({ userInfo }) => {
     );
   }
   const sessionPath = session.records[0].fields;
-  const image = sessionPath.Profile_pic[0].url;
+  const image = sessionPath.host_image;
   console.log(image);
 
   return (
     <section>
       <Navbar />
       <section className="session-container">
-        <h1>{sessionPath[SessionQuestions.title]}</h1>
+        <h1>{sessionPath.session_title}</h1>
       <article className="host-container">
       <img alt="session host" src={image} className="host-image" />
-        <p>Session host: {sessionPath[SessionQuestions.host]}</p>
+        <p>Session host: {sessionPath.session_host}</p>
       </article>
         <article className="sess-resource-container">
-          {sessionPath[SessionQuestions.resource1] ? (
+          {sessionPath.resource1_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource1]}
+              href={sessionPath.resource1_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource1_type]}
-                src={icons[sessionPath[SessionQuestions.resource1_type]]}
+                alt={sessionPath.resource1_category}
+                src={icons[sessionPath.resource1_category]}
               />
               <figcaption>
-                {sessionPath[SessionQuestions.resource1_title]}{" "}
+                {sessionPath.resource1_title}{" "}
               </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.resource2] ? (
+          {sessionPath.resource2_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource2]}
+              href={sessionPath.resource2_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource2_type]}
-                src={icons[sessionPath[SessionQuestions.resource2_type]]}
+                alt={sessionPath.resource2_category}
+                src={icons[sessionPath.resource2_category]}
               />
               <figcaption>
-                {sessionPath[SessionQuestions.resource2_title]}{" "}
+                {sessionPath.resource2_title}{" "}
               </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.resource3] ? (
+          {sessionPath.resource3 ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource3]}
+              href={sessionPath.resource3}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource3_type]}
-                src={icons[sessionPath[SessionQuestions.resource3_type]]}
+                alt={sessionPath.resource3_category}
+                src={icons[sessionPath.resource3_category]}
               />
               <figcaption>
-                {sessionPath[SessionQuestions.resource3_title]}{" "}
+                {sessionPath.resource3_title}{" "}
               </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.resource4] ? (
+          {sessionPath.resource4_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource4]}
+              href={sessionPath.resource4_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource4_type]}
-                src={icons[sessionPath[SessionQuestions.resource4_type]]}
+                alt={sessionPath.resource4_category}
+                src={icons[sessionPath.resource4_category]}
               />
               <figcaption>
-                {sessionPath[SessionQuestions.resource4_title]}{" "}
+                {sessionPath.resource4_title}{" "}
               </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.staff_resource1] &&
+          {sessionPath.staff_resource1_url &&
           userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.staff_resource1]}
+              href={sessionPath.staff_resource1_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.staff_resource1_type]}
-                src={icons[sessionPath[SessionQuestions.staff_resource1_type]]}
+                alt={sessionPath.staff_resource1_category}
+                src={icons[sessionPath.staff_resource1_category]}
               />
               <figcaption>
-                {sessionPath[SessionQuestions.resource1_title]}{" "}
+                {sessionPath.resource1_title}{" "}
               </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.staff_resource2] &&
+          {sessionPath.staff_resource2 &&
           userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.staff_resource2]}
+              href={sessionPath.staff_resource2_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.staff_resource2_type]}
-                src={icons[sessionPath[SessionQuestions.staff_resource2_type]]}
+                alt={sessionPath.staff_resource2_category}
+                src={icons[sessionPath.staff_resource2_category]}
               />
               <figcaption>
-                {sessionPath[SessionQuestions.resource2_title]}{" "}
+                {sessionPath.resource2_title}{" "}
               </figcaption>
             </a>
           ) : null}
