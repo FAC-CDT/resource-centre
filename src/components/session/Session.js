@@ -53,7 +53,7 @@ const Session = ({ userInfo }) => {
     return (
       <article>
         <Navbar />
-        <h1>We don't have your organisation, please log out and try again</h1>
+        <h2>We don't have your organisation, please log out and try again</h2>
       </article>
     );
   }
@@ -65,7 +65,7 @@ const Session = ({ userInfo }) => {
     <section>
       <Navbar />
       <section className="session-container">
-        <h1>{sessionPath[SessionQuestions.title]}</h1>
+        <h2>{sessionPath[SessionQuestions.title]}</h2>
       <article className="host-container">
       <img alt="session host" src={image} className="host-image" />
         <p>Session host: {sessionPath[SessionQuestions.host]}</p>

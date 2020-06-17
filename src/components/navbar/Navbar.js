@@ -8,6 +8,7 @@ const Navbar = () => {
 		<>
 		<section className="navbar">
 		<Link to='/landing'><Back className="home"/></Link>
+		
 		</section>
 		</>
 	)
