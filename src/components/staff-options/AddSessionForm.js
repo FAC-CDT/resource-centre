@@ -4,9 +4,6 @@ import Navbar from "../navbar/Navbar";
 import "../login/Login.css";
 
 const AddSessionForm = (props) => {
-  let resourceCount = [1, 2, 3, 4];
-  let staffResourceCount = [1, 2];
-
   const [newSession, setNewSession] = React.useState({
     title: "",
     organisation: props.userInfo.organisation,
@@ -15,40 +12,24 @@ const AddSessionForm = (props) => {
     date: "",
     startTime: "",
     endTime: "",
-    resources: {
-    //   1: {
-    //     title: "",
-    //     url: "",
-    //     category: "",
-    //   },
-    //   2: {
-    //     title: "",
-    //     url: "",
-    //     category: "",
-    //   },
-    //   3: {
-    //     title: "",
-    //     url: "",
-    //     category: "",
-    //   },
-    //   4: {
-    //     title: "",
-    //     url: "",
-    //     category: "",
-    //   }
-    },
-    staffResources: {
-        1: {
-          title: "",
-          url: "",
-          category: "",
-        },
-        2: {
-          title: "",
-          url: "",
-          category: "",
-        },
-      },
+    resource1Title: "",
+    resource1Url: "",
+    resource1Category: "",
+    resource2Title: "",
+    resource2Url: "",
+    resource2Category: "",
+    resource3Title: "",
+    resource3Url: "",
+    resource3Category: "",
+    resource4Title: "",
+    resource4Url: "",
+    resource4Category: "",
+    staffResource1Title: "",
+    staffResource1Url: "",
+    staffResource1category: "",
+    staffResource2Title: "",
+    staffResource2Url: "",
+    staffResource2category: "",
   });
 
   const handleChange = (e) => {
@@ -57,38 +38,33 @@ const AddSessionForm = (props) => {
       ...prevState,
       [id]: value,
     }));
-    console.log(newSession);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newSession.title && newSession.category && newSession.url) {
-      await fetch(`/.netlify/functions/addSession/addSession.js`, {
-        method: "POST",
-        body: JSON.stringify(newSession),
-        headers: { "Content-Type": "application/json" },
+    await fetch(`/.netlify/functions/addSession/addSession.js`, {
+      method: "POST",
+      body: JSON.stringify(newSession),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Your Session was successfully added");
+          props.history.push("/add-Session");
+        } else {
+          alert("There was an error, please try again");
+        }
       })
-        .then((res) => {
-          if (res.status === 200) {
-            alert("Your Session was successfully added");
-            props.history.push("/adSession");
-          } else {
-            alert("There was an error, please try again");
-          }
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    } else {
-      alert("Please fill in all the information fields");
-    }
+      .catch(function (error) {
+        console.error(error);
+      });
   };
 
   return (
     <>
       <Navbar />
       <h1>Add Session</h1>
-      <p>Please fill in all the fields.</p>
+      <p>Please fill in any fields that are required.</p>
       <form>
         <div className="form-inputs">
           <label htmlFor="title">Choose a title for the Session:</label>
@@ -132,6 +108,7 @@ const AddSessionForm = (props) => {
             type="date"
             id="date"
             name="date"
+            className="input"
             value={newSession.date}
             onChange={handleChange}
           />
@@ -161,118 +138,292 @@ const AddSessionForm = (props) => {
             onChange={handleChange}
           />
         </div>
-        {resourceCount.map((num) => {
-          return (
-            <div className="form-inputs" key={num}>
-              <h2>Participant Resource {num}</h2>
-              <div className="form-inputs">
-                <label htmlFor="resourceTitle">
-                  The title of this resource:
-                </label>
-                <input
-                  required
-                  type="text"
-                  className="input"
-                  id={num}
-                  placeholder="Enter title"
-                  value={newSession[num].title}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-inputs">
-                <label htmlFor="resourceUrl">
-                  The link the resource points to:
-                </label>
-                <input
-                  required
-                  type="text"
-                  className="input"
-                  id={num}
-                  placeholder="E.g. https://images.com/me.jpg"
-                  value={newSession[num].url}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-inputs">
-                <label htmlFor="category">Select a category:</label>
-                <select
-                  name="categories"
-                  id={num}
-                  value={newSession[num].category}
-                  onChange={handleChange}
-                >
-                  <option value="">Click here to select</option>
-                  <option value="pdf">PDF</option>
-                  <option value="zoom">Zoom</option>
-                  <option value="sharepoint">Sharepoint</option>
-                  <option value="website">Website</option>
-                  <option value="youtube">Youtube</option>
-                  <option value="google">Google</option>
-                  <option value="coronavirus">Coronavirus</option>
-                  <option value="other">Other</option>
-                  <option value="image">Image</option>
-                  <option value="slideshow">Slideshow</option>
-                </select>
-              </div>
-            </div>
-          );
-        })}
-        {staffResourceCount.map((num) => {
-          return (
-            <div className="form-inputs" key={num}>
-              <h2>Staff Only Resource {num}</h2>
-              <div className="form-inputs">
-                <label htmlFor="resourceTitle">
-                  The title of this resource:
-                </label>
-                <input
-                  required
-                  type="text"
-                  className="input"
-                  id={`staffResources.${num}.title`}
-                  placeholder="Enter title"
-                  value={[num].title}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-inputs">
-                <label htmlFor="resourceUrl">
-                  The link the resource points to:
-                </label>
-                <input
-                  required
-                  type="text"
-                  className="input"
-                  id={`staffResources.${num}.url`}
-                  placeholder="E.g. https://images.com/me.jpg"
-                  value={[num].url}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-inputs">
-                <label htmlFor="category">Select a category:</label>
-                <select
-                  name="categories"
-                  id={`staffResources.${num}.category`}
-                  value={[num].category}
-                  onChange={handleChange}
-                >
-                  <option value="">Click here to select</option>
-                  <option value="pdf">PDF</option>
-                  <option value="zoom">Zoom</option>
-                  <option value="sharepoint">Sharepoint</option>
-                  <option value="website">Website</option>
-                  <option value="youtube">Youtube</option>
-                  <option value="google">Google</option>
-                  <option value="coronavirus">Coronavirus</option>
-                  <option value="other">Other</option>
-                  <option value="image">Image</option>
-                  <option value="slideshow">Slideshow</option>
-                </select>
-              </div>
-            </div>
-          );
-        })}
+        <h2>Participant Resource 1</h2>
+        <div className="form-inputs">
+          <label htmlFor="resource1Title">The title of this resource:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource1Title"
+            placeholder="Enter title"
+            value={newSession.resource1Title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource1Url">The link the resource points to:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource1Url"
+            placeholder="E.g. https://images.com/me.jpg"
+            value={newSession.resource1Url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource1Category">Select a category:</label>
+          <select
+            name="categories"
+            id="resource1Category"
+            value={newSession.resource1Category}
+            onChange={handleChange}
+          >
+            <option value="">Click here to select</option>
+            <option value="pdf">PDF</option>
+            <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
+            <option value="website">Website</option>
+            <option value="youtube">Youtube</option>
+            <option value="google">Google</option>
+            <option value="coronavirus">Coronavirus</option>
+            <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
+          </select>
+        </div>
+        <h2>Participant Resource 2</h2>
+        <div className="form-inputs">
+          <label htmlFor="resource2Title">The title of this resource:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource2Title"
+            placeholder="Enter title"
+            value={newSession.resource2Title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource2Url">The link the resource points to:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource2Url"
+            placeholder="E.g. https://images.com/me.jpg"
+            value={newSession.resource2Url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource2Category">Select a category:</label>
+          <select
+            name="categories"
+            id="resource2Category"
+            value={newSession.resource2Category}
+            onChange={handleChange}
+          >
+            <option value="">Click here to select</option>
+            <option value="pdf">PDF</option>
+            <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
+            <option value="website">Website</option>
+            <option value="youtube">Youtube</option>
+            <option value="google">Google</option>
+            <option value="coronavirus">Coronavirus</option>
+            <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
+          </select>
+        </div>
+        <h2>Participant Resource 3</h2>
+        <div className="form-inputs">
+          <label htmlFor="resource3Title">The title of this resource:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource3Title"
+            placeholder="Enter title"
+            value={newSession.resource3Title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource3Url">The link the resource points to:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource3Url"
+            placeholder="E.g. https://images.com/me.jpg"
+            value={newSession.resource3Url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource3Category">Select a category:</label>
+          <select
+            name="categories"
+            id="resource3Category"
+            value={newSession.resource3Category}
+            onChange={handleChange}
+          >
+            <option value="">Click here to select</option>
+            <option value="pdf">PDF</option>
+            <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
+            <option value="website">Website</option>
+            <option value="youtube">Youtube</option>
+            <option value="google">Google</option>
+            <option value="coronavirus">Coronavirus</option>
+            <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
+          </select>
+        </div>
+        <h2>Participant Resource 4</h2>
+        <div className="form-inputs">
+          <label htmlFor="resource4Title">The title of this resource:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource4Title"
+            placeholder="Enter title"
+            value={newSession.resource4Title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource4Url">The link the resource points to:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource4Url"
+            placeholder="E.g. https://images.com/me.jpg"
+            value={newSession.resource4Url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource4Category">Select a category:</label>
+          <select
+            name="categories"
+            id="resource4Category"
+            value={newSession.resource4Category}
+            onChange={handleChange}
+          >
+            <option value="">Click here to select</option>
+            <option value="pdf">PDF</option>
+            <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
+            <option value="website">Website</option>
+            <option value="youtube">Youtube</option>
+            <option value="google">Google</option>
+            <option value="coronavirus">Coronavirus</option>
+            <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
+          </select>
+        </div>
+        <h2>Staff Only Resource 1</h2>
+        <div className="form-inputs">
+          <label htmlFor="staffResource1Title">
+            The title of this resource:
+          </label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="staffResource1Title"
+            placeholder="Enter title"
+            value={newSession.staffResource1Title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="staffResource1Url">
+            The link the resource points to:
+          </label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="staffResource1Url"
+            placeholder="E.g. https://images.com/me.jpg"
+            value={newSession.staffResource1Url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="staffResource1Category">Select a category:</label>
+          <select
+            name="categories"
+            id="staffResource1Category"
+            value={newSession.staffResource1Category}
+            onChange={handleChange}
+          >
+            <option value="">Click here to select</option>
+            <option value="pdf">PDF</option>
+            <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
+            <option value="website">Website</option>
+            <option value="youtube">Youtube</option>
+            <option value="google">Google</option>
+            <option value="coronavirus">Coronavirus</option>
+            <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
+          </select>
+        </div>
+
+        <h2>Staff Only Resource 2</h2>
+        <div className="form-inputs">
+          <label htmlFor="staffResource2Title">
+            The title of this resource:
+          </label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="staffResource2Title"
+            placeholder="Enter title"
+            value={newSession.staffResource2Title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="staffResource2Url">
+            The link the resource points to:
+          </label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="staffResource2Url"
+            placeholder="E.g. https://images.com/me.jpg"
+            value={newSession.staffResource2Url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="staffResource2Category">Select a category:</label>
+          <select
+            name="categories"
+            id="staffResource2Category"
+            value={newSession.staffResource2Category}
+            onChange={handleChange}
+          >
+            <option value="">Click here to select</option>
+            <option value="pdf">PDF</option>
+            <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
+            <option value="website">Website</option>
+            <option value="youtube">Youtube</option>
+            <option value="google">Google</option>
+            <option value="coronavirus">Coronavirus</option>
+            <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
+          </select>
+        </div>
+
         <button type="submit" onClick={handleSubmit}>
           Add Session
         </button>
