@@ -14,6 +14,7 @@ const StaffMenu = ({ userInfo, setUserInfo }) => {
     setUserInfo({
       organisation: "",
       userType: "",
+      username: ""
     });
   };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "./Login.css";
 
 const StaffLogin = (props) => {
@@ -14,10 +14,6 @@ const StaffLogin = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (props.credentials.username && props.credentials.password) {
-      props.setUserInfo({
-        organisation: props.credentials.username.split('.')[0],
-        userType: props.credentials.username.split('.')[1]
-      })
       await fetch(`/.netlify/functions/checkCredentials/checkCredentials.js`, {
         method: "POST",
         body: JSON.stringify(props.credentials),
@@ -41,46 +37,49 @@ const StaffLogin = (props) => {
   };
 
   return (
-<>
+    <>
       <h1>Hello, welcome!</h1>
-    <nav>
-      <form>
-        <div className="">
-          <label htmlFor="username" className="username">Enter your username:</label>
-          <input
-            required
-            type="text"
-            className="input"
-            id="username"
-            placeholder="Username"
-            value={props.credentials.username}
-            onChange={handleChange}
-            autoFocus
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Enter password:</label>
-          <input
-            required
-            type="password"
-            className="input"
-            id="password"
-            placeholder="Password"
-            value={props.credentials.password}
-            onChange={handleChange}
-          />
-        </div>
+      <nav>
+        <form>
+          <div className="">
+            <label htmlFor="username" className="username">
+              Enter your username:
+            </label>
+            <input
+              required
+              type="text"
+              className="input"
+              id="username"
+              placeholder="Username"
+              value={props.credentials.username}
+              onChange={handleChange}
+              autoFocus
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Enter password:</label>
+            <input
+              required
+              type="password"
+              className="input"
+              id="password"
+              placeholder="Password"
+              value={props.credentials.password}
+              onChange={handleChange}
+            />
+          </div>
 
-        <button
-          type="submit"
-          className=""
-          onClick={handleSubmit}
-        >
-          Log in
-        </button>
-      </form>
-      {/* <Link to="/" className="part-login">Participant Login</Link> */}
-    </nav>
+          <button type="submit" className="" onClick={handleSubmit}>
+            Log in
+          </button>
+        </form>
+        <div className="">
+          <span>Don't have an account? </span>
+          <Link to="/register" className="part-login">
+            Register here
+          </Link>
+        </div>
+      </nav>
     </>
   );
 };

@@ -8,17 +8,17 @@ exports.handler = (event, context, callback) => {
     apiKey: AIRTABLE_API_KEY,
   });
 
-  const base = Airtable.base("appLsGaq0J2MzGoUf");
+  const base = Airtable.base("appnkfsVctBYM5kva");
   const data = [];
 
   const credentials = JSON.parse(event.body);
 
-  var username = credentials.username.toLowerCase();
+  var username = credentials.username;
   var password = credentials.password;
   
-  base("credentials")
+  base("users")
     .select({
-      filterByFormula: `({organisation}='${username}')`,
+      filterByFormula: `({username}='${username}')`,
       maxRecords: 100,
       view: "Grid view",
     })

@@ -10,13 +10,14 @@ const ParticipantMenu = ({ userInfo, setUserInfo }) => {
   const handleLogout = () => {
     setUserInfo ({
     organisation: "",
-    userType: ""
+    userType: "",
+    username: ""
     })
   }
 
   return (
     <section>
-      <h1>Welcome to {userInfo.organisation.toUpperCase()}</h1>
+      <h1>Welcome {userInfo.username}</h1>
       <section className="user-options">
         <Link to="/session">
           <Session />
