@@ -9,35 +9,16 @@ exports.handler = async (event) => {
 
   const base = Airtable.base("appnkfsVctBYM5kva");
 
-  const credentials = JSON.parse(event.body);
+  const newResourceData = JSON.parse(event.body);
 
-  const password = credentials.password;
-  const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-  var userDetails = {
-    username: credentials.username,
-    organisation: credentials.organisation.toLowerCase(),
-    password: hashedPassword,
-  };
-
-  if (!acceptedOrgs.includes(userDetails.organisation.toLowerCase())) {
-    return {
-      statusCode: 206,
-      body: "Organisation not found",
-      headers: {
-        "cache-control": "Cache-Control: max-age=60, public",
-        "Access-Control-Allow-Methods": "*",
-      },
-    };
-  } else {
-    base("users").create(
+    base("resources").create(
       [
         {
           fields: {
-            username: userDetails.username,
-            password: userDetails.password,
-            organisation: userDetails.organisation,
-            user_type: "participant",
+            "What is the title of this resource?": newResourceData.title,
+            "Which organisation are you from?": newResourceData.organisation,
+            "What category is this resource?": newResourceData.category,
+            "What is the web address of this resource?": newResourceData.url,
           },
         },
       ],
@@ -56,11 +37,10 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: "User successfully registered!",
+      body: "Resource successfully added!",
       headers: {
         "cache-control": "Cache-Control: max-age=60, public",
         "Access-Control-Allow-Methods": "*",
       },
     };
-  }
-};
+  };
