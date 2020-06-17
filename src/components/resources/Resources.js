@@ -9,6 +9,7 @@ import covid from "./icons/covid-link.svg";
 import other from "./icons/other-link.svg";
 import images from "./icons/image-link.svg";
 import slide from "./icons/slide-link.svg";
+import share from "./icons/sharepoint-link.svg";
 import { ResourceQuestions } from "../../utils/Questions.js";
 import Navbar from "../navbar/Navbar.js";
 import SearchIcon from "./icons/search-icon.svg";
@@ -30,7 +31,8 @@ const Resources = ({ userInfo }) => {
     coronavirus: covid,
     other: other,
     image: images,
-    slideshow: slide
+    slideshow: slide,
+    sharepoint: share
   };
 
   const getResources = async () => {

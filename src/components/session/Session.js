@@ -11,6 +11,7 @@ import other from "../resources/icons/other-link.svg";
 import images from "../resources/icons/image-link.svg";
 import slide from "../resources/icons/slide-link.svg";
 import covid from "../resources/icons/covid-link.svg";
+import share from "../resources/icons/sharepoint-link.svg";
 import { ReactComponent as Help } from "./icons/help-btn.svg";
 import { SessionQuestions } from "../../utils/Questions.js";
 
@@ -29,7 +30,8 @@ const Session = ({ userInfo }) => {
     other: other,
     image: images,
     slideshow: slide,
-    coronavirus: covid
+    coronavirus: covid,
+    sharepoint: share
   };
 
   const getSession = async () => {
