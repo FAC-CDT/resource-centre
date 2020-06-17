@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import Navbar from '../navbar/Navbar';
 import '../login/Login.css';
 
 const AddResourceForm = (props) => {
@@ -29,7 +30,7 @@ const AddResourceForm = (props) => {
         .then((res) => {
           if (res.status === 200) {
             alert("Your resource was successfully added");
-            props.history.push("/addresource");
+            props.history.push("/add-resource");
           } else {
             alert("There was an error, please try again");
           }
@@ -44,8 +45,9 @@ const AddResourceForm = (props) => {
 
   return (
     <>
+    <Navbar />
       <h1>Add a Resource</h1>
-      <p>Please fill in all the fields if possible.</p>
+      <p>Please fill in all the fields.</p>
       <form>
         <div className="form-inputs">
           <label htmlFor="title">Choose a title for the resource:</label>
@@ -79,14 +81,17 @@ const AddResourceForm = (props) => {
             value={newResource.category}
             onChange={handleChange}
           >
-            <option value="">Select</option>
+            <option value="">Click here to select</option>
             <option value="pdf">PDF</option>
             <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
             <option value="website">Website</option>
             <option value="youtube">Youtube</option>
             <option value="google">Google</option>
             <option value="coronavirus">Coronavirus</option>
             <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
           </select>
         </div>
 

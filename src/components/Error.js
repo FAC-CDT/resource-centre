@@ -7,7 +7,7 @@ const Error = () => {
 		<section>
 			<Navbar />
 			<h1>Error 404: Page not found</h1>
-			<Link to='/' alt="Back to homepage"><button>Back to homepage</button></Link>
+			<Link to='/landing' alt="Back to homepage"><button>Back to homepage</button></Link>
 		</section>
 	)
 }
