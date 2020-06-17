@@ -7,6 +7,9 @@ import google from "./icons/google-link.svg";
 import youtube from "./icons/yt-link.svg";
 import covid from "./icons/covid-link.svg";
 import other from "./icons/other-link.svg";
+import images from "./icons/image-link.svg";
+import slide from "./icons/slide-link.svg";
+import share from "./icons/sharepoint-link.svg";
 import Navbar from "../navbar/Navbar.js";
 import SearchIcon from "./icons/search-icon.svg";
 import "./Resources.css";
@@ -26,6 +29,9 @@ const Resources = ({ userInfo }) => {
     google: google,
     coronavirus: covid,
     other: other,
+    image: images,
+    slideshow: slide,
+    sharepoint: share
   };
 
   const getResources = async () => {

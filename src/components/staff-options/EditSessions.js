@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
-import { SessionQuestions } from "../../utils/Questions.js";
 
 const EditSessions = ({ userInfo }) => {
   const [sessionsToDelete, setSessionsToDelete] = React.useState(null);

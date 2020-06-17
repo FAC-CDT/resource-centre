@@ -17,8 +17,8 @@ const ParticipantMenu = ({ userInfo, setUserInfo }) => {
 
   return (
     <section>
-      <h1>Welcome {userInfo.username}</h1>
-      <section className="user-options">
+      <h1>Hello, {userInfo.username}!</h1>
+      <section className="participant-options">
         <Link to="/session">
           <Session />
         </Link>

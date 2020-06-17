@@ -1,6 +1,24 @@
-.user-options {
+/* MOBILE RESPONSIVE */
+
+.participant-options {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
+}
+
+/* DESKTOP RESPONSIVE */
+
+@media (min-width: 900px) {
+  .participant-options {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    padding: 10rem 0;
+    /* background-color: white;
+    width: 40%;
+    border-radius: 10px; */
+  }
 }
