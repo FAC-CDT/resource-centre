@@ -5,7 +5,7 @@
   --heading: 1.5rem;
   --subtitle: 1.333rem;
   --body: 1rem;
-  --small: 0.8rem;
+  --small: 0.9rem;
 
   --font: #3E4C47;
   --background: #D2E8E1;
@@ -42,7 +42,8 @@ figcaption {
   text-align: center;
   color: var(--font);
   justify-content: center;
-  font-size: var(--body);
+  font-size: var(--small);
+
 }
 
 
@@ -62,5 +63,9 @@ figcaption {
   p {
     font-size: var(--body);
     padding: 0.1rem;
+  }
+  h2 {
+      margin: 0.5rem;
+        text-align: center;
   }
 }

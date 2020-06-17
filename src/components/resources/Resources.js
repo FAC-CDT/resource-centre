@@ -7,6 +7,8 @@ import google from "./icons/google-link.svg";
 import youtube from "./icons/yt-link.svg";
 import covid from "./icons/covid-link.svg";
 import other from "./icons/other-link.svg";
+import images from "./icons/image-link.svg";
+import slide from "./icons/slide-link.svg";
 import { ResourceQuestions } from "../../utils/Questions.js";
 import Navbar from "../navbar/Navbar.js";
 import SearchIcon from "./icons/search-icon.svg";
@@ -27,6 +29,8 @@ const Resources = ({ userInfo }) => {
     google: google,
     coronavirus: covid,
     other: other,
+    image: images,
+    slideshow: slide
   };
 
   const getResources = async () => {
@@ -123,7 +127,7 @@ const Resources = ({ userInfo }) => {
                   src={icons[resource.fields[ResourceQuestions.type]]}
                   alt={icons[resource.fields[ResourceQuestions.type]]}
                 />
-                <figcaption className="resource-title">
+                <figcaption>
                   {resource.fields[ResourceQuestions.title]}
                 </figcaption>
               </figure>
