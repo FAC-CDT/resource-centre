@@ -5,7 +5,7 @@ import { ReactComponent as SessionsList } from "./icons/edit-sess.svg";
 import { ReactComponent as AddResource } from "./icons/add-res.svg";
 import { ReactComponent as EditResource } from "./icons/edit-res.svg";
 import { ReactComponent as CurrentSession } from "./icons/current-sess.svg";
-import { ReactComponent as Profile } from "./icons/profile.svg";
+
 
 import "./Staff-menu.css";
 
@@ -37,9 +37,7 @@ const StaffMenu = ({ userInfo, setUserInfo }) => {
         <Link to="/session">
           <CurrentSession />
         </Link>
-        <Link to="/profile">
-          <Profile />
-        </Link>
+
       </section>
       <Link to="/" className="logout" onClick={handleLogout}>
         Log out

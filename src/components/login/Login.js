@@ -38,11 +38,11 @@ const StaffLogin = (props) => {
 
   return (
     <>
-      <h1>Hello, welcome!</h1>
+      <h1>Welcome!</h1>
       <nav>
         <form>
-          <div className="">
-            <label htmlFor="username" className="username">
+          <div className="form-inputs">
+            <label htmlFor="username" >
               Enter your username:
             </label>
             <input
@@ -56,8 +56,8 @@ const StaffLogin = (props) => {
               autoFocus
             />
           </div>
-          <div>
-            <label htmlFor="password">Enter password:</label>
+          <div className="form-inputs">
+            <label htmlFor="password" >Enter password:</label>
             <input
               required
               type="password"
@@ -69,17 +69,17 @@ const StaffLogin = (props) => {
             />
           </div>
 
-          <button type="submit" className="" onClick={handleSubmit}>
+          <button type="submit" onClick={handleSubmit}>
             Log in
           </button>
         </form>
-        <div className="">
-          <span>Don't have an account? </span>
-          <Link to="/register" className="part-login">
+        <article className="registration">
+          <p>Don't have an account? </p>
+          <Link to="/register" className="link">
             Register here
           </Link>
-        </div>
-      </nav>
+        </article>
+        </nav>
     </>
   );
 };

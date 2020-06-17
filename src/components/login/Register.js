@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
+import './Login.css'
 
 function SignupForm(props) {
   const handleChange = (e) => {
@@ -53,13 +54,15 @@ function SignupForm(props) {
     }
   };
   return (
-    <div className="">
+    <>
+    <h1> Sign Up </h1>
+    <nav>
       <form>
-        <div className="">
-          <label htmlFor="username">Choose a username</label>
+        <div className="form-inputs">
+          <label htmlFor="username">Choose a username:</label>
           <input
             type="text"
-            className=""
+            className="input"
             id="username"
             aria-describedby="username"
             placeholder="Enter username"
@@ -67,52 +70,53 @@ function SignupForm(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="">
+        <div className="form-inputs">
           <label htmlFor="organisation">
-            Enter the initials of your organisation
+            Enter your organisation:
           </label>
           <input
             type="text"
-            className=""
+            className="input"
             id="organisation"
             placeholder="E.g. nasa"
             value={props.credentials.organisation}
             onChange={handleChange}
           />
         </div>
-        <div className="">
-          <label htmlFor="password">Choose a password</label>
+        <div className="form-inputs">
+          <label htmlFor="password">Choose a password:</label>
           <input
             type="password"
-            className=""
+            className="input"
             id="password"
             placeholder="Enter password"
             value={props.credentials.password}
             onChange={handleChange}
           />
         </div>
-        <div className="">
-          <label htmlFor="confirmPassword">Confirm your password</label>
+        <div className="form-inputs">
+          <label htmlFor="confirmPassword">Confirm your password:</label>
           <input
             type="password"
-            className=""
+            className="input"
             id="confirmPassword"
             placeholder="Confirm Password"
             value={props.credentials.confirmPassword}
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="" onClick={handleSubmit}>
+        <button type="submit" onClick={handleSubmit}>
           Register
         </button>
       </form>
-      <div className="">
+      <article className="account">
         <span>Already have an account? </span>
-        <Link className="" to="/">
+        <Link  to="/" className="link">
           Login here
         </Link>
-      </div>
-    </div>
+      </article>
+    </nav>
+    </>
   );
 }
 
