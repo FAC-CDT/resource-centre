@@ -51,7 +51,6 @@ const Session = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  // console.log(session);
   if (!session) {
     return (
       <article>
@@ -71,7 +70,6 @@ const Session = (props) => {
   }
   const sessionPath = session.records[0].fields;
   const image = sessionPath.host_image;
-  console.log(image);
 
   return (
     <section>
@@ -145,7 +143,8 @@ const Session = (props) => {
             </a>
           ) : null}
 
-          {sessionPath.staff_resource1_url && props.userInfo.userType === "staff" ? (
+          {sessionPath.staff_resource1_url &&
+          props.userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -159,7 +158,8 @@ const Session = (props) => {
             </a>
           ) : null}
 
-          {sessionPath.staff_resource2 && props.userInfo.userType === "staff" ? (
+          {sessionPath.staff_resource2 &&
+          props.userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
