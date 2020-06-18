@@ -1,16 +1,18 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const EditSessions = ({ userInfo }) => {
   const [sessionsToDelete, setSessionsToDelete] = React.useState(null);
   const [refresh, setRefresh] = React.useState(false);
 
   const getSessionsToDelete = async () => {
-    await (await fetch(`/.netlify/functions/getSession/getSession.js`, {
-      method: "POST",
-      body: JSON.stringify(userInfo.organisation),
-    }))
+    await (
+      await fetch(`/.netlify/functions/getSession/getSession.js`, {
+        method: "POST",
+        body: JSON.stringify(userInfo.organisation),
+      })
+    )
       .json()
       .then((data) => setSessionsToDelete(data))
       .catch(console.error);
@@ -61,9 +63,9 @@ const EditSessions = ({ userInfo }) => {
       ) : (
         sessionsToDelete.records.map((session) => (
           <section className="editbar" key={session.id}>
-            <h2>{session.fields.session_title}</h2>
+            <span>{session.fields.session_title}</span>
             <Link to={`/edit-session?id=${session.fields.session_id}`}>
-            Edit
+              <button className="edit-button">Edit</button>
             </Link>
             <button
               className="delete-button"

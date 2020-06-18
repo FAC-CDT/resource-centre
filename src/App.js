@@ -11,7 +11,7 @@ import Help from "./components/help/Help.js";
 import AddSession from "./components/staff-options/AddSessionForm.js";
 import SessionsList from "./components/staff-options/SessionsList.js";
 import AddResource from "./components/staff-options/AddResourceForm.js";
-import ResourceList from "./components/staff-options/ResourceList.js";
+import ResourceList from "./components/staff-options/resourceList.js";
 import Profile from "./components/staff-options/Profile.js";
 import Login from "./components/login/Login";
 import Register from "./components/login/Register";

@@ -3,19 +3,22 @@ import Navbar from "../navbar/Navbar.js";
 import "./EditBar.css";
 
 const EditResource = ({ userInfo }) => {
+
   const [resourcesToDelete, setResourcesToDelete] = React.useState(null);
   const [refresh, setRefresh] = React.useState(false);
-
+  
   const getResourcesToDelete = async () => {
-    await (await fetch(`/.netlify/functions/getResources/getResources.js`, {
-      method: "POST",
-      body: JSON.stringify(userInfo.organisation),
-    }))
+    await (
+      await fetch(`/.netlify/functions/getResources/getResources.js`, {
+        method: "POST",
+        body: JSON.stringify(userInfo.organisation),
+      })
+    )
       .json()
       .then((data) => setResourcesToDelete(data))
       .catch(console.error);
   };
-
+  
   const deleteResource = async (id) => {
     if (window.confirm("Are you sure you want to delete this resource?")) {
       await fetch(`/.netlify/functions/deleteResource/deleteResource.js`, {
@@ -28,12 +31,12 @@ const EditResource = ({ userInfo }) => {
       return;
     }
   };
-
+  
   React.useEffect(() => {
     getResourcesToDelete();
     // eslint-disable-next-line
   }, [refresh]);
-
+ 
   if (!resourcesToDelete) {
     return (
       <section>
@@ -42,7 +45,7 @@ const EditResource = ({ userInfo }) => {
       </section>
     );
   }
-
+  
   return (
     <article>
       <Navbar />
@@ -54,7 +57,7 @@ const EditResource = ({ userInfo }) => {
         resourcesToDelete.records.map((resource) => (
           <section key={resource.id} className="editbar">
             <div className="resource-heading">
-              <h2>{resource.fields.resource_title}</h2>
+              <span>{resource.fields.resource_title}</span>
             </div>
             <div className="button-box">
               <a
@@ -79,5 +82,4 @@ const EditResource = ({ userInfo }) => {
     </article>
   );
 };
-
 export default EditResource;
