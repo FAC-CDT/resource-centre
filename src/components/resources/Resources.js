@@ -31,7 +31,7 @@ const Resources = ({ userInfo }) => {
     other: other,
     image: images,
     slideshow: slide,
-    sharepoint: share
+    sharepoint: share,
   };
 
   const getResources = async () => {
@@ -136,10 +136,9 @@ const Resources = ({ userInfo }) => {
             ))
           ) : (
             resources.records.map((resource) => (
-              <article className="resource-container">
+              <article className="resource-container" key={resource.id}>
                 <a
                   className="resource-icon"
-                  key={resource.id}
                   href={resource.fields.resource_url}
                   target="_blank"
                   rel="noopener noreferrer"

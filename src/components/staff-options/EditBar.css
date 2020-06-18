@@ -49,7 +49,6 @@
 .editbar span {
   font-size: var(--body);
   margin-left: 0;
-
 }
 
 .button-box {
@@ -60,4 +59,38 @@
 
 .resource-heading {
   max-width: 66vw;
+}
+
+.session-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  border-top: 1px solid grey;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.session-option-img {
+  border-radius: 50%;
+  height: 10vw;
+}
+
+.session-option-info {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .session-option {
+    width: 50vw;
+  }
+
+  .session-option-img {
+    border-radius: 50%;
+    height: 5vw;
+  }
 }

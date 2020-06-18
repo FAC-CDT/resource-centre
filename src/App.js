@@ -12,11 +12,11 @@ import AddSession from "./components/staff-options/AddSessionForm.js";
 import SessionsList from "./components/staff-options/SessionsList.js";
 import AddResource from "./components/staff-options/AddResourceForm.js";
 import ResourceList from "./components/staff-options/resourceList.js";
-import Profile from "./components/staff-options/Profile.js";
 import Login from "./components/login/Login";
 import Register from "./components/login/Register";
 import EditSession from "./components/staff-options/EditSession";
 import EditResource from "./components/staff-options/EditResource";
+import ParticipantSessions from "./components/session/ParticipantSessionsList";
 
 function App() {
   const [userInfo, setUserInfo] = React.useState(
@@ -120,7 +120,12 @@ function App() {
             <EditResource userInfo={userInfo} setUserInfo={setUserInfo} />
           )}
         />
-        <Route path="/profile" render={() => <Profile />} />
+         <Route
+          path="/join-session"
+          render={() => (
+            <ParticipantSessions userInfo={userInfo} setUserInfo={setUserInfo} />
+          )}
+        />
         <Route path="/help" render={() => <Help />} />
         <Route component={Error} />
       </Switch>

@@ -13,12 +13,13 @@ const Menu = ({ userInfo, setUserInfo, credentials }) => {
     )
       .json()
       .then((data) =>
-        setUserInfo({
+        {setUserInfo({
           organisation: data.records[0].fields.organisation,
           userType: data.records[0].fields.user_type,
           username: data.records[0].fields.username,
         })
-      )
+        console.log(data)
+        })
       .catch(console.error);
   };
 
