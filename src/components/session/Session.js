@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import whatsapp from "../resources/icons/whatsapp-link.svg";
 import zoom from "../resources/icons/zoom-link.svg";
 import pdf from "../resources/icons/pdf-link.svg";
@@ -16,8 +16,9 @@ import { ReactComponent as Help } from "./icons/help-btn.svg";
 
 import "./Sessions.css";
 
-const Session = ({ userInfo }) => {
+const Session = (props) => {
   const [session, setSession] = React.useState(null);
+  const sessionId = props.location.search.split("=")[1];
 
   let icons = {
     youtube: youtube,
@@ -30,16 +31,18 @@ const Session = ({ userInfo }) => {
     image: images,
     slideshow: slide,
     coronavirus: covid,
-    sharepoint: share
+    sharepoint: share,
   };
 
   const getSession = async () => {
-    await (await fetch(`/.netlify/functions/getSession/getSession.js`, {
-      method: "POST",
-      body: JSON.stringify(userInfo.organisation)
-    }))
+    await (
+      await fetch(`/.netlify/functions/getThisSession/getThisSession.js`, {
+        method: "POST",
+        body: JSON.stringify({ id: sessionId }),
+      })
+    )
       .json()
-      .then(data => setSession(data))
+      .then((data) => setSession(data))
       .catch(console.error);
   };
 
@@ -58,7 +61,7 @@ const Session = ({ userInfo }) => {
     );
   }
 
-  if (!userInfo.organisation) {
+  if (!props.userInfo.organisation) {
     return (
       <article>
         <Navbar />
@@ -75,10 +78,16 @@ const Session = ({ userInfo }) => {
       <Navbar />
       <section className="session-container">
         <h1>{sessionPath.session_title}</h1>
-      <article className="host-container">
-      <img alt="session host" src={image} className="host-image" />
-        <p>Session host: {sessionPath.session_host}</p>
-      </article>
+        <article className="host-container">
+          <img alt="session host" src={image} className="host-image" />
+          <p>Session host: {sessionPath.session_host}</p>
+        </article>
+        <article className="session-times">
+          <p>{sessionPath.session_date}</p>
+          <p>
+            {sessionPath.start_time} - {sessionPath.end_time}
+          </p>
+        </article>
         <article className="sess-resource-container">
           {sessionPath.resource1_url ? (
             <a
@@ -90,9 +99,7 @@ const Session = ({ userInfo }) => {
                 alt={sessionPath.resource1_category}
                 src={icons[sessionPath.resource1_category]}
               />
-              <figcaption>
-                {sessionPath.resource1_title}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource1_title} </figcaption>
             </a>
           ) : null}
 
@@ -106,9 +113,7 @@ const Session = ({ userInfo }) => {
                 alt={sessionPath.resource2_category}
                 src={icons[sessionPath.resource2_category]}
               />
-              <figcaption>
-                {sessionPath.resource2_title}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource2_title} </figcaption>
             </a>
           ) : null}
 
@@ -122,9 +127,7 @@ const Session = ({ userInfo }) => {
                 alt={sessionPath.resource3_category}
                 src={icons[sessionPath.resource3_category]}
               />
-              <figcaption>
-                {sessionPath.resource3_title}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource3_title} </figcaption>
             </a>
           ) : null}
 
@@ -138,14 +141,11 @@ const Session = ({ userInfo }) => {
                 alt={sessionPath.resource4_category}
                 src={icons[sessionPath.resource4_category]}
               />
-              <figcaption>
-                {sessionPath.resource4_title}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource4_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath.staff_resource1_url &&
-          userInfo.userType === "staff" ? (
+          {sessionPath.staff_resource1_url && props.userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -155,14 +155,11 @@ const Session = ({ userInfo }) => {
                 alt={sessionPath.staff_resource1_category}
                 src={icons[sessionPath.staff_resource1_category]}
               />
-              <figcaption>
-                {sessionPath.resource1_title}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource1_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath.staff_resource2 &&
-          userInfo.userType === "staff" ? (
+          {sessionPath.staff_resource2 && props.userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -172,9 +169,7 @@ const Session = ({ userInfo }) => {
                 alt={sessionPath.staff_resource2_category}
                 src={icons[sessionPath.staff_resource2_category]}
               />
-              <figcaption>
-                {sessionPath.resource2_title}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource2_title} </figcaption>
             </a>
           ) : null}
         </article>
@@ -186,4 +181,4 @@ const Session = ({ userInfo }) => {
   );
 };
 
-export default Session;
+export default withRouter(Session);

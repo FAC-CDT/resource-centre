@@ -4,7 +4,7 @@ import { ReactComponent as AddSession } from "./icons/add-sess.svg";
 import { ReactComponent as SessionsList } from "./icons/edit-sess.svg";
 import { ReactComponent as AddResource } from "./icons/add-res.svg";
 import { ReactComponent as EditResource } from "./icons/edit-res.svg";
-import { ReactComponent as CurrentSession } from "./icons/current-sess.svg";
+import { ReactComponent as Session } from "./icons/session.svg";
 import "./Staff-menu.css";
 
 const StaffMenu = ({ userInfo, setUserInfo }) => {
@@ -35,8 +35,8 @@ const StaffMenu = ({ userInfo, setUserInfo }) => {
         </Link>
         </section>
         <section className="staff-sess">
-        <Link to="/session">
-          <CurrentSession />
+        <Link to="/join-session">
+          <Session />
         </Link>
 
       <Link to="/" className="logout" onClick={handleLogout}>

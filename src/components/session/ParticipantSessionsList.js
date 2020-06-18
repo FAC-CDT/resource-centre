@@ -35,8 +35,10 @@ const EditSessions = ({ userInfo }) => {
   return (
     <article>
       <Navbar />
+      <div className="session-header">
       <h1>Your Sessions</h1>
       <p>You can pick a session to join</p>
+      </div>
       {sessionsToJoin.records.length === 0 ? (
         <h2>There are currently no sessions scheduled</h2>
       ) : (

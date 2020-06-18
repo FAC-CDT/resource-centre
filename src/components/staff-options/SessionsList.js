@@ -35,15 +35,6 @@ const EditSessions = ({ userInfo }) => {
     // eslint-disable-next-line
   }, [refresh]);
 
-  // const reconfigureTime = (startAirDate, endAirDate) => {
-  // let startDate = startAirDate.split('T')[0];
-  // let endDate = endAirDate.split('T')[0];
-  // let startTime = startAirDate.split('T')[1].split('.')[0];
-  // let endTime = endAirDate.split('T')[1].split('.')[0];
-  // let dateAndTime = `${startDate}, ${startTime} - ${endDate}, ${endTime}`;
-  // return dateAndTime;
-  // }
-
   if (!sessionsToDelete) {
     return (
       <section>
@@ -64,17 +55,19 @@ const EditSessions = ({ userInfo }) => {
         sessionsToDelete.records.map((session) => (
           <section className="editbar" key={session.id}>
             <span>{session.fields.session_title}</span>
-            <Link to={`/edit-session?id=${session.fields.session_id}`}>
-              <button className="edit-button">Edit</button>
-            </Link>
-            <button
-              className="delete-button"
-              onClick={() => {
-                deleteSession({ id: session.id });
-              }}
-            >
-              Delete
-            </button>
+            <div className="button-box">
+              <Link to={`/edit-session?id=${session.fields.session_id}`}>
+                <button className="edit-button">Edit</button>
+              </Link>
+              <button
+                className="delete-button"
+                onClick={() => {
+                  deleteSession({ id: session.id });
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </section>
         ))
       )}
