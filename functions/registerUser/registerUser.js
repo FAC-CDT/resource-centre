@@ -19,7 +19,7 @@ exports.handler = async (event) => {
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
   var userDetails = {
-    username: credentials.username.toLowerCase(),
+    username: credentials.username,
     organisation: credentials.organisation.toLowerCase(),
     password: hashedPassword,
   };
