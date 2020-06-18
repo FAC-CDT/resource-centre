@@ -39,7 +39,7 @@ form {
   margin: 1rem 0 1rem 0;
 }
 
-button {
+.submit-button {
   font-family: "Montserrat", sans-serif;
   font-size: var(--body);
   font-weight: bold;
@@ -53,7 +53,7 @@ button {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-button:active {
+.submit-button:active {
 transform: translateY(2.5px);
 }
 
@@ -76,11 +76,11 @@ text-align: center;
 
 /* DESKTOP RESPONSIVE */
 
-@media (min-width: 900px) {
+@media (min-width: 800px) {
   .input {
     width: 20vw;
   }
-  button {
+  .submit-button {
     width: 10vw;
   }
 }

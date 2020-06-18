@@ -55,7 +55,7 @@ const EditResource = ({ userInfo }) => {
         resourcesToDelete.records.map((resource) => (
           <section key={resource.id} className="editbar">
             <div className="resource-heading">
-              <h2>{resource.fields[ResourceQuestions.title]}</h2>
+              <span>{resource.fields[ResourceQuestions.title]}</span>
             </div>
             <div className="button-box">
               <a

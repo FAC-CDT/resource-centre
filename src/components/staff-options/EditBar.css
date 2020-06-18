@@ -17,7 +17,7 @@
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
-  font-size: var(--subcontent);
+  font-size: var(--body);
   margin-left: 1rem;
 }
 
@@ -30,12 +30,13 @@
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
-  font-size: var(--subcontent);
+  font-size: var(--body);
 }
 
-.editbar h2 {
-  font-size: var(--subcontent);
+.editbar span {
+  font-size: var(--body);
   margin-left: 0;
+
 }
 
 .button-box {

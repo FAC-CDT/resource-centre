@@ -61,7 +61,7 @@ const EditSessions = ({ userInfo }) => {
       ) : (
         sessionsToDelete.records.map((session) => (
           <section className="editbar" key={session.id}>
-            <h2>{session.fields[SessionQuestions.title]}</h2>
+            <span>{session.fields[SessionQuestions.title]}</span>
 
             <button
               className="delete-button"

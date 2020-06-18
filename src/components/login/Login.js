@@ -69,7 +69,7 @@ const StaffLogin = (props) => {
             />
           </div>
 
-          <button type="submit" onClick={handleSubmit}>
+          <button className="submit-button" type="submit" onClick={handleSubmit}>
             Log in
           </button>
         </form>
