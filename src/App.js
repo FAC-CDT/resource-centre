@@ -16,6 +16,7 @@ import Profile from "./components/staff-options/Profile.js";
 import Login from "./components/login/Login";
 import Register from "./components/login/Register";
 import EditSession from "./components/staff-options/EditSession";
+import EditResource from "./components/staff-options/EditResource";
 
 function App() {
   const [userInfo, setUserInfo] = React.useState(
@@ -111,6 +112,12 @@ function App() {
           path="/edit-session"
           render={() => (
             <EditSession userInfo={userInfo} setUserInfo={setUserInfo} />
+          )}
+        />
+        <Route
+          path="/edit-resource"
+          render={() => (
+            <EditResource userInfo={userInfo} setUserInfo={setUserInfo} />
           )}
         />
         <Route path="/profile" render={() => <Profile />} />

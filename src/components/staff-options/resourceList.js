@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
+import { Link } from 'react-router-dom';
 import "./EditBar.css";
 
 const EditResource = ({ userInfo }) => {
@@ -67,6 +68,9 @@ const EditResource = ({ userInfo }) => {
               >
                 <button className="view-button">Visit</button>
               </a>
+              <Link to={`/edit-resource?id=${resource.fields.resource_id}`}>
+              <button className="edit-button">Edit</button>
+            </Link>
               <button
                 className="delete-button"
                 onClick={() => {
