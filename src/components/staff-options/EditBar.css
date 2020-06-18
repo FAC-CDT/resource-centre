@@ -68,17 +68,17 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 90vw;
   border-bottom: 1px solid grey;
   margin-left: auto;
   margin-right:auto;
-  /* margin-top: 1rem; */
   padding: 1rem 1rem 1rem 1rem;
 }
 
 .session-option-img {
   border-radius: 50%;
-  height: 20vw;
+  height: 15vw;
+  margin-right: 1rem;
 }
 
 .session-option-info {

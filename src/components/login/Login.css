@@ -87,6 +87,10 @@ transform: translateY(2.5px);
   font-weight: bold;
 }
 
+label {
+  max-width: 90vw;
+}
+
 /* DESKTOP RESPONSIVE */
 
 @media (min-width: 800px) {

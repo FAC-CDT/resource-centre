@@ -72,13 +72,13 @@ function SignupForm(props) {
         </div>
         <div className="form-inputs">
           <label htmlFor="organisation">
-            Enter your organisation:
+            Whose sessions will you visit?
           </label>
           <input
             type="text"
             className="input"
             id="organisation"
-            placeholder="E.g. nasa"
+            placeholder="Enter their initials, e.g. abc"
             value={props.credentials.organisation}
             onChange={handleChange}
           />
