@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
+import { Link } from 'react-router-dom';
 
 const EditSessions = ({ userInfo }) => {
   const [sessionsToDelete, setSessionsToDelete] = React.useState(null);
@@ -61,7 +62,9 @@ const EditSessions = ({ userInfo }) => {
         sessionsToDelete.records.map((session) => (
           <section className="editbar" key={session.id}>
             <h2>{session.fields.session_title}</h2>
-
+            <Link to={`/edit-session?id=${session.fields.session_id}`}>
+            Edit
+            </Link>
             <button
               className="delete-button"
               onClick={() => {

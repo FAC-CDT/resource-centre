@@ -24,13 +24,13 @@ const StaffMenu = ({ userInfo, setUserInfo }) => {
         <Link to="/add-session">
           <AddSession />
         </Link>
-        <Link to="/edit-session">
+        <Link to="/list-sessions">
           <SessionsList />
         </Link>
         <Link to="/add-resource">
           <AddResource />
         </Link>
-        <Link to="/edit-resource">
+        <Link to="/list-resources">
           <EditResource />
         </Link>
         </section>
