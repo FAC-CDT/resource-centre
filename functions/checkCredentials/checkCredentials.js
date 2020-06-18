@@ -13,7 +13,7 @@ exports.handler = (event, context, callback) => {
 
   const credentials = JSON.parse(event.body);
 
-  var username = credentials.username;
+  var username = credentials.username.toLowerCase();
   var password = credentials.password;
   
   base("users")
