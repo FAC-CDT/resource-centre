@@ -9,7 +9,17 @@ exports.handler = async (event) => {
 
   const base = Airtable.base("appZmhWkwHSjmKw7g");
 
-  const newSessionData = JSON.parse(event.body);
+  const incomingData = JSON.parse(event.body);
+  const allEntries = Object.entries(incomingData);
+
+  let filledEntries = [];
+  allEntries.forEach((entry) => {
+    if (entry[1]) {
+      filledEntries.push(entry);
+    }
+  });
+
+  const newSessionData = Object.fromEntries(filledEntries);
 
   base("sessions").create(
     [

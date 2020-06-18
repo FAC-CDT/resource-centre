@@ -26,10 +26,10 @@ const AddSessionForm = (props) => {
     resource4Category: "",
     staffResource1Title: "",
     staffResource1Url: "",
-    staffResource1category: "",
+    staffResource1Category: "",
     staffResource2Title: "",
     staffResource2Url: "",
-    staffResource2category: "",
+    staffResource2Category: "",
   });
 
   const handleChange = (e) => {
