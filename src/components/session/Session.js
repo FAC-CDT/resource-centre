@@ -60,7 +60,7 @@ const Session = (props) => {
     );
   }
 
-  if (!props.userInfo.organisation) {
+  if (!props.localUserInfo.organisation) {
     return (
       <article>
         <Navbar />
@@ -144,7 +144,7 @@ const Session = (props) => {
           ) : null}
 
           {sessionPath.staff_resource1_url &&
-          props.userInfo.userType === "staff" ? (
+          props.localUserInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -159,7 +159,7 @@ const Session = (props) => {
           ) : null}
 
           {sessionPath.staff_resource2_url &&
-          props.userInfo.userType === "staff" ? (
+          props.localUserInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"

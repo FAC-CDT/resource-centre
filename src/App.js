@@ -20,18 +20,29 @@ import ParticipantSessions from "./components/session/ParticipantSessionsList";
 
 function App() {
   // Use local storage to persist login after session is ended - tab close etc. This allows new tabs
+  const [localUserInfo, setLocalUserInfo] = React.useState(
+    JSON.parse(localStorage.getItem("userInfoInLocalStorage")) || {
+      organisation: "",
+      userType: ""
+    }
+  );
+
   const [userInfo, setUserInfo] = React.useState(
     JSON.parse(localStorage.getItem("userInfoInLocalStorage")) || {
       organisation: "",
-      userType: "",
+      userType: ""
     }
   );
 
   React.useEffect(() => {
     localStorage.setItem("userInfoInLocalStorage", JSON.stringify(userInfo));
+    setLocalUserInfo(
+      JSON.parse(localStorage.getItem("userInfoInLocalStorage"))
+    );
+    // eslint-disable-next-line
   }, [userInfo]);
 
-    // Or use session storage for short term credential storage. Refresh ok but lost on tab close.
+  // Or use session storage for short term credential storage. Refresh ok but lost on tab close.
   // const [userInfo, setUserInfo] = React.useState(
   //   JSON.parse(sessionStorage.getItem("userInfoInSessionStorage")) || {
   //     organisation: "",
@@ -47,7 +58,7 @@ function App() {
     username: "",
     password: "",
     confirmPassword: "",
-    organisation: "",
+    organisation: ""
   });
 
   return (
@@ -82,61 +93,66 @@ function App() {
               userInfo={userInfo}
               setUserInfo={setUserInfo}
               credentials={credentials}
+              localUserInfo={localUserInfo}
             />
           )}
         />
         <Route
           path="/session"
           render={() => (
-            <Session userInfo={userInfo} setUserInfo={setUserInfo} />
+            <Session userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo} />
           )}
         />
         <Route
           path="/resources"
           render={() => (
-            <Resources userInfo={userInfo} setUserInfo={setUserInfo} />
+            <Resources userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/add-session"
           render={() => (
-            <AddSession userInfo={userInfo} setUserInfo={setUserInfo} />
+            <AddSession userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/list-sessions"
           render={() => (
-            <SessionsList userInfo={userInfo} setUserInfo={setUserInfo} />
+            <SessionsList userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/add-resource"
           render={() => (
-            <AddResource userInfo={userInfo} setUserInfo={setUserInfo} />
+            <AddResource userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/list-resources"
           render={() => (
-            <ResourceList userInfo={userInfo} setUserInfo={setUserInfo} />
+            <ResourceList userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/edit-session"
           render={() => (
-            <EditSession userInfo={userInfo} setUserInfo={setUserInfo} />
+            <EditSession userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/edit-resource"
           render={() => (
-            <EditResource userInfo={userInfo} setUserInfo={setUserInfo} />
+            <EditResource userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
-         <Route
+        <Route
           path="/join-session"
           render={() => (
-            <ParticipantSessions userInfo={userInfo} setUserInfo={setUserInfo} />
+            <ParticipantSessions
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
+              localUserInfo={localUserInfo}
+            />
           )}
         />
         <Route path="/help" render={() => <Help />} />

@@ -6,7 +6,7 @@ import "../login/Login.css";
 const AddSessionForm = (props) => {
   const [newSession, setNewSession] = React.useState({
     title: "",
-    organisation: props.userInfo.organisation,
+    organisation: props.localUserInfo.organisation,
     hostName: "",
     hostImage: "",
     date: "",

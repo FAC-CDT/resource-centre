@@ -5,7 +5,7 @@ import { ReactComponent as Resources } from "./icons/resources.svg";
 import { ReactComponent as Help } from "./icons/help.svg";
 import "./Participant-menu.css";
 
-const ParticipantMenu = ({ userInfo, setUserInfo }) => {
+const ParticipantMenu = ({ userInfo, setUserInfo, localUserInfo }) => {
 
   const handleLogout = () => {
     setUserInfo ({
@@ -17,7 +17,7 @@ const ParticipantMenu = ({ userInfo, setUserInfo }) => {
 
   return (
     <section>
-      <h1>Hello, {userInfo.username}!</h1>
+      <h1>Hello, {localUserInfo.username}!</h1>
       <section className="participant-options">
         <Link to="/join-session">
           <Session />

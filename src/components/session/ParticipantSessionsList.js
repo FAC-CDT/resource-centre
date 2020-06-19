@@ -3,14 +3,14 @@ import Navbar from "../navbar/Navbar.js";
 import { Link } from "react-router-dom";
 import "../staff-options/EditBar.css";
 
-const EditSessions = ({ userInfo }) => {
+const EditSessions = ({ userInfo, localUserInfo }) => {
   const [sessionsToJoin, setSessionsToJoin] = React.useState(null);
 
   const getSessionsToJoin = async () => {
     await (
       await fetch(`/.netlify/functions/getSession/getSession.js`, {
         method: "POST",
-        body: JSON.stringify(userInfo.organisation),
+        body: JSON.stringify(localUserInfo.organisation),
       })
     )
       .json()

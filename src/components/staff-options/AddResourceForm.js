@@ -8,7 +8,7 @@ const AddResourceForm = (props) => {
     title: "",
     category: "",
     url: "",
-    organisation: props.userInfo.organisation,
+    organisation: props.localUserInfo.organisation,
   });
 
   const handleChange = (e) => {

@@ -7,7 +7,7 @@ import { ReactComponent as EditResource } from "./icons/edit-res.svg";
 import { ReactComponent as Session } from "./icons/session.svg";
 import "./Staff-menu.css";
 
-const StaffMenu = ({ userInfo, setUserInfo }) => {
+const StaffMenu = ({ userInfo, setUserInfo, localUserInfo }) => {
   const handleLogout = () => {
     setUserInfo({
       organisation: "",
@@ -19,7 +19,7 @@ const StaffMenu = ({ userInfo, setUserInfo }) => {
   return (
     <>
     <section>
-      <h1>Welcome, {userInfo.organisation.toUpperCase()}</h1>
+      <h1>Welcome, {localUserInfo.organisation.toUpperCase()}</h1>
       <section className="staff-options">
         <Link to="/add-session">
           <AddSession />
