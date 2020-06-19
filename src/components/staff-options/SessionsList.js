@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../navbar/Navbar.js";
 import { Link } from "react-router-dom";
 
-const EditSessions = ({ userInfo }) => {
+const EditSessions = ({ userInfo, localUserInfo }) => {
   const [sessionsToDelete, setSessionsToDelete] = React.useState(null);
   const [refresh, setRefresh] = React.useState(false);
 
@@ -10,7 +10,7 @@ const EditSessions = ({ userInfo }) => {
     await (
       await fetch(`/.netlify/functions/getSession/getSession.js`, {
         method: "POST",
-        body: JSON.stringify(userInfo.organisation),
+        body: JSON.stringify(localUserInfo.organisation),
       })
     )
       .json()

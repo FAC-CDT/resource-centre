@@ -100,49 +100,49 @@ function App() {
         <Route
           path="/session"
           render={() => (
-            <Session userInfo={userInfo} setUserInfo={setUserInfo} />
+            <Session userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo} />
           )}
         />
         <Route
           path="/resources"
           render={() => (
-            <Resources userInfo={userInfo} setUserInfo={setUserInfo} />
+            <Resources userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/add-session"
           render={() => (
-            <AddSession userInfo={userInfo} setUserInfo={setUserInfo} />
+            <AddSession userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/list-sessions"
           render={() => (
-            <SessionsList userInfo={userInfo} setUserInfo={setUserInfo} />
+            <SessionsList userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/add-resource"
           render={() => (
-            <AddResource userInfo={userInfo} setUserInfo={setUserInfo} />
+            <AddResource userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/list-resources"
           render={() => (
-            <ResourceList userInfo={userInfo} setUserInfo={setUserInfo} />
+            <ResourceList userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/edit-session"
           render={() => (
-            <EditSession userInfo={userInfo} setUserInfo={setUserInfo} />
+            <EditSession userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
           path="/edit-resource"
           render={() => (
-            <EditResource userInfo={userInfo} setUserInfo={setUserInfo} />
+            <EditResource userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>
           )}
         />
         <Route
@@ -151,6 +151,7 @@ function App() {
             <ParticipantSessions
               userInfo={userInfo}
               setUserInfo={setUserInfo}
+              localUserInfo={localUserInfo}
             />
           )}
         />

@@ -37,9 +37,9 @@ const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
   console.log("this is local user info", localUserInfo);
 
   if (localUserInfo.userType === "staff") {
-    return <StaffMenu userInfo={userInfo} setUserInfo={setUserInfo} />;
+    return <StaffMenu userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>;
   } else if (localUserInfo.userType === "participant") {
-    return <ParticipantMenu userInfo={userInfo} setUserInfo={setUserInfo} />;
+    return <ParticipantMenu userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>;
   } else
     return (
       <section>

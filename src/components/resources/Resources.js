@@ -14,7 +14,7 @@ import Navbar from "../navbar/Navbar.js";
 import SearchIcon from "./icons/search-icon.svg";
 import "./Resources.css";
 
-const Resources = ({ userInfo }) => {
+const Resources = ({ userInfo, localUserInfo }) => {
   const [resources, setResources] = React.useState(null);
   const [filteredResources, setFilteredResources] = React.useState("");
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -38,7 +38,7 @@ const Resources = ({ userInfo }) => {
     await (
       await fetch(`/.netlify/functions/getResources/getResources.js`, {
         method: "POST",
-        body: JSON.stringify(userInfo.organisation),
+        body: JSON.stringify(localUserInfo.organisation),
       })
     )
       .json()
@@ -84,7 +84,7 @@ const Resources = ({ userInfo }) => {
     );
   }
 
-  if (!userInfo.organisation) {
+  if (!localUserInfo.organisation) {
     return (
       <article>
         <Navbar />
