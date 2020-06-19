@@ -431,7 +431,7 @@ const EditSession = (props) => {
           </select>
         </div>
 
-        <button type="submit" onClick={handleSubmit}>
+        <button className="submit-button" type="submit" onClick={handleSubmit}>
           Update Session
         </button>
       </form>

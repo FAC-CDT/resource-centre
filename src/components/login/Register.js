@@ -105,7 +105,7 @@ function SignupForm(props) {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" onClick={handleSubmit}>
+        <button className="submit-button" type="submit" onClick={handleSubmit}>
           Register
         </button>
       </form>
