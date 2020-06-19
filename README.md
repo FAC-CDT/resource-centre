@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/95fcc7df-ca34-44cf-ba2c-704d7555e9ea/deploy-status)](https://app.netlify.com/sites/cdt-resourcecentre/deploys)
 
 This project is part of the Collaborative Digital Training programme.<br>
-A collaboration between Founders & Coders, CAST, Social Action for Health and Pursuing Independent Pathways.
+A collaboration between Social Action for Health, Pursuing Independent Pathways, CAST and Founders & Coders.
 
 ---
 
@@ -14,6 +14,24 @@ Week 3: Product Ownership <br>
 Week 4-6: Build and Testing <br>
 
 This programme has been a collaboration between two distinct charities. Through the design sprints we found common problem areas that both could tackle with a single solution. Focusing on user groups with different needs, we worked towards developing an application that would ease the online experience of accessing sessions/resources provided by these charities. 
+
+---
+## The Application 
+
+### Log in: 
+Staff members for each charity have single user log in details, and participants can create their own account.
+
+Staff are able to edit/add resources and sessions while participants can join their applicable session and view the resources uploaded by their charity. 
+
+### Registration: 
+The registration for participants requires the users to fill in their name (case sensitive), charity initials (lower case) and create a password.
+
+---
+
+## Tech Stack
+ReactJS <br>
+Netlify Lambdas <br>
+Airtable <br>
 
 ---
 
