@@ -5,6 +5,17 @@ A collaboration between Founders & Coders, CAST, Social Action for Health and Pu
 
 ---
 
+## Problem Statement
+This resource app is in development to make online learning more accessible. During a 6 week training programme to upskill charity staff in digital, we conducted a dual part programme of design sprints and build. 
+
+Week 1: Discovery <br>
+Week 2: Definition <br>
+Week 3: Product Ownership <br> 
+Week 4-6: Build and Testing <br>
+
+This programme has been a collaboration between two distinct charities. Through the design sprints we found common problem areas that both could tackle with a single solution. Focusing on user groups with different needs, we worked towards developing an application that would ease the online experience of accessing sessions/resources provided by these charities. 
+
+---
 
 ## Developer Notes
 
@@ -18,5 +29,6 @@ You will need Netlify CLI on your machine connected to the CDT organisation Netl
 
 `npm run build` Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
+---
 
 
