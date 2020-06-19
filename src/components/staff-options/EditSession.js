@@ -29,34 +29,6 @@ const EditSession = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  //   const [newSession, setNewSession] = React.useState({
-  //     title: "",
-  //     organisation: props.userInfo.organisation,
-  //     hostName: "",
-  //     hostImage: "",
-  //     date: "",
-  //     startTime: "",
-  //     endTime: "",
-  //     resource1Title: "",
-  //     resource1Url: "",
-  //     resource1Category: "",
-  //     resource2Title: "",
-  //     resource2Url: "",
-  //     resource2Category: "",
-  //     resource3Title: "",
-  //     resource3Url: "",
-  //     resource3Category: "",
-  //     resource4Title: "",
-  //     resource4Url: "",
-  //     resource4Category: "",
-  //     staffResource1Title: "",
-  //     staffResource1Url: "",
-  //     staffResource1category: "",
-  //     staffResource2Title: "",
-  //     staffResource2Url: "",
-  //     staffResource2category: "",
-  //   });
-
   const handleChange = (e) => {
     const { id, value } = e.target;
     setCurrentFields((prevState) => ({
@@ -141,7 +113,7 @@ const EditSession = (props) => {
           <label htmlFor="date">The session date:</label>
           <input
             type="date"
-            id="date"
+            id="session_date"
             name="date"
             className="input"
             value={currentFields.session_date}
@@ -154,7 +126,7 @@ const EditSession = (props) => {
             required
             type="text"
             className="input"
-            id="start-time"
+            id="start_time"
             placeholder="E.g. 2:30pm"
             value={currentFields.start_time}
             onChange={handleChange}

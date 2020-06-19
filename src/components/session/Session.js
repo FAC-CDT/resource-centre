@@ -115,7 +115,7 @@ const Session = (props) => {
             </a>
           ) : null}
 
-          {sessionPath.resource3 ? (
+          {sessionPath.resource3_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -154,11 +154,11 @@ const Session = (props) => {
                 alt={sessionPath.staff_resource1_category}
                 src={icons[sessionPath.staff_resource1_category]}
               />
-              <figcaption>{sessionPath.resource1_title} </figcaption>
+              <figcaption>{sessionPath.staff_resource1_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath.staff_resource2 &&
+          {sessionPath.staff_resource2_url &&
           props.userInfo.userType === "staff" ? (
             <a
               target="_blank"
@@ -169,7 +169,7 @@ const Session = (props) => {
                 alt={sessionPath.staff_resource2_category}
                 src={icons[sessionPath.staff_resource2_category]}
               />
-              <figcaption>{sessionPath.resource2_title} </figcaption>
+              <figcaption>{sessionPath.staff_resource2_title} </figcaption>
             </a>
           ) : null}
         </article>
