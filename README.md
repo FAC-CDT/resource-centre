@@ -49,4 +49,7 @@ You will need Netlify CLI on your machine connected to the CDT organisation Netl
 
 ---
 
-
+## Bugs:
+Attempted to solve registration issue with no luck yet. 
+Trying to maintain registration details after refresh/past Loading... 
+TBC!
