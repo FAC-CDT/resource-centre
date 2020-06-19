@@ -20,18 +20,29 @@ import ParticipantSessions from "./components/session/ParticipantSessionsList";
 
 function App() {
   // Use local storage to persist login after session is ended - tab close etc. This allows new tabs
+  const [localUserInfo, setLocalUserInfo] = React.useState(
+    JSON.parse(localStorage.getItem("userInfoInLocalStorage")) || {
+      organisation: "",
+      userType: ""
+    }
+  );
+
   const [userInfo, setUserInfo] = React.useState(
     JSON.parse(localStorage.getItem("userInfoInLocalStorage")) || {
       organisation: "",
-      userType: "",
+      userType: ""
     }
   );
 
   React.useEffect(() => {
     localStorage.setItem("userInfoInLocalStorage", JSON.stringify(userInfo));
+    setLocalUserInfo(
+      JSON.parse(localStorage.getItem("userInfoInLocalStorage"))
+    );
+    // eslint-disable-next-line
   }, [userInfo]);
 
-    // Or use session storage for short term credential storage. Refresh ok but lost on tab close.
+  // Or use session storage for short term credential storage. Refresh ok but lost on tab close.
   // const [userInfo, setUserInfo] = React.useState(
   //   JSON.parse(sessionStorage.getItem("userInfoInSessionStorage")) || {
   //     organisation: "",
@@ -47,7 +58,7 @@ function App() {
     username: "",
     password: "",
     confirmPassword: "",
-    organisation: "",
+    organisation: ""
   });
 
   return (
@@ -82,6 +93,7 @@ function App() {
               userInfo={userInfo}
               setUserInfo={setUserInfo}
               credentials={credentials}
+              localUserInfo={localUserInfo}
             />
           )}
         />
@@ -133,10 +145,13 @@ function App() {
             <EditResource userInfo={userInfo} setUserInfo={setUserInfo} />
           )}
         />
-         <Route
+        <Route
           path="/join-session"
           render={() => (
-            <ParticipantSessions userInfo={userInfo} setUserInfo={setUserInfo} />
+            <ParticipantSessions
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
+            />
           )}
         />
         <Route path="/help" render={() => <Help />} />
