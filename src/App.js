@@ -19,16 +19,29 @@ import EditResource from "./components/staff-options/EditResource";
 import ParticipantSessions from "./components/session/ParticipantSessionsList";
 
 function App() {
+  // Use local storage to persist login after session is ended - tab close etc. This allows new tabs
   const [userInfo, setUserInfo] = React.useState(
-    JSON.parse(sessionStorage.getItem("userInfoInLocalStorage")) || {
+    JSON.parse(localStorage.getItem("userInfoInLocalStorage")) || {
       organisation: "",
       userType: "",
     }
   );
 
   React.useEffect(() => {
-    sessionStorage.setItem("userInfoInLocalStorage", JSON.stringify(userInfo));
+    localStorage.setItem("userInfoInLocalStorage", JSON.stringify(userInfo));
   }, [userInfo]);
+
+    // Or use session storage for short term credential storage. Refresh ok but lost on tab close.
+  // const [userInfo, setUserInfo] = React.useState(
+  //   JSON.parse(sessionStorage.getItem("userInfoInSessionStorage")) || {
+  //     organisation: "",
+  //     userType: "",
+  //   }
+  // );
+
+  // React.useEffect(() => {
+  //   sessionStorage.setItem("userInfoInSessionStorage", JSON.stringify(userInfo));
+  // }, [userInfo]);
 
   const [credentials, setCredentials] = React.useState({
     username: "",
