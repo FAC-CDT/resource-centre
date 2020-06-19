@@ -28,6 +28,13 @@ The registration for participants requires the users to fill in their name (lowe
 
 ---
 
+## Tech Stack
+ReactJS <br>
+Netlify Lambdas <br>
+Airtable <br>
+
+---
+
 ## Developer Notes
 
 This app has a React front-end using Netlify Lambda functions to talk to an Airtable database. It is set up to work as a PWA. Deployment is through netlify. Netlify holds the environment variables for Airtable on the account and are accessed in dev mode by Netlify CLI.
