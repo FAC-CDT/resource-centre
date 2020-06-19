@@ -24,7 +24,7 @@ Staff members for each charity have single user log in details, and participants
 Staff are able to edit/add resources and sessions while participants can join their applicable session and view the resources uploaded by their charity. 
 
 ### Registration: 
-The registration for participants requires the users to fill in their name (lower case), charity initials (lower case) and create a password.
+The registration for participants requires the users to fill in their name (case sensitive), charity initials (lower case) and create a password.
 
 ---
 
