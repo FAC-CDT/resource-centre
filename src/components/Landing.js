@@ -4,7 +4,7 @@ import ParticipantMenu from "./menus/Participant-menu.js";
 import StaffMenu from "./menus/Staff-menu.js";
 
 const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
-  console.log("this is cred", credentials);
+
   const getUserInfo = async () => {
     await (await fetch(`/.netlify/functions/getUserInfo/getUserInfo.js`, {
       method: "POST",
@@ -12,14 +12,14 @@ const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
     }))
       .json()
       .then(data => {
-        console.log("this is data", data);
+        
 
         setUserInfo({
           userType: data.records[0].fields.user_type,
           organisation: data.records[0].fields.organisation,
           username: data.records[0].fields.username
         });
-        console.log("this is userinfo", userInfo);
+
       })
       .catch(console.error);
   };
