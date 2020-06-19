@@ -16,6 +16,17 @@ Week 4-6: Build and Testing <br>
 This programme has been a collaboration between two distinct charities. Through the design sprints we found common problem areas that both could tackle with a single solution. Focusing on user groups with different needs, we worked towards developing an application that would ease the online experience of accessing sessions/resources provided by these charities. 
 
 ---
+## The Application 
+
+### Log in: 
+Staff members for each charity have single user log in details, and participants can create their own account.
+
+Staff are able to edit/add resources and sessions while participants can join their applicable session and view the resources uploaded by their charity. 
+
+### Registration: 
+The registration for participants requires the users to fill in their name (lower case), charity initials (lower case) and create a password.
+
+---
 
 ## Developer Notes
 
