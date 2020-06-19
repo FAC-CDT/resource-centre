@@ -95,7 +95,7 @@ const AddResourceForm = (props) => {
           </select>
         </div>
 
-        <button type="submit" onClick={handleSubmit}>
+        <button className="submit-button" type="submit" onClick={handleSubmit}>
           Add resource
         </button>
       </form>

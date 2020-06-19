@@ -424,7 +424,7 @@ const AddSessionForm = (props) => {
           </select>
         </div>
 
-        <button type="submit" onClick={handleSubmit}>
+        <button className="submit-button" type="submit" onClick={handleSubmit}>
           Add Session
         </button>
       </form>
