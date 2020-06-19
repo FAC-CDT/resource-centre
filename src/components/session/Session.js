@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import whatsapp from "../resources/icons/whatsapp-link.svg";
 import zoom from "../resources/icons/zoom-link.svg";
 import pdf from "../resources/icons/pdf-link.svg";
@@ -13,12 +13,12 @@ import slide from "../resources/icons/slide-link.svg";
 import covid from "../resources/icons/covid-link.svg";
 import share from "../resources/icons/sharepoint-link.svg";
 import { ReactComponent as Help } from "./icons/help-btn.svg";
-import { SessionQuestions } from "../../utils/Questions.js";
 
 import "./Sessions.css";
 
-const Session = ({ userInfo }) => {
+const Session = (props) => {
   const [session, setSession] = React.useState(null);
+  const sessionId = props.location.search.split("=")[1];
 
   let icons = {
     youtube: youtube,
@@ -31,16 +31,18 @@ const Session = ({ userInfo }) => {
     image: images,
     slideshow: slide,
     coronavirus: covid,
-    sharepoint: share
+    sharepoint: share,
   };
 
   const getSession = async () => {
-    await (await fetch(`/.netlify/functions/getSession/getSession.js`, {
-      method: "POST",
-      body: JSON.stringify(userInfo.organisation)
-    }))
+    await (
+      await fetch(`/.netlify/functions/getThisSession/getThisSession.js`, {
+        method: "POST",
+        body: JSON.stringify({ id: sessionId }),
+      })
+    )
       .json()
-      .then(data => setSession(data))
+      .then((data) => setSession(data))
       .catch(console.error);
   };
 
@@ -49,7 +51,6 @@ const Session = ({ userInfo }) => {
     // eslint-disable-next-line
   }, []);
 
-  // console.log(session);
   if (!session) {
     return (
       <article>
@@ -59,7 +60,7 @@ const Session = ({ userInfo }) => {
     );
   }
 
-  if (!userInfo.organisation) {
+  if (!props.userInfo.organisation) {
     return (
       <article>
         <Navbar />
@@ -68,114 +69,107 @@ const Session = ({ userInfo }) => {
     );
   }
   const sessionPath = session.records[0].fields;
-  const image = sessionPath.Profile_pic[0].url;
-  console.log(image);
+  const image = sessionPath.host_image;
 
   return (
     <section>
       <Navbar />
       <section className="session-container">
-        <h2>{sessionPath[SessionQuestions.title]}</h2>
-      <article className="host-container">
-      <img alt="session host" src={image} className="host-image" />
-        <p>Session host: {sessionPath[SessionQuestions.host]}</p>
-      </article>
+        <h1>{sessionPath.session_title}</h1>
+        <article className="host-container">
+          <img alt="session host" src={image} className="host-image" />
+          <p>Session host: {sessionPath.session_host}</p>
+        </article>
+        <article className="session-times">
+          <p>{sessionPath.session_date}</p>
+          <p>
+            {sessionPath.start_time} - {sessionPath.end_time}
+          </p>
+        </article>
         <article className="sess-resource-container">
-          {sessionPath[SessionQuestions.resource1] ? (
+          {sessionPath.resource1_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource1]}
+              href={sessionPath.resource1_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource1_type]}
-                src={icons[sessionPath[SessionQuestions.resource1_type]]}
+                alt={sessionPath.resource1_category}
+                src={icons[sessionPath.resource1_category]}
               />
-              <figcaption>
-                {sessionPath[SessionQuestions.resource1_title]}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource1_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.resource2] ? (
+          {sessionPath.resource2_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource2]}
+              href={sessionPath.resource2_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource2_type]}
-                src={icons[sessionPath[SessionQuestions.resource2_type]]}
+                alt={sessionPath.resource2_category}
+                src={icons[sessionPath.resource2_category]}
               />
-              <figcaption>
-                {sessionPath[SessionQuestions.resource2_title]}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource2_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.resource3] ? (
+          {sessionPath.resource3_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource3]}
+              href={sessionPath.resource3}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource3_type]}
-                src={icons[sessionPath[SessionQuestions.resource3_type]]}
+                alt={sessionPath.resource3_category}
+                src={icons[sessionPath.resource3_category]}
               />
-              <figcaption>
-                {sessionPath[SessionQuestions.resource3_title]}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource3_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.resource4] ? (
+          {sessionPath.resource4_url ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.resource4]}
+              href={sessionPath.resource4_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.resource4_type]}
-                src={icons[sessionPath[SessionQuestions.resource4_type]]}
+                alt={sessionPath.resource4_category}
+                src={icons[sessionPath.resource4_category]}
               />
-              <figcaption>
-                {sessionPath[SessionQuestions.resource4_title]}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.resource4_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.staff_resource1] &&
-          userInfo.userType === "staff" ? (
+          {sessionPath.staff_resource1_url &&
+          props.userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.staff_resource1]}
+              href={sessionPath.staff_resource1_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.staff_resource1_type]}
-                src={icons[sessionPath[SessionQuestions.staff_resource1_type]]}
+                alt={sessionPath.staff_resource1_category}
+                src={icons[sessionPath.staff_resource1_category]}
               />
-              <figcaption>
-                {sessionPath[SessionQuestions.resource1_title]}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.staff_resource1_title} </figcaption>
             </a>
           ) : null}
 
-          {sessionPath[SessionQuestions.staff_resource2] &&
-          userInfo.userType === "staff" ? (
+          {sessionPath.staff_resource2_url &&
+          props.userInfo.userType === "staff" ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={sessionPath[SessionQuestions.staff_resource2]}
+              href={sessionPath.staff_resource2_url}
             >
               <img
-                alt={sessionPath[SessionQuestions.staff_resource2_type]}
-                src={icons[sessionPath[SessionQuestions.staff_resource2_type]]}
+                alt={sessionPath.staff_resource2_category}
+                src={icons[sessionPath.staff_resource2_category]}
               />
-              <figcaption>
-                {sessionPath[SessionQuestions.resource2_title]}{" "}
-              </figcaption>
+              <figcaption>{sessionPath.staff_resource2_title} </figcaption>
             </a>
           ) : null}
         </article>
@@ -187,4 +181,4 @@ const Session = ({ userInfo }) => {
   );
 };
 
-export default Session;
+export default withRouter(Session);

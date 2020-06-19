@@ -7,17 +7,17 @@
   --body: 1rem;
   --small: 0.9rem;
 
-  --font: #3E4C47;
-  --background: #D2E8E1;
-  --navbar: #DAE9E4;
+  --font: #3e4c47;
+  --background: #d2e8e1;
+  --navbar: #dae9e4;
 }
 * {
-    outline: none;
+  outline: none;
 }
 body {
-    font-family: "Montserrat", sans-serif;
-    color: var(--font);
-    background-color: var(--background);
+  font-family: "Montserrat", sans-serif;
+  color: var(--font);
+  background-color: var(--background);
 }
 
 h1 {
@@ -43,9 +43,7 @@ figcaption {
   color: var(--font);
   justify-content: center;
   font-size: var(--small);
-
 }
-
 
 /* MOBILE RESPONSIVE */
 @media screen and (max-width: 800px) {
@@ -65,7 +63,7 @@ figcaption {
     padding: 1rem 0;
   }
   h2 {
-      margin: 0.5rem;
-      text-align: center;
+    margin: 0.5rem;
+    text-align: center;
   }
 }

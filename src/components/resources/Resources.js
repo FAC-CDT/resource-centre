@@ -10,7 +10,6 @@ import other from "./icons/other-link.svg";
 import images from "./icons/image-link.svg";
 import slide from "./icons/slide-link.svg";
 import share from "./icons/sharepoint-link.svg";
-import { ResourceQuestions } from "../../utils/Questions.js";
 import Navbar from "../navbar/Navbar.js";
 import SearchIcon from "./icons/search-icon.svg";
 import "./Resources.css";
@@ -32,7 +31,7 @@ const Resources = ({ userInfo }) => {
     other: other,
     image: images,
     slideshow: slide,
-    sharepoint: share
+    sharepoint: share,
   };
 
   const getResources = async () => {
@@ -59,7 +58,7 @@ const Resources = ({ userInfo }) => {
 
   const updateSearchTerm = (e) => {
     setSearchTerm(e.target.value);
-    setFirstLoad(false)
+    setFirstLoad(false);
   };
 
   //let filteredResources = "";
@@ -67,7 +66,7 @@ const Resources = ({ userInfo }) => {
     if (!firstLoad) {
       setFilteredResources(
         resources.records.filter((resource) => {
-          return resource.fields[ResourceQuestions.title]
+          return resource.fields.resource_title
             .toLowerCase()
             .includes(searchTerm.toLowerCase());
         })
@@ -96,70 +95,67 @@ const Resources = ({ userInfo }) => {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
 
-    <article className="page-container">
-      <h1>Your Resources</h1>
-      <section className="searchbar">
-      <input
-        value={searchTerm}
-        type="text"
-        className="search-input"
-        id="searchbar"
-        aria-label="Filter resources"
-        placeholder="Search"
-        onChange={updateSearchTerm}
-      />
-      <img src={SearchIcon} className="search-icon" alt="search" />
-      </section>
-      <section className="resource-container">
-        {!resources ? (
-          <h2>There are currently no resources registered</h2>
-        ) : filteredResources ? (
-          filteredResources.map((resource) => (
-            <a
-              className="resource-icon"
-              key={resource.id}
-              href={resource.fields[ResourceQuestions.resource_url]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <figure>
-                <img
-                  src={icons[resource.fields[ResourceQuestions.type]]}
-                  alt={icons[resource.fields[ResourceQuestions.type]]}
-                />
-                <figcaption>
-                  {resource.fields[ResourceQuestions.title]}
-                </figcaption>
-              </figure>
-            </a>
-          ))
-        ) : (
-          resources.records.map((resource) => (
-            <article className="resource-container">
-            <a
-              className="resource-icon"
-              key={resource.id}
-              href={resource.fields[ResourceQuestions.resource_url]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <figure>
-                <img
-                  src={icons[resource.fields[ResourceQuestions.type]]}
-                  alt={icons[resource.fields[ResourceQuestions.type]]}
-                />
-                <figcaption>
-                  {resource.fields[ResourceQuestions.title]}
-                </figcaption>
-              </figure>
-            </a>
-            </article>
-          ))
-        )}
-      </section>
-    </article>
+      <article className="page-container">
+        <h1>Your Resources</h1>
+        <section className="searchbar">
+          <input
+            value={searchTerm}
+            type="text"
+            className="search-input"
+            id="searchbar"
+            aria-label="Filter resources"
+            placeholder="Search"
+            onChange={updateSearchTerm}
+          />
+          <img src={SearchIcon} className="search-icon" alt="search" />
+        </section>
+        <section className="resource-container">
+          {!resources ? (
+            <h2>There are currently no resources registered</h2>
+          ) : filteredResources ? (
+            filteredResources.map((resource) => (
+              <a
+                className="resource-icon"
+                key={resource.id}
+                href={resource.fields.resource_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <figure>
+                  <img
+                    src={icons[resource.fields.resource_category]}
+                    alt={icons[resource.fields.resource_category]}
+                  />
+                  <figcaption className="resource-title">
+                    {resource.fields.resource_title}
+                  </figcaption>
+                </figure>
+              </a>
+            ))
+          ) : (
+            resources.records.map((resource) => (
+              <article className="resource-container" key={resource.id}>
+                <a
+                  className="resource-icon"
+                  href={resource.fields.resource_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <figure>
+                    <img
+                      src={icons[resource.fields.resource_category]}
+                      alt={icons[resource.fields.resource_category]}
+                    />
+                    <figcaption>{resource.fields.resource_title}</figcaption>
+                  </figure>
+                </a>
+              </article>
+            ))
+          )}
+        </section>
+      </article>
     </>
   );
 };

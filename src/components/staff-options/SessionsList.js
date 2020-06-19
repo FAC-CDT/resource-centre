@@ -1,16 +1,18 @@
 import React from "react";
 import Navbar from "../navbar/Navbar.js";
-import { SessionQuestions } from "../../utils/Questions.js";
+import { Link } from "react-router-dom";
 
 const EditSessions = ({ userInfo }) => {
   const [sessionsToDelete, setSessionsToDelete] = React.useState(null);
   const [refresh, setRefresh] = React.useState(false);
 
   const getSessionsToDelete = async () => {
-    await (await fetch(`/.netlify/functions/getSession/getSession.js`, {
-      method: "POST",
-      body: JSON.stringify(userInfo.organisation),
-    }))
+    await (
+      await fetch(`/.netlify/functions/getSession/getSession.js`, {
+        method: "POST",
+        body: JSON.stringify(userInfo.organisation),
+      })
+    )
       .json()
       .then((data) => setSessionsToDelete(data))
       .catch(console.error);
@@ -33,15 +35,6 @@ const EditSessions = ({ userInfo }) => {
     // eslint-disable-next-line
   }, [refresh]);
 
-  // const reconfigureTime = (startAirDate, endAirDate) => {
-  // let startDate = startAirDate.split('T')[0];
-  // let endDate = endAirDate.split('T')[0];
-  // let startTime = startAirDate.split('T')[1].split('.')[0];
-  // let endTime = endAirDate.split('T')[1].split('.')[0];
-  // let dateAndTime = `${startDate}, ${startTime} - ${endDate}, ${endTime}`;
-  // return dateAndTime;
-  // }
-
   if (!sessionsToDelete) {
     return (
       <section>
@@ -61,16 +54,20 @@ const EditSessions = ({ userInfo }) => {
       ) : (
         sessionsToDelete.records.map((session) => (
           <section className="editbar" key={session.id}>
-            <span>{session.fields[SessionQuestions.title]}</span>
-
-            <button
-              className="delete-button"
-              onClick={() => {
-                deleteSession({ id: session.id });
-              }}
-            >
-              Delete
-            </button>
+            <span>{session.fields.session_title}</span>
+            <div className="button-box">
+              <Link to={`/edit-session?id=${session.fields.session_id}`}>
+                <button className="edit-button">Edit</button>
+              </Link>
+              <button
+                className="delete-button"
+                onClick={() => {
+                  deleteSession({ id: session.id });
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </section>
         ))
       )}

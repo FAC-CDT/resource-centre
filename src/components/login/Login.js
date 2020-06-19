@@ -3,6 +3,14 @@ import { withRouter, Link } from "react-router-dom";
 import "./Login.css";
 
 const StaffLogin = (props) => {
+
+  React.useEffect(() => {
+    if (props.userInfo.organisation && props.userInfo.userType) {
+      props.history.push("/landing");
+    }
+    // eslint-disable-next-line
+  }, [])
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     props.setCredentials((prevState) => ({

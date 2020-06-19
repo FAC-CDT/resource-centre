@@ -35,7 +35,19 @@ form {
   border-radius: 15px;
   background-color: white;
   border-color: transparent;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 1rem 0 1rem 0;
+}
+
+select {
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--body);
+  padding: 0.5rem;
+  width: 80vw;
+  border-radius: 15px;
+  background-color: white;
+  border-color: transparent;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 1rem 0 1rem 0;
 }
 
@@ -46,9 +58,10 @@ form {
   padding: 0.8rem;
   width: 60vw;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   border-radius: 10px;
   color: white;
-  background-color: #55BB99;
+  background-color: #55bb99;
   border-color: transparent;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
@@ -58,9 +71,9 @@ transform: translateY(2.5px);
 }
 
 .registration {
-position: fixed;
-bottom: 1rem;
-text-align: center;
+  position: fixed;
+  bottom: 1rem;
+  text-align: center;
 }
 
 .account {
@@ -74,6 +87,10 @@ text-align: center;
   font-weight: bold;
 }
 
+label {
+  max-width: 90vw;
+}
+
 /* DESKTOP RESPONSIVE */
 
 @media (min-width: 800px) {
@@ -82,5 +99,8 @@ text-align: center;
   }
   .submit-button {
     width: 10vw;
+  }
+  select {
+    width: 20vw;
   }
 }

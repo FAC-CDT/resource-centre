@@ -1,11 +1,10 @@
 .editbar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid grey;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
 }
 
 .delete-button {
@@ -19,6 +18,21 @@
   border-radius: 5px;
   font-size: var(--body);
   margin-left: 1rem;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #585bf4;
+  /* width: 6rem; */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: var(--body);
+  margin-left: 1rem;
+  cursor: pointer;
 }
 
 .view-button {
@@ -31,20 +45,70 @@
   text-decoration: none;
   border-radius: 5px;
   font-size: var(--body);
+  cursor: pointer;
 }
 
 .editbar span {
   font-size: var(--body);
   margin-left: 0;
-
 }
 
 .button-box {
   display: flex;
   flex-direction: row;
-  max-width: 44vw;
+  margin-top: 1rem;
 }
 
-.resource-heading {
+/* .resource-heading {
   max-width: 66vw;
+} */
+
+.session-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+  border-bottom: 1px solid grey;
+  margin-left: auto;
+  margin-right:auto;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.session-option-img {
+  border-radius: 50%;
+  height: 15vw;
+  margin-right: 1rem;
+}
+
+.session-option-info {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+@media (min-width: 768px) {
+  .editbar {
+    flex-direction: row;
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .button-box {
+    margin: 0;
+  }
+
+  .session-option {
+    width: 70vw;
+  }
+
+  .session-option-info {
+    width: 30vw;
+  }
+
+  .session-option-img {
+    border-radius: 50%;
+    height: 5vw;
+  }
 }

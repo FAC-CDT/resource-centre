@@ -12,13 +12,13 @@ const Menu = ({ userInfo, setUserInfo, credentials }) => {
       })
     )
       .json()
-      .then((data) =>
+      .then((data) => {
         setUserInfo({
           organisation: data.records[0].fields.organisation,
           userType: data.records[0].fields.user_type,
           username: data.records[0].fields.username,
-        })
-      )
+        });
+      })
       .catch(console.error);
   };
 
@@ -28,9 +28,7 @@ const Menu = ({ userInfo, setUserInfo, credentials }) => {
   }, []);
 
   if (!userInfo.userType) {
-    return (
-        <h1>Loading...</h1>
-    );
+    return <h1>Loading...</h1>;
   }
 
   if (userInfo.userType === "staff") {

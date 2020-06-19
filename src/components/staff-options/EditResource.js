@@ -1,84 +1,133 @@
 import React from "react";
-import Navbar from "../navbar/Navbar.js";
-import { ResourceQuestions } from "../../utils/Questions";
-import "./EditBar.css";
+import { withRouter } from "react-router-dom";
+import Navbar from "../navbar/Navbar";
+import "../login/Login.css";
 
-const EditResource = ({ userInfo }) => {
-  const [resourcesToDelete, setResourcesToDelete] = React.useState(null);
-  const [refresh, setRefresh] = React.useState(false);
+const EditSession = (props) => {
+  const resourceId = props.location.search.split("=")[1];
 
-  const getResourcesToDelete = async () => {
-    await (await fetch(`/.netlify/functions/getResources/getResources.js`, {
-      method: "POST",
-      body: JSON.stringify(userInfo.organisation),
-    }))
+  const [currentFields, setCurrentFields] = React.useState(null);
+  const [currentId, setCurrentId] = React.useState("");
+
+  const getEditResource = async () => {
+    await (
+      await fetch(
+        `/.netlify/functions/getResourceToEdit/getResourceToEdit.js`,
+        {
+          method: "POST",
+          body: JSON.stringify({ id: resourceId }),
+        }
+      )
+    )
       .json()
-      .then((data) => setResourcesToDelete(data))
+      .then((data) => {
+        setCurrentFields(data.records[0].fields);
+        setCurrentId(data.records[0].id);
+      })
       .catch(console.error);
   };
 
-  const deleteResource = async (id) => {
-    if (window.confirm("Are you sure you want to delete this resource?")) {
-      await fetch(`/.netlify/functions/deleteResource/deleteResource.js`, {
-        method: "DELETE",
-        body: JSON.stringify(id),
-      })
-        .then(setRefresh(!refresh))
-        .catch(console.error);
-    } else {
-      return;
-    }
+  React.useEffect(() => {
+    getEditResource();
+    // eslint-disable-next-line
+  }, []);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setCurrentFields((prevState) => ({
+      ...prevState,
+      [id]: value,
+      resourceId: currentId,
+    }));
   };
 
-  React.useEffect(() => {
-    getResourcesToDelete();
-    // eslint-disable-next-line
-  }, [refresh]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await fetch(`/.netlify/functions/editResource/editResource.js`, {
+      method: "POST",
+      body: JSON.stringify(currentFields),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Your resource was successfully updated");
+          props.history.push("/edit-resource");
+        } else {
+          alert("There was an error, please try again");
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
 
-  if (!resourcesToDelete) {
+  if (!currentFields) {
     return (
-      <section>
+      <article>
         <Navbar />
         <h1>Loading...</h1>
-      </section>
+      </article>
     );
   }
 
   return (
-    <article>
+    <>
       <Navbar />
-      <h1>Your Resources</h1>
-      <p>The general resources saved for your organisation </p>
-      {resourcesToDelete.records.length === 0 ? (
-        <h2>There are currently no resources registered</h2>
-      ) : (
-        resourcesToDelete.records.map((resource) => (
-          <section key={resource.id} className="editbar">
-            <div className="resource-heading">
-              <span>{resource.fields[ResourceQuestions.title]}</span>
-            </div>
-            <div className="button-box">
-              <a
-                href={resource.fields[ResourceQuestions.resource_url]}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="view-button">Visit</button>
-              </a>
-              <button
-                className="delete-button"
-                onClick={() => {
-                  deleteResource({ id: resource.id });
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          </section>
-        ))
-      )}
-    </article>
+      <h1>Edit Resource</h1>
+      <p>Please update any fields as required.</p>
+      <form>
+        <div className="form-inputs">
+          <label htmlFor="resource_title">The title of this resource:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource_title"
+            placeholder="Enter title"
+            value={currentFields.resource_title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource_url">The link the resource points to:</label>
+          <input
+            required
+            type="text"
+            className="input"
+            id="resource_url"
+            placeholder="E.g. https://images.com/me.jpg"
+            value={currentFields.resource_url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="resource_category">Select a category:</label>
+          <select
+            name="categories"
+            id="resource_category"
+            value={currentFields.resource_category}
+            onChange={handleChange}
+          >
+            <option value="">Click here to select</option>
+            <option value="pdf">PDF</option>
+            <option value="zoom">Zoom</option>
+            <option value="sharepoint">Sharepoint</option>
+            <option value="website">Website</option>
+            <option value="youtube">Youtube</option>
+            <option value="google">Google</option>
+            <option value="coronavirus">Coronavirus</option>
+            <option value="other">Other</option>
+            <option value="image">Image</option>
+            <option value="slideshow">Slideshow</option>
+          </select>
+        </div>
+
+        <button type="submit" onClick={handleSubmit}>
+          Update Resource
+        </button>
+      </form>
+    </>
   );
 };
 
-export default EditResource;
+export default withRouter(EditSession);

@@ -9,14 +9,14 @@ exports.handler = (event, context, callback) => {
   });
 
   const base = Airtable.base('appZmhWkwHSjmKw7g');
-  const currentOrg = JSON.parse(event.body);
+  const thisSessionid = JSON.parse(event.body);
   const data = [];
 
   base('sessions')
     .select({
-      filterByFormula: `({organisation}='${currentOrg}')`,
+      filterByFormula: `({session_id}='${thisSessionid.id}')`,
       maxRecords: 100,
-      view: "Grid view"
+      view: "Grid view" 
     })
     .eachPage(
       function page(records, fetchNextPage) {
