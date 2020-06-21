@@ -22,9 +22,9 @@ function SignupForm(props) {
     )
       .json()
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (!data.records.length) {
-          console.log(props.credentials)
+          console.log(props.credentials);
           sendDetailsToServer();
         } else {
           alert("Sorry, that username is taken. Please pick another");
@@ -48,7 +48,11 @@ function SignupForm(props) {
       await fetch(`/.netlify/functions/registerUser/registerUser.js`, {
         method: "POST",
         body: JSON.stringify(payload),
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "cache-control": "Cache-Control: max-age=60, public",
+          "Access-Control-Allow-Methods": "*",
+        },
       })
         .then((res) => {
           if (res.status === 200) {
