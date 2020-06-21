@@ -3,6 +3,8 @@ import { withRouter, Link } from "react-router-dom";
 import "./Login.css";
 
 function SignupForm(props) {
+  const [buttonText, setButtonText] = React.useState("Register");
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     props.setCredentials((prevState) => ({
@@ -30,6 +32,7 @@ function SignupForm(props) {
         .then((res) => {
           console.log(res.status);
           if (res.status === 200) {
+            setButtonText("Registering...")
             alert("Thank you for registering.");
             setTimeout(() => {
               props.history.push("/landing");
@@ -111,7 +114,7 @@ function SignupForm(props) {
             type="submit"
             onClick={handleSubmit}
           >
-            Register
+            {buttonText}
           </button>
         </form>
         <article className="account">
