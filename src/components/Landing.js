@@ -12,7 +12,7 @@ const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
     }))
       .json()
       .then(data => {
-        
+        console.log(data);
 
         setUserInfo({
           userType: data.records[0].fields.user_type,
