@@ -12,8 +12,6 @@ const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
     }))
       .json()
       .then(data => {
-        console.log(data);
-
         setUserInfo({
           userType: data.records[0].fields.user_type,
           organisation: data.records[0].fields.organisation,
@@ -33,8 +31,6 @@ const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
   if (!localUserInfo.userType) {
     return <h1>Loading...</h1>;
   }
-
-  console.log("this is local user info", localUserInfo);
 
   if (localUserInfo.userType === "staff") {
     return <StaffMenu userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>;

@@ -49,10 +49,9 @@ function SignupForm(props) {
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => {
-          console.log(res.status);
           if (res.status === 200) {
             setButtonText("Registering...");
-            alert("Thank you for registering.");
+            //alert("Thank you for registering.");
             setTimeout(() => {
               props.history.push("/landing");
             }, 2000);
