@@ -13,6 +13,25 @@ function SignupForm(props) {
     }));
   };
 
+  const checkUserInfo = async () => {
+    await (
+      await fetch(`/.netlify/functions/getUserInfo/getUserInfo.js`, {
+        method: "POST",
+        body: JSON.stringify(props.credentials.username),
+      })
+    )
+      .json()
+      .then((data) => {
+        if (!data.records.length) {
+          sendDetailsToServer();
+        } else {
+          alert("Sorry, that username is taken. Please pick another");
+          return;
+        }
+      })
+      .catch(console.error);
+  };
+
   const sendDetailsToServer = async () => {
     if (
       props.credentials.username.length &&
@@ -32,7 +51,7 @@ function SignupForm(props) {
         .then((res) => {
           console.log(res.status);
           if (res.status === 200) {
-            setButtonText("Registering...")
+            setButtonText("Registering...");
             alert("Thank you for registering.");
             setTimeout(() => {
               props.history.push("/landing");
@@ -54,7 +73,7 @@ function SignupForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (props.credentials.password === props.credentials.confirmPassword) {
-      sendDetailsToServer();
+      checkUserInfo();
     } else {
       alert("Passwords do not match");
     }
