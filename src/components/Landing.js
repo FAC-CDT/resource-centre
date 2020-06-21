@@ -5,6 +5,8 @@ import StaffMenu from "./menus/Staff-menu.js";
 
 const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
 
+  console.log(credentials);
+  
   const getUserInfo = async () => {
     await (await fetch(`/.netlify/functions/getUserInfo/getUserInfo.js`, {
       method: "POST",

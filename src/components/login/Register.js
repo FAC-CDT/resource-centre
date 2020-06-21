@@ -22,7 +22,9 @@ function SignupForm(props) {
     )
       .json()
       .then((data) => {
+        console.log(data)
         if (!data.records.length) {
+          console.log(props.credentials)
           sendDetailsToServer();
         } else {
           alert("Sorry, that username is taken. Please pick another");
