@@ -28,6 +28,6 @@ exports.handler = (event, context, callback) => {
       };
       callback(null, response);
     }
-    console.log("Deleted", deletedRecords.length, "records");
+    // console.log("Deleted", deletedRecords.length, "records");
   });
 };

@@ -16,12 +16,13 @@ const data = [];
 base('users')
   .select({
     filterByFormula: `({username}='${username}')`,
-    maxRecords: 100,
+    maxRecords: 1,
     view: "Grid view"
   })
   .eachPage(
     function page(records, fetchNextPage) {
       records.forEach(function(record) {
+        delete record.fields.password;
         data.push(record);
       });
       fetchNextPage();
