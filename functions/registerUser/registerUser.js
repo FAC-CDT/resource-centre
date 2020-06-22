@@ -1,13 +1,11 @@
-//const Airtable = require("airtable");
 const fetch = require("node-fetch");
-
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const acceptedOrgs = "pip safh";
+const acceptedOrgs = process.env.ACCEPTED_ORGS;
 
 exports.handler = async (event) => {
-  const { API_URL, AIRTABLE_API_KEY } = process.env;
+  const { AIRTABLE_API_KEY } = process.env;
   const credentials = JSON.parse(event.body);
 
   const password = credentials.password;
@@ -16,13 +14,6 @@ exports.handler = async (event) => {
   const url = `https://api.airtable.com/v0/appZmhWkwHSjmKw7g/users`;
 
   let status;
-
-  // Airtable.configure({
-  //   endpointUrl: API_URL,
-  //   apiKey: AIRTABLE_API_KEY,
-  // });
-
-  //const base = Airtable.base("appZmhWkwHSjmKw7g");
 
   var userDetails = {
     username: credentials.username,
@@ -57,7 +48,6 @@ exports.handler = async (event) => {
       },
     })
       .then((res) => {
-        console.log("this is status", res.status);
         if (res.status === 200) {
           status = 200;
         }
@@ -86,6 +76,4 @@ exports.handler = async (event) => {
       },
     };
   }
-
-
 };

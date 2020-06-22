@@ -22,9 +22,7 @@ function SignupForm(props) {
     )
       .json()
       .then((data) => {
-        console.log(data);
         if (!data.records.length) {
-          console.log(props.credentials);
           sendDetailsToServer();
         } else {
           alert("Sorry, that username is taken. Please pick another");
@@ -40,9 +38,9 @@ function SignupForm(props) {
       props.credentials.password.length
     ) {
       const payload = {
-        "username": props.credentials.username,
-        "password": props.credentials.password,
-        "organisation": props.credentials.organisation
+        username: props.credentials.username,
+        password: props.credentials.password,
+        organisation: props.credentials.organisation,
       };
 
       await fetch(`/.netlify/functions/registerUser/registerUser.js`, {
@@ -52,8 +50,8 @@ function SignupForm(props) {
           "Content-Type": "application/json",
           "cache-control": "Cache-Control: max-age=60, public",
           "Access-Control-Allow-Methods": "*",
-          "Access-Control-Allow-Origin": "*"
-        }
+          "Access-Control-Allow-Origin": "*",
+        },
       })
         .then((res) => {
           if (res.status === 200) {
@@ -61,7 +59,7 @@ function SignupForm(props) {
             //alert("Thank you for registering.");
             setTimeout(() => {
               props.history.push("/landing");
-            }, 2000);
+            }, 1000);
           } else if (res.status === 206) {
             alert("We can't find that organisation in the database");
           } else {
