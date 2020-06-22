@@ -6,7 +6,7 @@ A collaboration between Social Action for Health, Pursuing Independent Pathways,
 ---
 
 ## Problem Statement
-This resource app is in development to make online learning more accessible. During a 6 week training programme to upskill charity staff in digital, we conducted a dual part programme of design sprints and build. 
+This resource app is in development to make online learning more accessible. During a 6 week training programme to upskill charity staff in digital product management and ownership, we conducted a dual part programme of design sprints and build. 
 
 Week 1: Discovery <br>
 Week 2: Definition <br>
@@ -25,6 +25,9 @@ Staff are able to edit/add resources and sessions while participants can join th
 
 ### Registration: 
 The registration for participants requires the users to fill in their name (case sensitive), charity initials (lower case) and create a password.
+
+**note**
+Airtable has a maximum of 5 database calls per second, at which point it will lock calls to that database for 30 seconds. If several participants are doing the same action at once (e.g. loading a session), there may be a delay for some in the action completing. 
 
 ---
 
@@ -49,7 +52,5 @@ You will need Netlify CLI on your machine connected to the CDT organisation Netl
 
 ---
 
-## Bugs:
-Attempted to solve registration issue with no luck yet. 
-Trying to maintain registration details after refresh/past Loading... 
-TBC!
+## Known bugs
+See issues or project board
