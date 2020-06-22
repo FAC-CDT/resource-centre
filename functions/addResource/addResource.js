@@ -24,7 +24,6 @@ exports.handler = async (event) => {
     },
   })
     .then((res) => {
-      console.log("this is status", res.status);
       if (res.status === 200) {
         status = 200;
       }

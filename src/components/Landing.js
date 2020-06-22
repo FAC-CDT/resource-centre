@@ -4,22 +4,20 @@ import ParticipantMenu from "./menus/Participant-menu.js";
 import StaffMenu from "./menus/Staff-menu.js";
 
 const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
-
-  console.log(credentials);
-  
   const getUserInfo = async () => {
-    await (await fetch(`/.netlify/functions/getUserInfo/getUserInfo.js`, {
-      method: "POST",
-      body: JSON.stringify(credentials.username)
-    }))
+    await (
+      await fetch(`/.netlify/functions/getUserInfo/getUserInfo.js`, {
+        method: "POST",
+        body: JSON.stringify(credentials.username),
+      })
+    )
       .json()
-      .then(data => {
+      .then((data) => {
         setUserInfo({
           userType: data.records[0].fields.user_type,
           organisation: data.records[0].fields.organisation,
-          username: data.records[0].fields.username
+          username: data.records[0].fields.username,
         });
-
       })
       .catch(console.error);
   };
@@ -35,9 +33,21 @@ const Menu = ({ userInfo, setUserInfo, credentials, localUserInfo }) => {
   }
 
   if (localUserInfo.userType === "staff") {
-    return <StaffMenu userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>;
+    return (
+      <StaffMenu
+        userInfo={userInfo}
+        setUserInfo={setUserInfo}
+        localUserInfo={localUserInfo}
+      />
+    );
   } else if (localUserInfo.userType === "participant") {
-    return <ParticipantMenu userInfo={userInfo} setUserInfo={setUserInfo} localUserInfo={localUserInfo}/>;
+    return (
+      <ParticipantMenu
+        userInfo={userInfo}
+        setUserInfo={setUserInfo}
+        localUserInfo={localUserInfo}
+      />
+    );
   } else
     return (
       <section>

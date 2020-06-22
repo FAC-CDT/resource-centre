@@ -18,7 +18,6 @@ exports.handler = async (event) => {
 
   const fields = Object.fromEntries(filledEntries);
 
-  console.log({ fields });
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -30,7 +29,6 @@ exports.handler = async (event) => {
     },
   })
     .then((res) => {
-      console.log("this is status", res.status);
       if (res.status === 200) {
         status = 200;
       }

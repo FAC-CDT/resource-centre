@@ -4,7 +4,6 @@ const saltRounds = 10;
 
 const acceptedOrgs = process.env.ACCEPTED_ORGS;
 
-
 exports.handler = async (event) => {
   const { AIRTABLE_API_KEY } = process.env;
   const credentials = JSON.parse(event.body);
@@ -49,7 +48,6 @@ exports.handler = async (event) => {
       },
     })
       .then((res) => {
-        console.log("this is status", res.status);
         if (res.status === 200) {
           status = 200;
         }
@@ -78,6 +76,4 @@ exports.handler = async (event) => {
       },
     };
   }
-
-
 };
