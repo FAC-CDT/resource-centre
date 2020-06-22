@@ -52,6 +52,8 @@ function SignupForm(props) {
           "Content-Type": "application/json",
           "cache-control": "Cache-Control: max-age=60, public",
           "Access-Control-Allow-Methods": "*",
+          "Access-Control-Allow-Origin": "*",
+
         },
       })
         .then((res) => {
