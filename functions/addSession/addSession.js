@@ -21,7 +21,7 @@ exports.handler = async (event) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
-      fields,
+      fields: fields,
     }),
     headers: {
       "Content-Type": "application/json",
