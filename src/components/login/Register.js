@@ -61,7 +61,7 @@ function SignupForm(props) {
             //alert("Thank you for registering.");
             setTimeout(() => {
               props.history.push("/landing");
-            }, 2000);
+            },1000);
           } else if (res.status === 206) {
             alert("We can't find that organisation in the database");
           } else {

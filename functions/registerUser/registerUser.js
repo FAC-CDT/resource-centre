@@ -2,7 +2,6 @@ const fetch = require("node-fetch");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-//const acceptedOrgs = "pip safh";
 const acceptedOrgs = process.env.ACCEPTED_ORGS;
 
 
