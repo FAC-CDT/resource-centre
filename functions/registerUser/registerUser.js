@@ -38,12 +38,12 @@ exports.handler = async (event) => {
       [
         {
           fields: {
-            username: userDetails.username,
-            password: userDetails.password,
-            organisation: userDetails.organisation,
-            user_type: "participant",
-          },
-        },
+            "username": userDetails.username,
+            "password": userDetails.password,
+            "organisation": userDetails.organisation,
+            "user_type": "participant"
+          }
+        }
       ],
       (err) => {
         if (err)

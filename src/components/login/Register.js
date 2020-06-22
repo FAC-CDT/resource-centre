@@ -40,7 +40,7 @@ function SignupForm(props) {
       props.credentials.password.length
     ) {
       const payload = {
-        username: props.credentials.username,
+         username: props.credentials.username,
         password: props.credentials.password,
         organisation: props.credentials.organisation,
       };
@@ -52,9 +52,8 @@ function SignupForm(props) {
           "Content-Type": "application/json",
           "cache-control": "Cache-Control: max-age=60, public",
           "Access-Control-Allow-Methods": "*",
-          "Access-Control-Allow-Origin": "*",
-
-        },
+          "Access-Control-Allow-Origin": "*"
+        }
       })
         .then((res) => {
           if (res.status === 200) {
