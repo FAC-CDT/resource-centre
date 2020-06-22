@@ -37,7 +37,7 @@ exports.handler = async (event) => {
     base("users").create(
       [
         {
-          fields: {
+          "fields": {
             "username": userDetails.username,
             "password": userDetails.password,
             "organisation": userDetails.organisation,

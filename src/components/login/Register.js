@@ -40,9 +40,9 @@ function SignupForm(props) {
       props.credentials.password.length
     ) {
       const payload = {
-         username: props.credentials.username,
-        password: props.credentials.password,
-        organisation: props.credentials.organisation,
+        "username": props.credentials.username,
+        "password": props.credentials.password,
+        "organisation": props.credentials.organisation
       };
 
       await fetch(`/.netlify/functions/registerUser/registerUser.js`, {
